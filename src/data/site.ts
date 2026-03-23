@@ -588,7 +588,7 @@ export const team: TeamMember[] = [
     specialty: "Implantología y rehabilitación oral",
     bio: "Más de 37 años liderando tratamientos complejos con una visión serena, precisa y centrada en la persona.",
     image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",
   },
   {
     name: "Dra. Marta Ferrer",
@@ -596,7 +596,7 @@ export const team: TeamMember[] = [
     specialty: "Estética dental y carillas cerámicas",
     bio: "Diseña sonrisas naturales con criterios de armonía facial y odontología conservadora.",
     image:
-      "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1594824475544-95bb7cbeae7c?auto=format&fit=crop&w=900&q=80",
   },
   {
     name: "Dr. Pablo Romero",
@@ -604,7 +604,7 @@ export const team: TeamMember[] = [
     specialty: "Alineadores transparentes y ortodoncia avanzada",
     bio: "Combina diagnóstico digital, biomecánica y cercanía para alinear sonrisas con precisión.",
     image:
-      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=900&q=80",
   },
   {
     name: "Dra. Elena Soria",
@@ -612,7 +612,7 @@ export const team: TeamMember[] = [
     specialty: "Atención infantil y salud gingival",
     bio: "Hace que niños y familias vivan la clínica con confianza, pedagogía y calma.",
     image:
-      "https://images.unsplash.com/photo-1594824475544-95bb7cbeae7c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1629909615184-a2dd2a8ad8fa?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
@@ -678,7 +678,7 @@ export const blogPosts: BlogPost[] = [
       "No se trata solo del implante: influyen el diagnóstico, la encía, el hueso y el mantenimiento a largo plazo.",
     category: "Implantología",
     cover:
-      "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
     readTime: "4 min",
     content: [
       "La duración de un implante dental depende de mucho más que la marca del implante. El éxito real nace de una planificación correcta, una buena integración ósea y un mantenimiento constante.",
@@ -693,7 +693,7 @@ export const blogPosts: BlogPost[] = [
       "La mejor ortodoncia no es la más popular, sino la que resuelve tu mordida con el plan correcto.",
     category: "Ortodoncia",
     cover:
-      "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
     readTime: "5 min",
     content: [
       "Muchos pacientes llegan pensando que ya saben qué tratamiento necesitan. Pero en ortodoncia, el diagnóstico manda. No todos los casos son ideales para cualquier sistema.",
@@ -708,7 +708,7 @@ export const blogPosts: BlogPost[] = [
       "Las encías no sangran porque sí. Detectarlo a tiempo cambia el pronóstico por completo.",
     category: "Prevención",
     cover:
-      "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1516549655669-df4a2b8315db?auto=format&fit=crop&w=1200&q=80",
     readTime: "4 min",
     content: [
       "La periodontitis puede avanzar sin grandes molestias hasta que aparece movilidad, retracción o pérdida de soporte. Por eso la prevención importa tanto.",

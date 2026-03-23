@@ -1,9 +1,10 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronRight, Menu, MessageCircleMore, Phone, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { clinic, navigation } from "@/data/site";
 import { phoneHref } from "@/lib/utils";
 
@@ -11,79 +12,123 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-        backdropFilter: "blur(18px)",
-        background: "rgba(244, 248, 251, 0.84)",
-        borderBottom: "1px solid rgba(15, 23, 42, 0.08)",
-      }}
-    >
-      <div className="container" style={{ display: "grid", gap: "0.9rem", padding: "1rem 0" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
-          <Link href="/" style={{ display: "grid", gap: "0.18rem" }}>
-            <strong style={{ fontSize: "1rem", color: "var(--brand-strong)" }}>{clinic.name}</strong>
-            <span style={{ color: "var(--muted)", fontSize: ".92rem" }}>Odontología avanzada en Valencia</span>
-          </Link>
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
 
-          <nav className="desktop-nav" style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-            <div className="desktop-links" style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
+      <header className="site-header">
+        <div className="container header-shell">
+          <div className="header-brand-wrap">
+            <Link href="/" className="brand-lockup">
+              <span className="brand-mark">LG</span>
+              <span>
+                <strong>{clinic.name}</strong>
+                <small>Odontología contemporánea con alma clínica</small>
+              </span>
+            </Link>
+          </div>
+
+          <nav className="desktop-nav">
+            <div className="desktop-links">
               {navigation.map((item) => {
-                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
 
                 return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    style={{
-                      color: active ? "var(--brand)" : "var(--foreground)",
-                      fontWeight: active ? 700 : 500,
-                    }}
-                  >
+                  <Link key={item.href} href={item.href} className={active ? "desktop-link active" : "desktop-link"}>
                     {item.label}
                   </Link>
                 );
               })}
             </div>
 
-            <a className="btn" href={phoneHref(clinic.phone)}>
-              <Phone size={18} /> Llamar
-            </a>
+            <div className="header-actions">
+              <a href={clinic.whatsappHref} target="_blank" rel="noreferrer" className="header-mini-action">
+                <MessageCircleMore size={16} /> WhatsApp
+              </a>
+              <a className="btn" href={phoneHref(clinic.phone)}>
+                <Phone size={18} /> Llamar ahora
+              </a>
+            </div>
           </nav>
 
           <button
-            aria-label="Abrir menú"
+            type="button"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
             onClick={() => setOpen((prev) => !prev)}
-            style={{
-              display: "none",
-              border: "1px solid var(--border)",
-              background: "white",
-              borderRadius: "999px",
-              width: 48,
-              height: 48,
-            }}
             className="mobile-trigger"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
+      </header>
 
+      <AnimatePresence>
         {open ? (
-          <div className="card mobile-panel" style={{ padding: "1rem", display: "grid", gap: "0.85rem" }}>
-            {navigation.map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
-                {item.label}
-              </Link>
-            ))}
-            <a className="btn" href={phoneHref(clinic.phone)}>
-              <Phone size={18} /> Pedir cita
-            </a>
-          </div>
+          <motion.div
+            className="mobile-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="mobile-drawer"
+              initial={{ opacity: 0, y: -24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.26, ease: "easeOut" }}
+            >
+              <div className="mobile-drawer-top">
+                <div className="brand-lockup">
+                  <span className="brand-mark">LG</span>
+                  <span>
+                    <strong>{clinic.name}</strong>
+                    <small>Valencia</small>
+                  </span>
+                </div>
+                <button type="button" aria-label="Cerrar menú" onClick={() => setOpen(false)} className="mobile-close">
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div className="mobile-nav-links">
+                {navigation.map((item, index) => {
+                  const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -12 }}
+                      transition={{ delay: 0.04 * index }}
+                    >
+                      <Link href={item.href} onClick={() => setOpen(false)} className={active ? "mobile-nav-link active" : "mobile-nav-link"}>
+                        <span>{item.label}</span>
+                        <ChevronRight size={18} />
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <div className="mobile-drawer-footer">
+                <a className="btn" href={phoneHref(clinic.phone)}>
+                  <Phone size={18} /> Reservar llamada
+                </a>
+                <a className="btn-secondary" href={clinic.whatsappHref} target="_blank" rel="noreferrer">
+                  <MessageCircleMore size={18} /> Escribir por WhatsApp
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
         ) : null}
-      </div>
-    </header>
+      </AnimatePresence>
+    </>
   );
 }

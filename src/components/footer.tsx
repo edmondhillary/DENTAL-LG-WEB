@@ -1,49 +1,62 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircleMore, Phone } from "lucide-react";
 import { clinic, navigation } from "@/data/site";
 import { phoneHref } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer style={{ marginTop: "auto", background: "#0b1c2d", color: "#e2edf7" }}>
-      <div className="container section" style={{ display: "grid", gap: "2rem" }}>
-        <div className="grid-3">
-          <div style={{ display: "grid", gap: "1rem" }}>
-            <h3 style={{ fontSize: "2rem" }}>{clinic.name}</h3>
-            <p style={{ color: "rgba(226,237,247,.78)", lineHeight: 1.7 }}>
-              Clínica dental premium en Valencia con un enfoque humano, tecnología actual y tratamientos diseñados para durar.
-            </p>
-          </div>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-shell">
+          <div className="container section" style={{ display: "grid", gap: "2rem" }}>
+            <div className="footer-grid">
+              <div style={{ display: "grid", gap: "1rem" }}>
+                <span className="eyebrow" style={{ width: "fit-content", color: "white", background: "rgba(255,255,255,.1)" }}>
+                  Clínica dental privada
+                </span>
+                <h3 className="footer-title">{clinic.name}</h3>
+                <p className="footer-copy">
+                  Clínica dental en Valencia con una visión serena, tecnológica y profundamente humana. Tratamientos bien explicados, ejecutados con precisión y pensados para durar.
+                </p>
+                <a href={clinic.whatsappHref} target="_blank" rel="noreferrer" className="footer-link">
+                  <MessageCircleMore size={18} /> WhatsApp directo para primeras consultas
+                </a>
+              </div>
 
-          <div style={{ display: "grid", gap: "0.9rem" }}>
-            <strong>Enlaces rápidos</strong>
-            <div style={{ display: "grid", gap: "0.7rem" }}>
-              {navigation.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
+              <div style={{ display: "grid", gap: "0.95rem" }}>
+                <strong>Explorar</strong>
+                <div className="footer-links">
+                  {navigation.map((item) => (
+                    <Link key={item.href} href={item.href} className="footer-link">
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gap: "0.95rem" }}>
+                <strong>Contacto</strong>
+                <div className="footer-contact">
+                  <a href={phoneHref(clinic.phone)} className="footer-contact-item">
+                    <Phone size={18} /> {clinic.phoneDisplay}
+                  </a>
+                  <a href={`mailto:${clinic.email}`} className="footer-contact-item">
+                    <Mail size={18} /> {clinic.email}
+                  </a>
+                  <span className="footer-contact-item" style={{ alignItems: "start" }}>
+                    <MapPin size={18} style={{ marginTop: 4 }} /> {clinic.address}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="divider" style={{ background: "rgba(255,255,255,.12)" }} />
+
+            <div className="footer-bottom">
+              <span>© 2026 {clinic.name}. Todos los derechos reservados.</span>
+              <span className="footer-meta">Experiencia, precisión y atención humana desde hace más de 37 años.</span>
             </div>
           </div>
-
-          <div style={{ display: "grid", gap: "0.9rem" }}>
-            <strong>Contacto</strong>
-            <a href={phoneHref(clinic.phone)} style={{ display: "inline-flex", gap: ".65rem", alignItems: "center" }}>
-              <Phone size={18} /> {clinic.phoneDisplay}
-            </a>
-            <a href={`mailto:${clinic.email}`} style={{ display: "inline-flex", gap: ".65rem", alignItems: "center" }}>
-              <Mail size={18} /> {clinic.email}
-            </a>
-            <span style={{ display: "inline-flex", gap: ".65rem", alignItems: "center", lineHeight: 1.6 }}>
-              <MapPin size={18} /> {clinic.address}
-            </span>
-          </div>
-        </div>
-
-        <div className="divider" style={{ background: "rgba(255,255,255,.12)" }} />
-        <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", color: "rgba(226,237,247,.72)" }}>
-          <span>© 2026 {clinic.name}. Todos los derechos reservados.</span>
-          <span>Experiencia, precisión y atención humana desde hace más de 37 años.</span>
         </div>
       </div>
     </footer>

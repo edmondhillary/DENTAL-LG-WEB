@@ -13,23 +13,32 @@ export default function TreatmentsPage() {
   return (
     <>
       <section className="section">
-        <div className="container">
-          <div className="section-heading">
+        <div className="container section-split">
+          <div className="section-heading" style={{ marginBottom: 0 }}>
             <span className="eyebrow">Tratamientos</span>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 5.4rem)" }}>Soluciones dentales con lógica clínica y estética natural.</h1>
+            <h1 style={{ fontSize: "clamp(3.2rem, 6vw, 5.8rem)" }}>Soluciones dentales con una lógica médica clara y una estética serena.</h1>
             <p>
-              Navegá por nuestras áreas de tratamiento y encontrá páginas específicas pensadas para informar, posicionar bien en SEO y ayudarte a decidir con claridad.
+              Navegá por nuestras áreas de tratamiento y encontrá páginas específicas pensadas para informar, posicionar bien en SEO y ayudarte a decidir con criterio.
             </p>
           </div>
-          <div className="grid-3">
-            {treatments.map((treatment, index) => (
-              <AnimateIn key={treatment.slug} delay={index * 0.04}>
-                <TreatmentCard treatment={treatment} />
-              </AnimateIn>
-            ))}
+          <div className="card card-elevated editorial-panel" style={{ alignSelf: "center" }}>
+            <p style={{ color: "var(--muted)", lineHeight: 1.85 }}>
+              Priorizamos tratamientos con explicación limpia, visual coherente y una estructura por servicio que refuerza confianza y calidad percibida.
+            </p>
           </div>
         </div>
       </section>
+
+      <section className="section-sm">
+        <div className="container grid-3">
+          {treatments.map((treatment, index) => (
+            <AnimateIn key={treatment.slug} delay={index * 0.04}>
+              <TreatmentCard treatment={treatment} />
+            </AnimateIn>
+          ))}
+        </div>
+      </section>
+
       <FinalCta />
     </>
   );

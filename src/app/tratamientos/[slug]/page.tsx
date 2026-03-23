@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ContactSection, FaqPreview, TestimonialsPreview } from "@/components/site-sections";
 import { treatments } from "@/data/site";
+import { imageUrl } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -36,10 +37,10 @@ export default async function TreatmentDetailPage({ params }: Props) {
   return (
     <>
       <section className="section">
-        <div className="container hero-grid" style={{ alignItems: "center" }}>
-          <div style={{ display: "grid", gap: "1.2rem" }}>
+        <div className="container editorial-grid">
+          <div className="editorial-side editorial-stack">
             <span className="eyebrow">Tratamiento dental</span>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 5.2rem)" }}>{treatment.name}</h1>
+            <h1 style={{ fontSize: "clamp(3.2rem, 6vw, 5.7rem)" }}>{treatment.name}</h1>
             <p className="lead">{treatment.description}</p>
             <div className="pill-list">
               {treatment.idealFor.map((item) => (
@@ -48,10 +49,17 @@ export default async function TreatmentDetailPage({ params }: Props) {
                 </span>
               ))}
             </div>
+            <div className="card card-elevated editorial-panel prose">
+              <p>
+                Este servicio está estructurado para posicionar bien en SEO, pero sobre todo para explicar con elegancia clínica lo que una persona necesita entender antes de decidir.
+              </p>
+            </div>
           </div>
-          <div className="card surface-soft" style={{ padding: "1rem" }}>
-            <div style={{ position: "relative", minHeight: 540, borderRadius: 28, overflow: "hidden" }}>
-              <Image src={treatment.heroImage} alt={treatment.heroAlt} fill style={{ objectFit: "cover" }} />
+          <div className="editorial-main">
+            <div className="card media-card">
+              <div style={{ position: "relative", minHeight: 620 }}>
+                <Image src={imageUrl(treatment.heroImage)} alt={treatment.heroAlt} fill style={{ objectFit: "cover" }} />
+              </div>
             </div>
           </div>
         </div>
@@ -59,7 +67,7 @@ export default async function TreatmentDetailPage({ params }: Props) {
 
       <section className="section-sm">
         <div className="container grid-2">
-          <article className="card" style={{ padding: "1.5rem", display: "grid", gap: "1rem" }}>
+          <article className="card editorial-panel prose">
             <h2 style={{ fontSize: "2.4rem" }}>Qué es y qué beneficios aporta</h2>
             <p style={{ color: "var(--muted)", lineHeight: 1.75 }}>{treatment.description}</p>
             <ul>
@@ -68,7 +76,7 @@ export default async function TreatmentDetailPage({ params }: Props) {
               ))}
             </ul>
           </article>
-          <article className="card" style={{ padding: "1.5rem", display: "grid", gap: "1rem" }}>
+          <article className="card dark-panel editorial-panel prose">
             <h2 style={{ fontSize: "2.4rem" }}>Para quién está indicado</h2>
             <ul>
               {treatment.idealFor.map((item) => (
@@ -76,6 +84,30 @@ export default async function TreatmentDetailPage({ params }: Props) {
               ))}
             </ul>
           </article>
+        </div>
+      </section>
+
+      <section className="section-sm soft-band">
+        <div className="container info-band">
+          {[
+            {
+              title: "Primera visita estratégica",
+              copy: "Analizamos tu caso con calma para entender si este tratamiento es realmente el camino adecuado.",
+            },
+            {
+              title: "Tecnología con sentido",
+              copy: "Usamos herramientas digitales cuando elevan diagnóstico, precisión y previsibilidad del resultado.",
+            },
+            {
+              title: "Resultado natural",
+              copy: "La prioridad no es impresionar, sino conseguir función, armonía y una estética coherente con tu rostro.",
+            },
+          ].map((item) => (
+            <article key={item.title} className="info-band-card">
+              <strong style={{ color: "var(--brand-strong)", display: "block", fontSize: "1rem" }}>{item.title}</strong>
+              <p style={{ color: "var(--muted)", lineHeight: 1.8, marginTop: ".65rem" }}>{item.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -88,7 +120,7 @@ export default async function TreatmentDetailPage({ params }: Props) {
           </div>
           <div className="grid-4">
             {treatment.process.map((step, index) => (
-              <article key={step.title} className="card" style={{ padding: "1.3rem", display: "grid", gap: ".8rem" }}>
+              <article key={step.title} className="card editorial-panel" style={{ display: "grid", gap: ".8rem" }}>
                 <span className="eyebrow">0{index + 1}</span>
                 <h3 style={{ fontSize: "1.75rem" }}>{step.title}</h3>
                 <p style={{ color: "var(--muted)", lineHeight: 1.75 }}>{step.description}</p>
@@ -107,11 +139,11 @@ export default async function TreatmentDetailPage({ params }: Props) {
           </div>
           <div className="grid-2">
             {treatment.beforeAfter.map((item) => (
-              <article key={item.title} className="card" style={{ overflow: "hidden" }}>
-                <div style={{ position: "relative", minHeight: 320 }}>
-                  <Image src={item.image} alt={item.title} fill style={{ objectFit: "cover" }} />
+              <article key={item.title} className="card media-card">
+                <div style={{ position: "relative", minHeight: 360 }}>
+                  <Image src={imageUrl(item.image)} alt={item.title} fill style={{ objectFit: "cover" }} />
                 </div>
-                <div style={{ padding: "1.2rem", display: "grid", gap: ".65rem" }}>
+                <div className="editorial-panel" style={{ display: "grid", gap: ".65rem" }}>
                   <h3 style={{ fontSize: "1.8rem" }}>{item.title}</h3>
                   <p style={{ color: "var(--muted)", lineHeight: 1.75 }}>{item.description}</p>
                 </div>

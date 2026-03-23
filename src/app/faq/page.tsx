@@ -10,11 +10,14 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <section className="section">
-      <div className="container hero-grid" style={{ alignItems: "start" }}>
+      <div className="container section-split" style={{ alignItems: "start" }}>
         <div className="section-heading" style={{ marginBottom: 0 }}>
           <span className="eyebrow">FAQ</span>
-          <h1 style={{ fontSize: "clamp(3rem, 6vw, 5.2rem)" }}>Preguntas frecuentes antes de dar el paso.</h1>
-          <p>Una lectura cómoda, clara y pensada para resolver objeciones reales antes de reservar.</p>
+          <h1 style={{ fontSize: "clamp(3.2rem, 6vw, 5.6rem)" }}>Preguntas frecuentes presentadas con claridad y jerarquía.</h1>
+          <p>Una lectura cómoda, elegante y pensada para resolver objeciones reales antes de reservar.</p>
+          <div className="card card-elevated editorial-panel">
+            <p style={{ color: "var(--muted)", lineHeight: 1.85 }}>Una FAQ bien diseñada no es relleno: reduce fricción, mejora percepción de profesionalidad y acompaña la decisión.</p>
+          </div>
         </div>
         <FaqAccordion items={globalFaqs} />
       </div>
