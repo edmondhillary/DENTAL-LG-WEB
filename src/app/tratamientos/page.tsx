@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SiteIcon } from "@/components/site-icon";
+import { TreatmentSearch } from "@/components/treatment-search";
 import { imageUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -74,9 +76,9 @@ export default function TreatmentsPage() {
               Precisión <br />
               <span style={{ color: "var(--secondary)", fontStyle: "italic", fontWeight: 300 }}>artesanal.</span>
             </h1>
-            <p style={{ color: "var(--muted)", fontSize: "1.15rem", maxWidth: 560, lineHeight: 1.8 }}>
-              Combinamos ciencia dental avanzada y criterio estético para crear tratamientos tan funcionales como bellos. Este es nuestro atelier clínico.
-            </p>
+              <p style={{ color: "var(--muted)", fontSize: "1.15rem", maxWidth: 560, lineHeight: 1.8 }}>
+              Combinamos ciencia dental avanzada y criterio estético para crear tratamientos funcionales, duraderos y visualmente naturales.
+              </p>
           </div>
           <div style={{ position: "relative" }}>
             <div style={{ aspectRatio: "4 / 5", borderRadius: "1rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)" }}>
@@ -89,6 +91,10 @@ export default function TreatmentsPage() {
           </div>
         </div>
       </section>
+
+      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <TreatmentSearch />
+      </div>
 
       <section style={{ padding: "6rem 2rem", maxWidth: 1280, margin: "0 auto", display: "grid", gap: "6rem" }}>
         <div style={{ display: "grid", gap: "3rem" }}>
@@ -108,7 +114,7 @@ export default function TreatmentsPage() {
                 <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.25rem", fontWeight: 800, color: "var(--brand)", marginBottom: ".75rem" }}>{item.title}</h3>
                 <p style={{ color: "var(--muted)", fontSize: ".9rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>{item.copy}</p>
                 <Link href={item.href} style={{ display: "inline-flex", alignItems: "center", color: "var(--secondary)", fontSize: ".8rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".14em" }}>
-                  Learn more <span className="material-symbols-outlined" style={{ fontSize: 18, marginLeft: 8 }}>arrow_forward</span>
+                  Saber más <SiteIcon name="arrow_forward" size={18} style={{ marginLeft: 8 }} />
                 </Link>
               </article>
             ))}
@@ -136,11 +142,11 @@ export default function TreatmentsPage() {
             <div style={{ display: "grid", gap: "2rem" }}>
               {restorative.map((item) => (
                 <div key={item.title} style={{ display: "flex", gap: "1.5rem", padding: "2rem", background: "var(--surface-low)", borderRadius: "1.5rem", border: "1px solid rgba(195,198,214,.2)" }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 40, color: "var(--secondary)" }}>{item.title.includes("Coronas") ? "architecture" : "rebase_edit"}</span>
+                  <SiteIcon name={item.title.includes("Coronas") ? "architecture" : "rebase_edit"} size={40} style={{ color: "var(--secondary)" }} />
                   <div>
                     <h4 style={{ fontFamily: "var(--font-headline)", fontSize: "1.3rem", fontWeight: 800, color: "var(--brand)", marginBottom: ".5rem" }}>{item.title}</h4>
                     <p style={{ color: "var(--muted)", fontSize: ".92rem", lineHeight: 1.8, marginBottom: "1rem" }}>{item.copy}</p>
-                    <span style={{ color: "var(--brand)", fontSize: ".75rem", fontWeight: 800, textTransform: "uppercase", textDecoration: "underline", textUnderlineOffset: 4 }}>Details</span>
+                    <span style={{ color: "var(--brand)", fontSize: ".75rem", fontWeight: 800, textTransform: "uppercase", textDecoration: "underline", textUnderlineOffset: 4 }}>Detalles</span>
                   </div>
                 </div>
               ))}
@@ -160,8 +166,8 @@ export default function TreatmentsPage() {
             {foundation.map((item) => (
               <div key={item.title} style={{ gridColumn: item.highlight ? "span 2 / span 2" : "span 1 / span 1", background: item.highlight ? "var(--brand)" : item.title.includes("Air-Flow") ? "var(--surface-highest)" : "white", color: item.highlight ? "white" : "var(--foreground)", padding: "2rem", borderRadius: "1.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 240, boxShadow: item.highlight ? "none" : "0 4px 20px rgba(0,0,0,.02)", border: item.highlight ? "none" : "1px solid rgba(195,198,214,.2)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 40, color: item.highlight ? "#d5e3ff" : "var(--secondary)" }}>{item.icon}</span>
-                  {item.highlight ? <span style={{ color: "#d5e3ff", fontSize: ".7rem", fontWeight: 800 }}>ESSENTIAL</span> : null}
+                  <SiteIcon name={item.icon} size={40} style={{ color: item.highlight ? "#d5e3ff" : "var(--secondary)" }} />
+                  {item.highlight ? <span style={{ color: "#d5e3ff", fontSize: ".7rem", fontWeight: 800 }}>ESENCIAL</span> : null}
                 </div>
                 <div>
                   <h3 style={{ fontFamily: "var(--font-headline)", fontSize: item.highlight ? "1.6rem" : "1.15rem", fontWeight: 800, marginBottom: ".75rem", marginTop: item.highlight ? "2rem" : "1rem" }}>{item.title}</h3>
@@ -179,10 +185,10 @@ export default function TreatmentsPage() {
           <div style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", alignItems: "center" }}>
             <div style={{ padding: "4rem", display: "grid", gap: "2rem" }}>
               <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, color: "var(--brand)" }}>Tu recorrido personalizado empieza acá.</h2>
-              <p style={{ color: "var(--muted)", lineHeight: 1.8, maxWidth: 520 }}>Reservá una sesión diagnóstica completa. Estudiaremos tu caso con imagen avanzada para construir un mapa claro de tratamiento.</p>
+              <p style={{ color: "var(--muted)", lineHeight: 1.8, maxWidth: 520 }}>Reserva una sesión diagnóstica completa. Estudiaremos tu caso con imagen avanzada para construir un mapa claro de tratamiento.</p>
               <div className="btn-row">
                 <Link href="/contacto" className="btn" style={{ minHeight: 56, paddingInline: "2rem", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".8rem" }}>Solicitar consulta</Link>
-                <Link href="/contacto" className="btn-secondary" style={{ minHeight: 56, paddingInline: "2rem", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".8rem" }}>Ver precios</Link>
+                <Link href="/precios" className="btn-secondary" style={{ minHeight: 56, paddingInline: "2rem", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".8rem" }}>Ver precios clínicos</Link>
               </div>
             </div>
             <div style={{ position: "relative", minHeight: 420 }}>

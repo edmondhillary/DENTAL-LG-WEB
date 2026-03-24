@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { SiteIcon } from "@/components/site-icon";
 import { globalFaqs } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Patient support / FAQ",
+  title: "Soporte al paciente / FAQ",
   description: "Página de soporte con buscador, categorías y respuestas frecuentes.",
 };
 
@@ -12,12 +13,12 @@ export default function FaqPage() {
     <>
       <section style={{ position: "relative", padding: "6rem 2rem 4rem", overflow: "hidden" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
-          <span style={{ display: "inline-block", background: "var(--tertiary-fixed)", color: "#002020", padding: ".45rem 1rem", borderRadius: 999, fontSize: ".75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".18em", marginBottom: "1.5rem" }}>Patient support</span>
+          <span style={{ display: "inline-block", background: "var(--tertiary-fixed)", color: "#002020", padding: ".45rem 1rem", borderRadius: 999, fontSize: ".75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".18em", marginBottom: "1.5rem" }}>Soporte al paciente</span>
           <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3.8rem,7vw,6.4rem)", fontWeight: 800, color: "var(--brand)", lineHeight: 1.05, letterSpacing: "-0.05em", maxWidth: 980, margin: "0 auto 2rem" }}>
             ¿Cómo podemos refinar tu <span style={{ color: "var(--secondary)", fontStyle: "italic", fontWeight: 300 }}>experiencia?</span>
           </h1>
           <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
-            <span className="material-symbols-outlined" style={{ position: "absolute", left: 24, top: "50%", transform: "translateY(-50%)", color: "var(--outline)" }}>search</span>
+            <SiteIcon name="search" size={20} style={{ position: "absolute", left: 24, top: "50%", transform: "translateY(-50%)", color: "var(--outline)" }} />
             <input type="text" placeholder="Buscar tratamientos, costes o citas..." style={{ width: "100%", background: "white", border: 0, padding: "1.5rem 2rem 1.5rem 4rem", borderRadius: 999, boxShadow: "0 20px 50px rgba(25,28,30,.06)", fontSize: "1.1rem" }} />
           </div>
         </div>
@@ -32,11 +33,11 @@ export default function FaqPage() {
             {[
               ["calendar_today", "Citas", true],
               ["medical_services", "Tratamientos", false],
-              ["payments", "Costes e insurance", false],
+              ["payments", "Costes y financiación", false],
               ["verified_user", "Seguridad del paciente", false],
             ].map(([icon, label, active]) => (
               <a key={label} href={`#${label}`} style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "1rem 1.5rem", borderRadius: "1rem", background: active ? "var(--brand)" : "transparent", color: active ? "white" : "var(--muted)", textDecoration: "none" }}>
-                <span className="material-symbols-outlined">{icon}</span>
+                <SiteIcon name={icon} size={18} />
                 <span style={{ fontWeight: 700 }}>{label}</span>
               </a>
             ))}
@@ -63,7 +64,7 @@ export default function FaqPage() {
                   <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "2rem", fontWeight: 800, marginBottom: "1rem" }}>Carillas de precisión: el proceso</h3>
                   <p style={{ color: "#d5e3ff", lineHeight: 1.8, marginBottom: "1.5rem" }}>Nuestro protocolo estrella de carillas cerámicas combina planificación digital, mock-up y ejecución artesanal para lograr naturalidad real.</p>
                   <button className="btn-secondary" style={{ background: "white", color: "var(--brand)", minHeight: 48, paddingInline: "1.25rem", fontWeight: 800 }}>
-                    Ver galería del tratamiento <span className="material-symbols-outlined">arrow_forward</span>
+                    Ver galería del tratamiento <SiteIcon name="arrow_forward" size={18} />
                   </button>
                 </div>
               </div>
@@ -81,16 +82,16 @@ export default function FaqPage() {
                   <h4 style={{ fontFamily: "var(--font-headline)", fontSize: "1.2rem", fontWeight: 800, marginBottom: ".75rem" }}>{item.title}</h4>
                   <p style={{ color: "var(--muted)", fontSize: ".92rem", lineHeight: 1.8, marginBottom: "1rem" }}>{item.copy}</p>
                   <a href="#" style={{ color: "var(--secondary)", fontWeight: 800, fontSize: ".75rem", textTransform: "uppercase", letterSpacing: ".14em", display: "inline-flex", alignItems: "center", gap: ".35rem" }}>
-                    Más detalles <span className="material-symbols-outlined" style={{ fontSize: 14 }}>chevron_right</span>
+                    Más detalles <SiteIcon name="chevron_right" size={14} />
                   </a>
                 </article>
               ))}
             </div>
           </section>
 
-          <section id="Costes e insurance">
+          <section id="Costes y financiación">
             <div style={{ display: "flex", alignItems: "baseline", gap: "1rem", marginBottom: "2rem", borderBottom: "1px solid rgba(195,198,214,.2)", paddingBottom: "1.5rem" }}>
-              <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.2rem", fontWeight: 800, color: "var(--brand)" }}>Costes e insurance</h2>
+              <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.2rem", fontWeight: 800, color: "var(--brand)" }}>Costes y financiación</h2>
               <span style={{ color: "var(--outline)", fontSize: ".9rem" }}>3 preguntas frecuentes</span>
             </div>
             <FaqAccordion items={globalFaqs.slice(2, 4)} />
@@ -101,8 +102,8 @@ export default function FaqPage() {
       <section style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem 8rem" }}>
         <div style={{ background: "var(--surface-low)", borderRadius: "3rem", padding: "4rem 2rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "relative", zIndex: 1 }}>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>¿Seguís con preguntas?</h2>
-            <p style={{ color: "var(--muted)", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: 760, margin: "0 auto 2rem" }}>Nuestro equipo de concierge clínico puede ayudarte a resolver dudas sobre tratamiento, tiempos, financiación o urgencias.</p>
+            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>¿Tienes más preguntas?</h2>
+            <p style={{ color: "var(--muted)", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: 760, margin: "0 auto 2rem" }}>Nuestro equipo clínico puede ayudarte a resolver dudas sobre tratamiento, tiempos, financiación o urgencias.</p>
             <div className="btn-row" style={{ justifyContent: "center" }}>
               <button className="btn" style={{ minHeight: 56, paddingInline: "2rem", fontWeight: 800 }}>Hablar con un especialista</button>
               <button className="btn-secondary" style={{ minHeight: 56, paddingInline: "2rem", fontWeight: 800 }}>Escribir por email</button>

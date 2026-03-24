@@ -1,13 +1,17 @@
 import {
   BeforeAfterPreview,
+  ContactSection,
+  FaqPreview,
   FinalCta,
+  FreeVisitBanner,
   HeroSection,
   HighlightsSection,
-  TeamPreview,
+  LocationPreview,
   TestimonialsPreview,
   TreatmentsPreview,
   WhyChooseUsSection,
 } from "@/components/site-sections";
+import { TreatmentSearch } from "@/components/treatment-search";
 
 export default function HomePage() {
   return (
@@ -15,10 +19,14 @@ export default function HomePage() {
       <HeroSection />
       <HighlightsSection />
       <TreatmentsPreview />
+      <TreatmentSearch />
       <WhyChooseUsSection />
-      <TestimonialsPreview />
       <BeforeAfterPreview />
-      <TeamPreview />
+      <TestimonialsPreview />
+      <FreeVisitBanner />
+      <FaqPreview />
+      <ContactSection />
+      <LocationPreview />
       <FinalCta />
     </>
   );

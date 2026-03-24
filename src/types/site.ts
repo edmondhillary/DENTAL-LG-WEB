@@ -6,6 +6,8 @@ export type NavItem = {
 export type Treatment = {
   slug: string;
   name: string;
+  category: string;
+  startingPrice?: number | string | null;
   shortDescription: string;
   description: string;
   heroImage: string;
@@ -30,6 +32,9 @@ export type Testimonial = {
   treatment: string;
   rating: number;
   quote: string;
+  source?: string;
+  avatar?: string;
+  publishedAt?: string;
 };
 
 export type BlogPost = {
@@ -52,4 +57,15 @@ export type BeforeAfterCase = {
 export type GlobalFaq = {
   question: string;
   answer: string;
+};
+
+export type PricingItem = {
+  name: string;
+  price: number | string | null;
+};
+
+export type PricingGroup = {
+  title: string;
+  slug: string;
+  items: PricingItem[];
 };

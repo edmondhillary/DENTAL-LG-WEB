@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SiteIcon } from "@/components/site-icon";
 import { blogPosts } from "@/data/site";
 import { imageUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Blog dental",
-  description: "Journal editorial de la clínica inspirado en Clinical Atelier.",
+  description: "Revista editorial de la clínica inspirada en Clinical Atelier.",
 };
 
 export default function BlogPage() {
@@ -18,8 +19,8 @@ export default function BlogPage() {
         <header style={{ marginBottom: "5rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             <div style={{ maxWidth: 820 }}>
-              <span style={{ color: "var(--secondary)", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", fontSize: ".7rem", marginBottom: "1rem", display: "block" }}>Insights & innovación</span>
-              <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(4rem,7vw,6.6rem)", fontWeight: 800, color: "var(--brand)", letterSpacing: "-0.05em", marginBottom: "1rem" }}>El Journal del Atelier</h1>
+              <span style={{ color: "var(--secondary)", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", fontSize: ".7rem", marginBottom: "1rem", display: "block" }}>Análisis e innovación</span>
+              <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(4rem,7vw,6.6rem)", fontWeight: 800, color: "var(--brand)", letterSpacing: "-0.05em", marginBottom: "1rem" }}>La Revista del Atelier</h1>
               <p style={{ color: "var(--muted)", fontSize: "1.2rem", lineHeight: 1.8, maxWidth: 700 }}>Una exploración curada de odontología moderna, precisión clínica y el arte de una sonrisa bien diseñada.</p>
             </div>
             <nav style={{ display: "flex", flexWrap: "wrap", gap: ".75rem" }}>
@@ -48,7 +49,7 @@ export default function BlogPage() {
               <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.6rem", fontWeight: 800, color: "var(--brand)", lineHeight: 1.15, marginBottom: "1.25rem" }}>{featured.title}</h2>
               <p style={{ color: "var(--muted)", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>{featured.excerpt}</p>
               <Link href={`/blog/${featured.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", color: "var(--brand)", fontWeight: 800 }}>
-                Leer editorial completo <span className="material-symbols-outlined">arrow_forward</span>
+                Leer editorial completo <SiteIcon name="arrow_forward" size={18} />
               </Link>
             </div>
           </div>
@@ -68,7 +69,7 @@ export default function BlogPage() {
               <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.75rem", fontWeight: 800, color: "var(--brand)", lineHeight: 1.2, marginBottom: "1rem" }}>{post.title}</h3>
               <p style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.5rem" }}>{post.excerpt}</p>
               <Link href={`/blog/${post.slug}`} style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: ".5rem", color: "var(--brand)", fontWeight: 700, fontSize: ".9rem" }}>
-                Seguir leyendo <span className="material-symbols-outlined" style={{ fontSize: 16 }}>east</span>
+                Seguir leyendo <SiteIcon name="east" size={16} />
               </Link>
             </article>
           ))}
@@ -76,7 +77,7 @@ export default function BlogPage() {
 
         <div style={{ marginTop: "5rem", display: "flex", justifyContent: "center" }}>
           <button className="btn-secondary" style={{ minHeight: 54, paddingInline: "2rem", fontWeight: 700 }}>
-            Más artículos <span className="material-symbols-outlined">expand_more</span>
+            Más artículos <SiteIcon name="expand_more" size={18} />
           </button>
         </div>
       </main>
@@ -92,7 +93,7 @@ export default function BlogPage() {
               <form style={{ display: "grid", gap: "1rem" }}>
                 <input type="email" placeholder="Tu email" style={{ width: "100%", padding: "1rem 0", border: 0, borderBottom: "2px solid rgba(195,198,214,.4)", background: "transparent", fontSize: "1.1rem", outline: "none" }} />
                 <button className="btn" type="submit" style={{ width: "fit-content", minHeight: 56, paddingInline: "2rem" }}>
-                  Suscribirme al Journal <span className="material-symbols-outlined">mail</span>
+                  Suscribirme a la revista <SiteIcon name="mail" size={18} />
                 </button>
                 <p style={{ color: "var(--outline)", fontSize: ".65rem", textTransform: "uppercase", letterSpacing: ".18em" }}>Privacidad respetada. Baja en un click.</p>
               </form>

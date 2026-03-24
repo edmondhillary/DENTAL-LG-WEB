@@ -10,8 +10,9 @@ const navItems = [
   { label: "Tratamientos", href: "/tratamientos" },
   { label: "Resultados", href: "/antes-y-despues" },
   { label: "Filosofía", href: "/sobre-nosotros" },
+  { label: "Precios", href: "/precios" },
   { label: "Atención", href: "/faq" },
-  { label: "Concierge", href: "/contacto" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export function Header() {
@@ -69,6 +70,12 @@ export function Header() {
           </nav>
 
           <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+            <a href={`tel:${clinic.phone}`} className="desktop-cta" style={{ fontSize: ".85rem", fontWeight: 800, color: "var(--brand)" }}>
+              {clinic.phoneDisplay}
+            </a>
+            <span className="desktop-cta" style={{ fontSize: ".72rem", fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--secondary)" }}>
+              Primera visita gratuita (sin radiografía)
+            </span>
             <Link className="btn desktop-cta" href="/contacto" style={{ minHeight: 48, paddingInline: "2rem", fontFamily: "var(--font-body)", fontSize: ".875rem" }}>
               Reservar cita
             </Link>
@@ -107,6 +114,9 @@ export function Header() {
             ))}
             <Link className="btn" href="/contacto" onClick={() => setOpen(false)} style={{ marginTop: "1rem" }}>
               Reservar cita
+            </Link>
+            <Link className="btn-secondary" href="/precios" onClick={() => setOpen(false)}>
+              Ver precios clínicos
             </Link>
           </div>
         </div>

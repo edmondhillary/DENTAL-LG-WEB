@@ -778,9 +778,72 @@ img {
   opacity: 0.03;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1180px) {
+  [style*="grid-template-columns: repeat(2, minmax(0,1fr))"],
+  [style*="grid-template-columns: repeat(2, minmax(0, 1fr))"],
+  [style*="grid-template-columns: 2fr 1fr"],
+  [style*="grid-template-columns: repeat(3, minmax(0,1fr))"],
+  [style*="grid-template-columns: repeat(3, minmax(0, 1fr))"],
+  [style*="grid-template-columns: repeat(4, minmax(0,1fr))"],
+  [style*="grid-template-columns: repeat(4, minmax(0, 1fr))"],
+  [style*="grid-template-columns: 7fr 5fr"],
+  [style*="grid-template-columns: 5fr 7fr"],
+  [style*="grid-template-columns: 8fr 4fr"],
+  [style*="grid-template-columns: 0.72fr 1.28fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [style*="padding: 4rem"],
+  [style*="padding: 4rem 2rem"],
+  [style*="padding: 3rem"],
+  [style*="padding: 3rem 4rem"] {
+    padding: 2rem !important;
+  }
+
+  [style*="gap: 5rem"],
+  [style*="gap: 4rem"],
+  [style*="gap: 3rem"] {
+    gap: 2rem !important;
+  }
+
+  [style*="min-height: 820"],
+  [style*="minHeight: 820"],
+  [style*="min-height: 920"],
+  [style*="minHeight: 920"] {
+    min-height: auto !important;
+  }
+
+  [style*="width: 25%"] {
+    width: 100% !important;
+  }
+
+  [style*="top: 128"] {
+    position: static !important;
+    top: auto !important;
+  }
+
+  [style*="left: -24"],
+  [style*="left: -2rem"],
+  [style*="left: -2.5rem"],
+  [style*="right: -24"],
+  [style*="right: -40"],
+  [style*="bottom: -24"],
+  [style*="bottom: -40"] {
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .btn-row > * {
+    width: 100%;
+  }
+
   .desktop-nav,
   .desktop-links {
+    display: none !important;
+  }
+
+  .desktop-cta {
     display: none !important;
   }
 
@@ -835,6 +898,35 @@ img {
 }
 
 @media (max-width: 640px) {
+  [style*="padding: 2rem"],
+  [style*="padding: 2.5rem"],
+  [style*="padding: 3rem"] {
+    padding: 1.25rem !important;
+  }
+
+  [style*="font-size: 2.8rem"],
+  [style*="font-size: 3rem"],
+  [style*="fontSize: \"2.8rem\""],
+  [style*="fontSize: \"3rem\""],
+  [style*="font-size: 2.6rem"] {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+  }
+
+  [style*="width: 320px"],
+  [style*="width: 192px"],
+  [style*="height: 192px"] {
+    width: 100% !important;
+    max-width: 220px !important;
+    height: auto !important;
+  }
+
+  [style*="font-size: 1.2rem"],
+  [style*="fontSize: \"1.2rem\""],
+  [style*="font-size: 1.25rem"] {
+    font-size: 1rem !important;
+  }
+
   .container {
     width: min(var(--container), calc(100% - 1.25rem));
   }
@@ -874,5 +966,150 @@ img {
 
   .wa-float-copy {
     display: none;
+  }
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+section,
+article,
+div {
+  max-width: 100%;
+}
+
+@media (max-width: 1180px) {
+  [style*="width: min(1280px, calc(100% - 4rem))"],
+  [style*="width: min(1280px,calc(100% - 4rem))"] {
+    width: min(1280px, calc(100% - 2rem)) !important;
+  }
+
+  [style*="justify-content: space-between"][style*="align-items: center"],
+  [style*="justify-content:space-between"][style*="align-items:center"] {
+    align-items: flex-start !important;
+  }
+
+  [style*="display: flex"][style*="gap: 2rem"],
+  [style*="display:flex"][style*="gap:2rem"],
+  [style*="display: flex"][style*="gap: 1.5rem"],
+  [style*="display:flex"][style*="gap:1.5rem"] {
+    flex-wrap: wrap !important;
+  }
+
+  [style*="position: absolute"][style*="left: -2rem"],
+  [style*="position:absolute"][style*="left:-2rem"],
+  [style*="position: absolute"][style*="left: -2.5rem"],
+  [style*="position:absolute"][style*="left:-2.5rem"],
+  [style*="position: absolute"][style*="right: -40"],
+  [style*="position:absolute"][style*="right:-40"],
+  [style*="position: absolute"][style*="bottom: -40"],
+  [style*="position:absolute"][style*="bottom:-40"] {
+    position: static !important;
+    inset: auto !important;
+    margin-top: 1rem !important;
+  }
+
+  [style*="transform: rotate(2deg)"],
+  [style*="transform:rotate(2deg)"],
+  [style*="transform: rotate(-2deg)"],
+  [style*="transform:rotate(-2deg)"] {
+    transform: none !important;
+  }
+
+  [style*="border: 12px solid var(--surface-low)"],
+  [style*="border:12px solid var(--surface-low)"] {
+    border-width: 6px !important;
+  }
+}
+
+@media (max-width: 820px) {
+  [style*="padding: 5rem 2rem"],
+  [style*="padding: 6rem 2rem"],
+  [style*="padding: 7rem 0"],
+  [style*="padding: 8rem 2rem"],
+  [style*="padding: 0 2rem 8rem"],
+  [style*="padding: 0 2rem 6rem"] {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  [style*="grid-template-columns: repeat(2, minmax(0,1fr))"],
+  [style*="grid-template-columns: repeat(2, minmax(0, 1fr))"],
+  [style*="grid-template-columns: 7fr 5fr"],
+  [style*="grid-template-columns: 5fr 7fr"],
+  [style*="grid-template-columns: 2fr 1fr"],
+  [style*="grid-template-columns: 8fr 4fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [style*="height: 450"],
+  [style*="height:450"],
+  [style*="min-height: 440"],
+  [style*="minHeight: 440"] {
+    height: auto !important;
+    min-height: 320px !important;
+  }
+
+  [style*="top: 50%"] {
+    top: auto !important;
+  }
+
+  .btn-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+  }
+}
+
+@media (max-width: 640px) {
+  [style*="font-size: clamp(3.8rem, 7vw, 6.8rem)"],
+  [style*="font-size: clamp(4rem,7vw,6.6rem)"],
+  [style*="font-size: clamp(3.8rem,7vw,6.4rem)"],
+  [style*="font-size: clamp(3rem,6vw,5.8rem)"] {
+    font-size: clamp(2.2rem, 10vw, 3rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  [style*="font-size: 1.125rem"],
+  [style*="font-size: 1.1rem"],
+  [style*="font-size: 1.2rem"],
+  [style*="font-size: 1.25rem"] {
+    line-height: 1.65 !important;
+  }
+
+  [style*="padding-inline: 2.5rem"],
+  [style*="padding-inline: 2rem"] {
+    padding-inline: 1.25rem !important;
+  }
+
+  [style*="width: 256"],
+  [style*="height: 256"],
+  [style*="width: 220"],
+  [style*="maxWidth: 320"],
+  [style*="max-width: 320"] {
+    width: 100% !important;
+    max-width: min(100%, 220px) !important;
+    height: auto !important;
+  }
+
+  [style*="border-radius: 3rem"] {
+    border-radius: 1.5rem !important;
   }
 }

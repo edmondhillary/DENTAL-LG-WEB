@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { SiteIcon } from "@/components/site-icon";
+import { TreatmentSearch } from "@/components/treatment-search";
 import { beforeAfterCases, blogPosts, clinic, globalFaqs, team, testimonials, treatments } from "@/data/site";
-import { imageUrl, phoneHref, stars } from "@/lib/utils";
+import { imageUrl, initials, phoneHref, stars } from "@/lib/utils";
 import type { GlobalFaq, Treatment } from "@/types/site";
 
 export function TreatmentCard({ treatment }: { treatment: Treatment }) {
@@ -16,7 +18,7 @@ export function TreatmentCard({ treatment }: { treatment: Treatment }) {
         <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.4rem", fontWeight: 800, color: "var(--brand)", marginBottom: ".75rem" }}>{treatment.name}</h3>
         <p style={{ color: "var(--muted)", lineHeight: 1.8, fontSize: ".95rem", marginBottom: "1rem" }}>{treatment.shortDescription}</p>
         <Link href={`/tratamientos/${treatment.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: ".4rem", color: "var(--secondary)", fontWeight: 800, fontSize: ".8rem", textTransform: "uppercase", letterSpacing: ".12em" }}>
-          Learn more <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+          Saber más <SiteIcon name="arrow_forward" size={16} />
         </Link>
       </div>
     </article>
@@ -26,9 +28,18 @@ export function TreatmentCard({ treatment }: { treatment: Treatment }) {
 export function ReviewCard({ name, quote, rating, treatment }: (typeof testimonials)[number]) {
   return (
     <article style={{ background: "var(--surface-lowest)", padding: "2rem", borderRadius: "1rem", boxShadow: "0 4px 20px rgba(0,0,0,.02)", border: "1px solid rgba(195,198,214,.1)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: ".85rem", marginBottom: "1rem" }}>
+        <div style={{ width: 42, height: 42, borderRadius: 999, background: "#d5e3ff", color: "var(--brand)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: ".8rem" }}>
+          {initials(name)}
+        </div>
+        <div>
+          <p style={{ fontWeight: 800, fontSize: ".88rem" }}>{name}</p>
+          <p style={{ fontSize: ".72rem", color: "var(--outline)" }}>Reseña de Google</p>
+        </div>
+      </div>
       <div style={{ display: "flex", gap: ".15rem", color: "var(--secondary)", marginBottom: "1rem" }}>
         {stars(rating).map((star) => (
-          <span key={star} className="material-symbols-outlined" style={{ fontSize: 14, fontVariationSettings: '"FILL" 1' }}>star</span>
+          <SiteIcon key={star} name="star" size={14} fill="currentColor" />
         ))}
       </div>
       <p style={{ color: "var(--muted)", fontSize: ".95rem", lineHeight: 1.8, marginBottom: "1.5rem", fontStyle: "italic" }}>&ldquo;{quote}&rdquo;</p>
@@ -62,20 +73,24 @@ export function HeroSection() {
       <div className="container" style={{ width: "min(1280px, calc(100% - 4rem))", display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "3rem", alignItems: "center", position: "relative", zIndex: 1 }}>
         <div style={{ display: "grid", gap: "2rem" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", background: "var(--tertiary-fixed)", color: "#002020", padding: ".55rem 1rem", borderRadius: 999, width: "fit-content", fontSize: ".75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".18em" }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: '"FILL" 1' }}>verified</span>
+            <SiteIcon name="verified" size={16} />
             Excelencia clínica
           </div>
           <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3.8rem, 7vw, 6.8rem)", fontWeight: 800, color: "var(--foreground)", lineHeight: 1.05, letterSpacing: "-0.04em" }}>
             Arquitectos de una <span style={{ color: "var(--brand)" }}>sonrisa perfecta.</span>
           </h1>
           <p style={{ fontSize: "1.25rem", color: "var(--muted)", lineHeight: 1.8, maxWidth: 620 }}>
-            Viví una odontología de precisión donde la excelencia clínica se encuentra con una atención cuidada, cálida y totalmente personalizada.
+            Vive una odontología de precisión donde la excelencia clínica se encuentra con una atención cuidada, cálida y totalmente personalizada.
           </p>
           <div className="btn-row">
             <Link className="btn" href="/contacto" style={{ minHeight: 60, paddingInline: "2.5rem", fontSize: "1.05rem" }}>Reservar cita</Link>
             <Link className="btn-secondary" href="/sobre-nosotros" style={{ minHeight: 60, paddingInline: "2rem", fontSize: "1.05rem" }}>
-              Nuestra filosofía <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
+              Nuestra filosofía <SiteIcon name="arrow_forward" size={20} />
             </Link>
+          </div>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", background: "rgba(255,255,255,.82)", padding: ".85rem 1.1rem", borderRadius: "1rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)", width: "fit-content" }}>
+            <SiteIcon name="verified" size={18} style={{ color: "var(--brand)" }} />
+            <span style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--brand)" }}>Primera visita gratuita (sin radiografía)</span>
           </div>
         </div>
         <div style={{ position: "relative" }}>
@@ -85,7 +100,7 @@ export function HeroSection() {
           <div style={{ position: "absolute", left: "-2.5rem", bottom: "-2.5rem", background: "rgba(255,255,255,.8)", backdropFilter: "blur(20px)", padding: "2rem", borderRadius: "1rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)", maxWidth: 320 }}>
             <div style={{ display: "flex", gap: ".1rem", color: "var(--tertiary)", marginBottom: ".5rem" }}>
               {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: '"FILL" 1' }}>star</span>
+                <SiteIcon key={i} name="star" size={18} fill="currentColor" />
               ))}
             </div>
             <p style={{ fontStyle: "italic", lineHeight: 1.8, color: "var(--foreground)", fontWeight: 500 }}>
@@ -130,13 +145,16 @@ export function TreatmentsPreview() {
   return (
     <section style={{ padding: "7rem 0", background: "var(--surface-low)" }}>
       <div className="container" style={{ width: "min(1280px, calc(100% - 4rem))" }}>
+        <div style={{ marginBottom: "3rem" }}>
+          <TreatmentSearch />
+        </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", gap: "2rem", marginBottom: "4rem", flexWrap: "wrap" }}>
           <div style={{ maxWidth: 720 }}>
             <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.8rem,5vw,4.5rem)", fontWeight: 800, marginBottom: "1.25rem" }}>Excelencia en cada dimensión.</h2>
             <p style={{ color: "var(--muted)", fontSize: "1.125rem", lineHeight: 1.8 }}>Combinamos principios biológicos con precisión estética para ofrecer resultados duraderos, funcionales y visualmente impecables.</p>
           </div>
           <Link href="/tratamientos" style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", fontWeight: 800, color: "var(--brand)" }}>
-            Ver todos los tratamientos <span className="material-symbols-outlined">arrow_forward</span>
+            Ver todos los tratamientos <SiteIcon name="arrow_forward" size={18} />
           </Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "2rem" }}>
@@ -152,7 +170,7 @@ export function TreatmentsPreview() {
                 <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.75rem", fontWeight: 800, marginBottom: "1rem" }}>{treatment.name}</h3>
                 <p style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.5rem" }}>{treatment.shortDescription}</p>
                 <Link href={`/tratamientos/${treatment.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", color: "var(--brand)", fontSize: ".875rem", fontWeight: 800 }}>
-                  Saber más <span className="material-symbols-outlined" style={{ fontSize: 16 }}>open_in_new</span>
+                  Saber más <SiteIcon name="open_in_new" size={16} />
                 </Link>
               </div>
             </article>
@@ -185,7 +203,7 @@ export function WhyChooseUsSection() {
             {features.map(([icon, title, copy]) => (
               <div key={title} style={{ display: "flex", gap: "1.5rem" }}>
                 <div style={{ width: 56, height: 56, borderRadius: 18, background: title === "Hospitalidad clínica" ? "var(--tertiary-fixed)" : "var(--secondary-fixed, #cde5ff)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <span className="material-symbols-outlined" style={{ color: title === "Hospitalidad clínica" ? "var(--tertiary)" : "var(--brand)", fontSize: 28 }}>{icon}</span>
+                  <SiteIcon name={icon} size={28} style={{ color: title === "Hospitalidad clínica" ? "var(--tertiary)" : "var(--brand)" }} />
                 </div>
                 <div>
                   <h4 style={{ fontFamily: "var(--font-headline)", fontSize: "1.35rem", fontWeight: 800, marginBottom: ".4rem" }}>{title}</h4>
@@ -215,7 +233,7 @@ export function TestimonialsPreview({ limit = 2 }: { limit?: number }) {
               <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                 <div style={{ display: "flex", gap: ".15rem", color: "var(--secondary)", marginBottom: "1rem" }}>
                   {stars(item.rating).map((star) => (
-                    <span key={star} className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: '"FILL" 1' }}>star</span>
+                    <SiteIcon key={star} name="star" size={16} fill="currentColor" />
                   ))}
                 </div>
                 <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.4rem", fontWeight: 800, marginBottom: "1rem" }}>&ldquo;{item.quote}&rdquo;</h3>
@@ -274,12 +292,12 @@ export function TeamPreview() {
           <FaqAccordion items={globalFaqs.slice(0, 3)} />
           <div style={{ marginTop: "3rem", display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "1.5rem" }}>
             <div style={{ padding: "1.5rem", borderRadius: "1rem", background: "var(--brand)", color: "white" }}>
-              <span className="material-symbols-outlined" style={{ marginBottom: ".5rem" }}>location_on</span>
+              <SiteIcon name="location_on" size={18} style={{ marginBottom: ".5rem" }} />
               <h4 style={{ fontWeight: 800, marginBottom: ".25rem" }}>Nuestra clínica</h4>
               <p style={{ fontSize: ".875rem", lineHeight: 1.7, opacity: .9 }}>{clinic.address}</p>
             </div>
             <div style={{ padding: "1.5rem", borderRadius: "1rem", background: "var(--surface-highest)" }}>
-              <span className="material-symbols-outlined" style={{ marginBottom: ".5rem", color: "var(--brand)" }}>schedule</span>
+              <SiteIcon name="schedule" size={18} style={{ marginBottom: ".5rem", color: "var(--brand)" }} />
               <h4 style={{ fontWeight: 800, marginBottom: ".25rem" }}>Horario</h4>
               <p style={{ fontSize: ".875rem", lineHeight: 1.7, color: "var(--muted)" }}>{clinic.schedule[0]}</p>
             </div>
@@ -296,8 +314,8 @@ export function BlogPreview() {
     <section style={{ padding: "7rem 0", background: "var(--surface)" }}>
       <div className="container" style={{ width: "min(1280px, calc(100% - 4rem))" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "4rem" }}>
-          <span style={{ color: "var(--secondary)", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".18em", fontSize: ".7rem" }}>Insights & Innovación</span>
-          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,5rem)", fontWeight: 800, color: "var(--brand)" }}>El Journal del Atelier</h2>
+          <span style={{ color: "var(--secondary)", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".18em", fontSize: ".7rem" }}>Análisis e innovación</span>
+          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,5rem)", fontWeight: 800, color: "var(--brand)" }}>La Revista del Atelier</h2>
           <p style={{ color: "var(--muted)", fontSize: "1.25rem", lineHeight: 1.8, maxWidth: 760 }}>Una exploración editorial de odontología moderna, precisión estética y tecnología clínica aplicada.</p>
         </div>
         <article style={{ background: "var(--surface-lowest)", borderRadius: "1rem", overflow: "hidden", marginBottom: "4rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
@@ -312,10 +330,30 @@ export function BlogPreview() {
               </div>
               <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "2.4rem", fontWeight: 800, color: "var(--brand)", lineHeight: 1.15, marginBottom: "1.5rem" }}>{featured.title}</h3>
               <p style={{ color: "var(--muted)", lineHeight: 1.8, fontSize: "1.1rem", marginBottom: "1.5rem" }}>{featured.excerpt}</p>
-              <Link href={`/blog/${featured.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", color: "var(--brand)", fontWeight: 800 }}>Leer editorial <span className="material-symbols-outlined">arrow_forward</span></Link>
+              <Link href={`/blog/${featured.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", color: "var(--brand)", fontWeight: 800 }}>Leer editorial <SiteIcon name="arrow_forward" size={18} /></Link>
             </div>
           </div>
         </article>
+      </div>
+    </section>
+  );
+}
+
+export function FreeVisitBanner() {
+  return (
+    <section style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem 6rem" }}>
+      <div style={{ background: "linear-gradient(135deg, rgba(213,227,255,.9), rgba(147,242,242,.45), rgba(255,255,255,.95))", borderRadius: "2rem", padding: "2.5rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "2rem", flexWrap: "wrap" }}>
+          <div style={{ maxWidth: 720 }}>
+            <span style={{ color: "var(--secondary)", fontWeight: 800, fontSize: ".72rem", letterSpacing: ".18em", textTransform: "uppercase" }}>Primera visita</span>
+            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.2rem,4vw,3.4rem)", fontWeight: 800, color: "var(--brand)", marginTop: ".75rem", marginBottom: ".75rem" }}>Primera visita gratuita (sin radiografía)</h2>
+            <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>Te escuchamos, valoramos tu caso y te orientamos con claridad para que decidas con tranquilidad desde el principio.</p>
+          </div>
+          <div className="btn-row">
+            <Link href="/contacto" className="btn" style={{ minHeight: 56, paddingInline: "2rem", fontWeight: 800 }}>Pedir cita</Link>
+            <Link href="/precios" className="btn-secondary" style={{ minHeight: 56, paddingInline: "2rem", fontWeight: 800 }}>Ver precios clínicos</Link>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -325,8 +363,8 @@ export function FaqPreview({ items = globalFaqs }: { items?: GlobalFaq[] }) {
   return (
     <section style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem 8rem" }}>
       <div style={{ background: "var(--surface-low)", borderRadius: "2rem", padding: "3rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.8rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>¿Seguís con dudas?</h2>
-        <p style={{ color: "var(--muted)", fontSize: "1.125rem", maxWidth: 720, margin: "0 auto 2rem", lineHeight: 1.8 }}>Nuestro equipo clínico y de concierge está preparado para orientarte con claridad y sin fricción.</p>
+        <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.8rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>¿Tienes alguna duda?</h2>
+        <p style={{ color: "var(--muted)", fontSize: "1.125rem", maxWidth: 720, margin: "0 auto 2rem", lineHeight: 1.8 }}>Nuestro equipo clínico está preparado para orientarte con claridad y resolver tus dudas con rapidez.</p>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
           <FaqAccordion items={items.slice(0, 3)} />
         </div>
@@ -339,13 +377,13 @@ export function LocationPreview() {
   return (
     <section style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem 6rem" }}>
       <div style={{ background: "var(--surface-lowest)", borderRadius: "1rem", overflow: "hidden", height: 450, position: "relative", boxShadow: "inset 0 0 0 1px rgba(195,198,214,.2)" }}>
-        <iframe title="Mapa" src="https://www.google.com/maps?q=Valencia&output=embed" style={{ width: "100%", height: "100%", border: 0, filter: "grayscale(1) opacity(.7)" }} />
+        <iframe title="Mapa" src="https://www.google.com/maps?q=C%2F%20Manuel%20Candela%205%2C%20Puerta%201%2C%20Valencia%2C%20Espa%C3%B1a&output=embed" style={{ width: "100%", height: "100%", border: 0, filter: "grayscale(1) opacity(.7)" }} />
         <div style={{ position: "absolute", inset: 0, border: "12px solid var(--surface-low)", borderRadius: "1rem", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <div style={{ background: "var(--brand)", color: "white", padding: "1rem", borderRadius: "1rem", marginBottom: ".5rem", boxShadow: "0 24px 80px rgba(25,28,30,.2)" }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 30, fontVariationSettings: '"FILL" 1' }}>location_on</span>
-          </div>
-          <div style={{ background: "rgba(255,255,255,.9)", backdropFilter: "blur(12px)", padding: ".5rem 1rem", borderRadius: 999, fontSize: ".7rem", fontWeight: 800, color: "var(--brand)", textTransform: "uppercase", letterSpacing: ".16em" }}>Clínica Dental Lorenzo González</div>
+            <div style={{ background: "var(--brand)", color: "white", padding: "1rem", borderRadius: "1rem", marginBottom: ".5rem", boxShadow: "0 24px 80px rgba(25,28,30,.2)" }}>
+              <SiteIcon name="location_on" size={30} />
+            </div>
+          <a href={clinic.mapsUrl} target="_blank" rel="noreferrer" style={{ background: "rgba(255,255,255,.9)", backdropFilter: "blur(12px)", padding: ".5rem 1rem", borderRadius: 999, fontSize: ".7rem", fontWeight: 800, color: "var(--brand)", textTransform: "uppercase", letterSpacing: ".16em" }}>Clínica Dental Lorenzo González</a>
         </div>
       </div>
     </section>
@@ -357,34 +395,37 @@ export function ContactSection() {
     <section style={{ maxWidth: 1280, margin: "0 auto", padding: "4rem 2rem 0" }}>
       <div style={{ display: "grid", gridTemplateColumns: "7fr 5fr", gap: "2rem" }}>
         <div style={{ background: "var(--surface-lowest)", borderRadius: "1rem", padding: "3rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
-          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.2rem", fontWeight: 800, color: "var(--brand)", marginBottom: "2rem" }}>Solicitá una consulta</h2>
+          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.2rem", fontWeight: 800, color: "var(--brand)", marginBottom: "2rem" }}>Solicita una consulta</h2>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", padding: ".75rem 1rem", borderRadius: 999, background: "rgba(147,242,242,.35)", color: "#002020", fontSize: ".82rem", fontWeight: 800, marginBottom: "1.5rem" }}>
+            <SiteIcon name="verified" size={16} /> Primera visita gratuita (sin radiografía)
+          </div>
           <ContactForm />
         </div>
         <div style={{ display: "grid", gap: "2rem" }}>
           <div style={{ background: "var(--brand)", color: "white", borderRadius: "1rem", padding: "2rem", minHeight: 300, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: ".75rem", marginBottom: "1.5rem" }}>
-                <span className="material-symbols-outlined" style={{ color: "var(--tertiary-fixed)", fontVariationSettings: '"FILL" 1' }}>location_on</span>
+                <SiteIcon name="location_on" size={20} style={{ color: "var(--tertiary-fixed)" }} />
                 <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.25rem", fontWeight: 800 }}>El Atelier clínico</h3>
               </div>
-              <p style={{ fontSize: "1.05rem", lineHeight: 1.8, opacity: .86 }}>{clinic.address}</p>
+              <a href={clinic.mapsUrl} target="_blank" rel="noreferrer" style={{ fontSize: "1.05rem", lineHeight: 1.8, opacity: 0.86, color: "inherit" }}>{clinic.address}</a>
             </div>
             <div style={{ display: "grid", gap: "1rem" }}>
               <a href={phoneHref(clinic.phone)} style={{ display: "flex", alignItems: "center", gap: "1rem", fontWeight: 700 }}>
-                <span className="material-symbols-outlined">call</span> {clinic.phoneDisplay}
+                <SiteIcon name="call" size={18} /> {clinic.phoneDisplay}
               </a>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", fontSize: ".95rem" }}>
-                <span className="material-symbols-outlined">schedule</span> {clinic.schedule[0]}
+                <SiteIcon name="schedule" size={18} /> {clinic.schedule[0]}
               </div>
             </div>
           </div>
           <div style={{ background: "var(--tertiary-fixed)", color: "#002020", borderRadius: "1rem", padding: "2rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: ".75rem", marginBottom: "1rem" }}>
-              <span className="material-symbols-outlined" style={{ color: "var(--tertiary)", fontVariationSettings: '"FILL" 1' }}>medical_services</span>
+                <SiteIcon name="medical_services" size={20} style={{ color: "var(--tertiary)" }} />
               <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.1rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "-.01em" }}>Urgencias fuera de horario</h3>
             </div>
             <p style={{ fontSize: ".95rem", lineHeight: 1.8, marginBottom: "1rem", opacity: 0.9 }}>Los pacientes en seguimiento pueden usar el canal prioritario de WhatsApp para una primera orientación urgente.</p>
-            <a href={clinic.whatsappHref} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", fontWeight: 800, color: "var(--tertiary)", borderBottom: "1px solid rgba(0,76,76,.2)", paddingBottom: ".2rem" }}>Abrir concierge urgente</a>
+            <a href={clinic.whatsappHref} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", fontWeight: 800, color: "var(--tertiary)", borderBottom: "1px solid rgba(0,76,76,.2)", paddingBottom: ".2rem" }}>Abrir WhatsApp urgente</a>
           </div>
         </div>
       </div>
@@ -402,10 +443,14 @@ export function FinalCta() {
         <div style={{ position: "relative", zIndex: 1 }}>
           <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,6vw,5.8rem)", fontWeight: 900, letterSpacing: "-0.05em", marginBottom: "1.5rem" }}>Tu próxima gran sonrisa empieza hoy.</h2>
           <p style={{ color: "#bcd4ff", fontSize: "1.2rem", maxWidth: 860, margin: "0 auto 2rem", lineHeight: 1.8 }}>Da el primer paso hacia una sonrisa funcional, estética y duradera. Nuestro equipo está listo para acompañarte.</p>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", padding: ".75rem 1rem", borderRadius: 999, background: "rgba(255,255,255,.12)", color: "white", fontSize: ".82rem", fontWeight: 800, marginBottom: "1.5rem" }}>
+            <SiteIcon name="verified" size={16} /> Primera visita gratuita (sin radiografía)
+          </div>
           <div className="btn-row" style={{ justifyContent: "center" }}>
             <Link href="/contacto" className="btn-secondary" style={{ background: "white", color: "var(--brand)", fontWeight: 900, fontSize: "1.1rem", minHeight: 60, paddingInline: "2.5rem" }}>Solicitar consulta</Link>
+            <Link href="/precios" className="btn-secondary" style={{ background: "rgba(255,255,255,.12)", color: "white", borderColor: "rgba(255,255,255,.2)", fontWeight: 900, fontSize: "1.1rem", minHeight: 60, paddingInline: "2rem" }}>Ver precios clínicos</Link>
             <a href={phoneHref(clinic.phone)} style={{ display: "inline-flex", alignItems: "center", gap: ".75rem", fontWeight: 800, fontSize: "1.15rem" }}>
-              <span className="material-symbols-outlined">call</span> {clinic.phoneDisplay}
+              <SiteIcon name="call" size={18} /> {clinic.phoneDisplay}
             </a>
           </div>
         </div>

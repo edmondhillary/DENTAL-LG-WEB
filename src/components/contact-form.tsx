@@ -36,7 +36,7 @@ export function ContactForm() {
           className="field-input field-textarea"
           name="mensaje"
           required
-          placeholder="Contanos qué necesitás, qué te preocupa o qué tratamiento te interesa."
+          placeholder="Cuéntanos qué necesitas, qué te preocupa o qué tratamiento te interesa."
         />
       </label>
 

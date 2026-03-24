@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SiteIcon } from "@/components/site-icon";
 import { imageUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -68,7 +69,7 @@ export default function AboutPage() {
           </div>
           <div style={{ position: "relative" }}>
             <div style={{ aspectRatio: "4 / 5", borderRadius: "2rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)", transform: "rotate(2deg)" }}>
-              <Image src={imageUrl("https://images.unsplash.com/photo-1516549655669-df4a2b8315db?auto=format&fit=crop&w=1200&q=80")} alt="Clínica dental moderna" fill style={{ objectFit: "cover" }} />
+              <Image src={imageUrl("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80")} alt="Clínica dental moderna" fill style={{ objectFit: "cover" }} />
             </div>
             <div style={{ position: "absolute", left: "-2rem", bottom: "-2rem", width: 192, height: 192, borderRadius: 999, background: "rgba(54,91,145,.16)", filter: "blur(36px)" }} />
           </div>
@@ -106,7 +107,7 @@ export default function AboutPage() {
             {directives.map((item) => (
               <article key={item.title} style={{ background: "var(--surface-lowest)", padding: "2.5rem", borderRadius: "2rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
                 <div style={{ width: 64, height: 64, borderRadius: 20, background: item.bg, color: item.color, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "2rem" }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 32 }}>{item.icon}</span>
+                  <SiteIcon name={item.icon} size={32} />
                 </div>
                 <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.7rem", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>{item.title}</h3>
                 <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>{item.copy}</p>
@@ -128,7 +129,7 @@ export default function AboutPage() {
                 "Sillones ergonómicos de confort alto",
               ].map((item) => (
                 <div key={item} style={{ display: "flex", alignItems: "center", gap: ".75rem", fontSize: ".85rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".14em" }}>
-                  <span className="material-symbols-outlined" style={{ color: "#6cbdfe" }}>check_circle</span>
+                  <SiteIcon name="check_circle" size={20} style={{ color: "#6cbdfe" }} />
                   <span>{item}</span>
                 </div>
               ))}
@@ -174,8 +175,8 @@ export default function AboutPage() {
 
       <section style={{ padding: "8rem 2rem", background: "var(--surface-high)", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 960, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 56, color: "var(--brand-container)", fontVariationSettings: '"FILL" 1', marginBottom: "1.5rem" }}>spa</span>
-          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1.5rem" }}>Viví una odontología reimaginada.</h2>
+          <SiteIcon name="spa" size={56} style={{ color: "var(--brand-container)", marginBottom: "1.5rem" }} />
+          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1.5rem" }}>Vive una odontología reimaginada.</h2>
           <p style={{ color: "var(--muted)", fontSize: "1.2rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>Tu recorrido hacia una mejor salud oral empieza con una conversación tranquila, informada y a la altura de tus expectativas.</p>
           <div className="btn-row" style={{ justifyContent: "center" }}>
             <Link href="/contacto" className="btn" style={{ minHeight: 56, paddingInline: "2rem", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".85rem" }}>Solicitar consulta</Link>

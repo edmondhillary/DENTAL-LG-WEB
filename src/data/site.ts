@@ -3,6 +3,7 @@ import type {
   BlogPost,
   GlobalFaq,
   NavItem,
+  PricingGroup,
   TeamMember,
   Testimonial,
   Treatment,
@@ -10,12 +11,13 @@ import type {
 
 export const clinic = {
   name: "Clínica Dental Lorenzo González",
-  phone: "617680026",
-  phoneDisplay: "617 680 026",
-  whatsappHref: "https://wa.me/34617680026?text=Hola%2C%20quiero%20pedir%20una%20cita%20en%20la%20Cl%C3%ADnica%20Dental%20Lorenzo%20Gonz%C3%A1lez.",
+  phone: "963608833",
+  phoneDisplay: "963 608 833",
+  whatsappHref: "https://wa.me/34963608833?text=Hola%2C%20quiero%20pedir%20una%20cita%20en%20la%20Cl%C3%ADnica%20Dental%20Lorenzo%20Gonz%C3%A1lez.",
   formspreeEndpoint: "https://formspree.io/f/xbdzvzrv",
   email: "citas@clinicadentallorenzogonzalez.es",
-  address: "Av. de França 124, Valencia",
+  address: "C/ Manuel Candela 5, Puerta 1, Valencia, España",
+  mapsUrl: "https://share.google/c34ekBZe7yZAsWizr",
   schedule: [
     "Lunes a jueves · 09:30 a 14:00 y 16:00 a 20:00",
     "Viernes · 09:30 a 15:00",
@@ -27,6 +29,7 @@ export const navigation: NavItem[] = [
   { label: "Inicio", href: "/" },
   { label: "Sobre nosotros", href: "/sobre-nosotros" },
   { label: "Tratamientos", href: "/tratamientos" },
+  { label: "Precios", href: "/precios" },
   { label: "Equipo", href: "/equipo" },
   { label: "Testimonios", href: "/testimonios" },
   { label: "Antes y después", href: "/antes-y-despues" },
@@ -46,7 +49,9 @@ export const treatments: Treatment[] = [
   {
     slug: "implantes-dentales",
     name: "Implantes dentales",
-    shortDescription: "Reponé piezas perdidas con una solución fija, estable y natural.",
+    category: "Implantología",
+    startingPrice: 594,
+    shortDescription: "Recupera piezas perdidas con una solución fija, estable y natural.",
     description:
       "Planificamos cada caso con diagnóstico digital y cirugía guiada para devolver función, estética y seguridad al hablar y masticar.",
     heroImage:
@@ -115,7 +120,9 @@ export const treatments: Treatment[] = [
   {
     slug: "ortodoncia",
     name: "Ortodoncia",
-    shortDescription: "Alineá tu sonrisa con precisión, confort y planificación moderna.",
+    category: "Ortodoncia",
+    startingPrice: 2750,
+    shortDescription: "Alinea tu sonrisa con precisión, confort y planificación moderna.",
     description:
       "Trabajamos ortodoncia estética y alineadores transparentes para mejorar sonrisa, mordida y salud funcional a largo plazo.",
     heroImage:
@@ -168,8 +175,8 @@ export const treatments: Treatment[] = [
     ],
     beforeAfter: [
       {
-        title: "Alineación de arcada superior",
-        description: "Corrección estética y mejora de la mordida anterior.",
+        title: "Caso 0744 · Corrección progresiva de arcada superior",
+        description: "Evolución alineada mediante ortodoncia digital con mejora funcional y estética de la mordida anterior.",
         image:
           "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
       },
@@ -184,7 +191,9 @@ export const treatments: Treatment[] = [
   {
     slug: "estetica-dental",
     name: "Estética dental",
-    shortDescription: "Mejorá color, forma y armonía con tratamientos de alta precisión.",
+    category: "Estética dental",
+    startingPrice: 330,
+    shortDescription: "Mejora color, forma y armonía con tratamientos de alta precisión.",
     description:
       "Creamos sonrisas luminosas y naturales con un enfoque conservador, diseño digital y materiales de última generación.",
     heroImage:
@@ -243,7 +252,9 @@ export const treatments: Treatment[] = [
   {
     slug: "carillas-dentales",
     name: "Carillas dentales",
-    shortDescription: "Rediseñá tu sonrisa con carillas cerámicas finas y naturales.",
+    category: "Estética dental",
+    startingPrice: 275,
+    shortDescription: "Rediseña tu sonrisa con carillas cerámicas finas y naturales.",
     description:
       "Las carillas permiten corregir forma, color o pequeños defectos con máxima delicadeza y un acabado premium.",
     heroImage:
@@ -302,7 +313,9 @@ export const treatments: Treatment[] = [
   {
     slug: "endodoncia",
     name: "Endodoncia",
-    shortDescription: "Salvá piezas comprometidas y aliviá el dolor con precisión microscópica.",
+    category: "Odontología conservadora",
+    startingPrice: 165,
+    shortDescription: "Conserva piezas comprometidas y alivia el dolor con precisión microscópica.",
     description:
       "Tratamos infecciones pulpares con tecnología moderna para conservar el diente siempre que sea viable.",
     heroImage:
@@ -358,7 +371,9 @@ export const treatments: Treatment[] = [
   {
     slug: "periodoncia",
     name: "Periodoncia",
-    shortDescription: "Cuidá encías y soporte dental para proteger tu salud oral a largo plazo.",
+    category: "Periodoncia",
+    startingPrice: 88,
+    shortDescription: "Cuida encías y soporte dental para proteger tu salud oral a largo plazo.",
     description:
       "Tratamos gingivitis y periodontitis con un abordaje preventivo, preciso y orientado a preservar estructura.",
     heroImage:
@@ -401,7 +416,7 @@ export const treatments: Treatment[] = [
         title: "Encía más estable y sana",
         description: "Control de inflamación y mejora de soporte.",
         image:
-          "https://images.unsplash.com/photo-1516549655669-df4a2b8315db?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=900&q=80",
       },
       {
         title: "Seguimiento periodontal",
@@ -414,11 +429,13 @@ export const treatments: Treatment[] = [
   {
     slug: "odontopediatria",
     name: "Odontopediatría",
+    category: "Odontopediatría",
+    startingPrice: 22,
     shortDescription: "Atención amable y preventiva para que los peques vivan el dentista con confianza.",
     description:
       "Creamos experiencias positivas para niños y familias, acompañando el crecimiento oral desde una base preventiva.",
     heroImage:
-      "https://images.unsplash.com/photo-1629909615184-a2dd2a8ad8fa?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Niña sonriendo durante revisión dental infantil",
     benefits: [
       "Prevención temprana de caries y malos hábitos",
@@ -463,18 +480,20 @@ export const treatments: Treatment[] = [
         title: "Experiencia positiva en consulta",
         description: "Atención centrada en el bienestar del pequeño paciente.",
         image:
-          "https://images.unsplash.com/photo-1631217868264-e6b90bb7e133?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80",
       },
     ],
   },
   {
     slug: "higiene-y-prevencion",
     name: "Higiene y prevención",
+    category: "Prevención",
+    startingPrice: 33,
     shortDescription: "La base para evitar problemas mayores y mantener tu sonrisa sana.",
     description:
       "No esperamos a que haya dolor. Diseñamos protocolos preventivos para conservar dientes, encías y restauraciones en óptimo estado.",
     heroImage:
-      "https://images.unsplash.com/photo-1629909615953-7f7eb9be5f85?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Profesional dental realizando higiene preventiva",
     benefits: [
       "Reduce riesgo de caries y enfermedad periodontal",
@@ -519,13 +538,15 @@ export const treatments: Treatment[] = [
         title: "Mantenimiento a largo plazo",
         description: "Prevención enfocada en estabilidad y bienestar.",
         image:
-          "https://images.unsplash.com/photo-1631815588090-d1bcbe9a1b67?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?auto=format&fit=crop&w=900&q=80",
       },
     ],
   },
   {
     slug: "urgencias-dentales",
     name: "Urgencias dentales",
+    category: "Urgencias",
+    startingPrice: 55,
     shortDescription: "Atención rápida para dolor, fracturas o infecciones que no pueden esperar.",
     description:
       "Valoramos urgencias dentales con rapidez para aliviar dolor y proteger el pronóstico del diente o tejido afectado.",
@@ -556,7 +577,7 @@ export const treatments: Treatment[] = [
       {
         question: "¿Qué hago si tengo una urgencia dental fuera del horario?",
         answer:
-          "Escribinos por WhatsApp y valoraremos el caso para indicarte el siguiente paso más seguro.",
+          "Escríbenos por WhatsApp y valoraremos el caso para indicarte el siguiente paso más seguro.",
       },
       {
         question: "¿Un dolor fuerte siempre significa infección?",
@@ -569,7 +590,7 @@ export const treatments: Treatment[] = [
         title: "Resolución de dolor agudo",
         description: "Atención rápida para estabilizar el caso.",
         image:
-          "https://images.unsplash.com/photo-1580281657702-257584239a70?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=900&q=80",
       },
       {
         title: "Recuperación funcional",
@@ -577,6 +598,146 @@ export const treatments: Treatment[] = [
         image:
           "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=900&q=80",
       },
+    ],
+  },
+  {
+    slug: "protesis-dentales",
+    name: "Prótesis dentales",
+    category: "Prótesis",
+    startingPrice: 462,
+    shortDescription: "Recupera estabilidad, función y estética con prótesis diseñadas a medida.",
+    description:
+      "Diseñamos prótesis removibles y fijas con criterios de adaptación, confort y naturalidad para devolver seguridad al hablar y masticar.",
+    heroImage:
+      "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=1200&q=80",
+    heroAlt: "Prótesis dental diseñada en laboratorio",
+    benefits: [
+      "Recupera función masticatoria y estabilidad",
+      "Mejora estética y soporte labial",
+      "Se adapta a cada caso con planificación personalizada",
+    ],
+    idealFor: [
+      "Pacientes con ausencias múltiples o edentulismo parcial",
+      "Casos que necesitan una rehabilitación funcional completa",
+      "Personas que buscan comodidad y estética natural",
+    ],
+    process: [
+      { title: "Valoración protésica", description: "Analizamos el estado óseo, la mordida y el soporte existente para definir la mejor solución." },
+      { title: "Registros y prueba", description: "Tomamos medidas precisas y validamos la adaptación y la estética en fases de prueba." },
+      { title: "Entrega y ajuste", description: "Ajustamos la prótesis para garantizar confort, estabilidad y una integración natural." },
+    ],
+    faqs: [
+      { question: "¿Qué diferencia hay entre una prótesis fija y una removible?", answer: "La fija se mantiene cementada o atornillada, mientras que la removible puede retirarse para su higiene. La indicación depende de cada caso." },
+      { question: "¿Es posible conseguir un resultado natural?", answer: "Sí. La selección de materiales, el diseño y la prueba estética son claves para un resultado armonioso." },
+    ],
+    beforeAfter: [
+      { title: "Rehabilitación completa superior", description: "Recuperación funcional y estética con prótesis planificada a medida.", image: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=900&q=80" },
+      { title: "Adaptación confortable", description: "Prótesis pensada para estabilidad diaria y expresión natural.", image: "https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=900&q=80" },
+    ],
+  },
+  {
+    slug: "blanqueamiento-dental",
+    name: "Blanqueamiento dental",
+    category: "Estética dental",
+    startingPrice: 39,
+    shortDescription: "Aclara el tono dental con protocolos seguros, controlados y de resultado natural.",
+    description:
+      "Trabajamos blanqueamiento en clínica y domiciliario con supervisión profesional para conseguir luminosidad sin comprometer el esmalte.",
+    heroImage:
+      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80",
+    heroAlt: "Paciente mostrando una sonrisa luminosa tras blanqueamiento dental",
+    benefits: [
+      "Aporta luminosidad sin efecto artificial",
+      "Permite personalizar intensidad y mantenimiento",
+      "Se adapta al historial de sensibilidad de cada paciente",
+    ],
+    idealFor: [
+      "Pacientes con tinciones o pérdida de brillo",
+      "Personas que desean rejuvenecer visualmente la sonrisa",
+      "Casos compatibles con un tratamiento conservador",
+    ],
+    process: [
+      { title: "Valoración del esmalte", description: "Comprobamos la salud dental y el origen de las tinciones antes de indicar el tratamiento." },
+      { title: "Protocolo personalizado", description: "Definimos si conviene tratamiento en clínica, domiciliario o una combinación de ambos." },
+      { title: "Seguimiento del tono", description: "Ajustamos mantenimiento y hábitos para conservar el resultado durante más tiempo." },
+    ],
+    faqs: [
+      { question: "¿El blanqueamiento daña el esmalte?", answer: "No cuando se realiza con indicación y supervisión profesional. Elegimos concentraciones y tiempos seguros." },
+      { question: "¿Cuánto dura el efecto?", answer: "Depende de hábitos como café, tabaco o higiene, pero solemos pautar mantenimiento para alargar el resultado." },
+    ],
+    beforeAfter: [
+      { title: "Mejora de luminosidad", description: "Resultado uniforme y natural tras protocolo controlado.", image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=900&q=80" },
+      { title: "Armonía del color", description: "Aclarado progresivo respetando el aspecto natural del esmalte.", image: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=900&q=80" },
+    ],
+  },
+  {
+    slug: "limpieza-dental",
+    name: "Limpieza dental",
+    category: "Prevención",
+    startingPrice: 33,
+    shortDescription: "Mantén tu boca libre de placa y biofilm con una higiene profesional adaptada a tu riesgo.",
+    description:
+      "La limpieza dental profesional es la base para prevenir caries, gingivitis y acumulación de cálculo, mejorando además la sensación de frescor y salud oral.",
+    heroImage:
+      "https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?auto=format&fit=crop&w=1200&q=80",
+    heroAlt: "Higienista realizando una limpieza dental profesional",
+    benefits: [
+      "Reduce biofilm y cálculo",
+      "Mejora la salud de encías y dientes",
+      "Previene tratamientos mayores si se realiza con regularidad",
+    ],
+    idealFor: [
+      "Pacientes con acumulación de placa o sangrado gingival",
+      "Personas que desean mantener su salud oral estable",
+      "Pacientes en seguimiento preventivo periódico",
+    ],
+    process: [
+      { title: "Evaluación inicial", description: "Comprobamos el estado de encías, placa y posibles zonas de retención." },
+      { title: "Higiene profesional", description: "Eliminamos cálculo y biofilm con instrumental específico y técnicas suaves." },
+      { title: "Consejo personalizado", description: "Ajustamos pautas de cepillado, seda o irrigación según tu caso." },
+    ],
+    faqs: [
+      { question: "¿Cada cuánto conviene hacerse una limpieza dental?", answer: "Depende del riesgo de cada paciente, aunque muchas pautas se sitúan entre 6 y 12 meses." },
+      { question: "¿La limpieza dental duele?", answer: "Suele ser bien tolerada. Adaptamos la técnica y la sensibilidad del procedimiento a cada persona." },
+    ],
+    beforeAfter: [
+      { title: "Encías más estables", description: "Reducción de biofilm y mejora del aspecto gingival.", image: "https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?auto=format&fit=crop&w=900&q=80" },
+      { title: "Mantenimiento preventivo", description: "Seguimiento regular para conservar dientes y encías en buen estado.", image: "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=900&q=80" },
+    ],
+  },
+  {
+    slug: "odontologia-conservadora",
+    name: "Odontología conservadora",
+    category: "Odontología conservadora",
+    startingPrice: 55,
+    shortDescription: "Tratamos caries y lesiones preservando al máximo la estructura sana del diente.",
+    description:
+      "Aplicamos técnicas y materiales restauradores para devolver función y sellado sin recurrir a tratamientos más invasivos si no son necesarios.",
+    heroImage:
+      "https://images.unsplash.com/photo-1581594549595-35f6edc7b762?auto=format&fit=crop&w=1200&q=80",
+    heroAlt: "Tratamiento conservador de una pieza dental en clínica",
+    benefits: [
+      "Preserva tejido dental sano",
+      "Mejora función y sellado de la pieza",
+      "Ayuda a evitar progresión de la lesión",
+    ],
+    idealFor: [
+      "Caries iniciales o moderadas",
+      "Reconstrucciones de piezas fracturadas",
+      "Pacientes que buscan opciones mínimamente invasivas",
+    ],
+    process: [
+      { title: "Diagnóstico", description: "Evaluamos la lesión, el tejido sano remanente y el pronóstico de la pieza." },
+      { title: "Limpieza y restauración", description: "Eliminamos el tejido afectado y restauramos con materiales adhesivos de calidad." },
+      { title: "Control posterior", description: "Revisamos adaptación, oclusión y evolución clínica en el seguimiento." },
+    ],
+    faqs: [
+      { question: "¿Siempre hay que empastar una caries pequeña?", answer: "No siempre. Depende de profundidad, actividad y localización. En consulta valoramos la opción más conservadora." },
+      { question: "¿Las reconstrucciones modernas son estéticas?", answer: "Sí. Los materiales actuales permiten resultados discretos y funcionales, integrados con el color del diente." },
+    ],
+    beforeAfter: [
+      { title: "Reconstrucción conservadora", description: "Restauración de una pieza posterior manteniendo máxima estructura sana.", image: "https://images.unsplash.com/photo-1581594549595-35f6edc7b762?auto=format&fit=crop&w=900&q=80" },
+      { title: "Sellado estético y funcional", description: "Recuperación de contorno y contacto interproximal.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80" },
     ],
   },
 ];
@@ -596,7 +757,7 @@ export const team: TeamMember[] = [
     specialty: "Estética dental y carillas cerámicas",
     bio: "Diseña sonrisas naturales con criterios de armonía facial y odontología conservadora.",
     image:
-      "https://images.unsplash.com/photo-1594824475544-95bb7cbeae7c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=900&q=80",
   },
   {
     name: "Dr. Pablo Romero",
@@ -612,52 +773,64 @@ export const team: TeamMember[] = [
     specialty: "Atención infantil y salud gingival",
     bio: "Hace que niños y familias vivan la clínica con confianza, pedagogía y calma.",
     image:
-      "https://images.unsplash.com/photo-1629909615184-a2dd2a8ad8fa?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Ana M.",
+    name: "Ana Martínez",
     treatment: "Implantes dentales",
     rating: 5,
     quote:
-      "Buscaba una clínica seria en Valencia y la encontré. Me explicaron todo con calma, sin venderme humo, y el resultado fue impecable.",
+      "Buscaba una clínica seria en Valencia y la encontré. Me explicaron todo con calma y el resultado ha sido impecable.",
+    source: "Google Maps",
+    publishedAt: "Hace 3 semanas",
   },
   {
-    name: "Carlos y Laura",
+    name: "Carlos y Laura Ruiz",
     treatment: "Odontopediatría",
     rating: 5,
     quote:
       "Llevamos a nuestros hijos desde hace años. El trato es cercano, profesional y muy humano. Se nota la experiencia del equipo.",
+    source: "Google Maps",
+    publishedAt: "Hace 1 mes",
   },
   {
-    name: "María R.",
+    name: "María Romero",
     treatment: "Carillas dentales",
     rating: 5,
     quote:
-      "Quería algo bonito pero natural. El cambio fue elegante, sin exageraciones. Volvería a elegirlos sin dudar.",
+      "Quería algo bonito pero natural. El cambio ha quedado elegante, sin exageraciones. Volvería a elegirlos sin dudar.",
+    source: "Google Maps",
+    publishedAt: "Hace 2 meses",
   },
   {
-    name: "Vicente P.",
+    name: "Vicente Pérez",
     treatment: "Ortodoncia",
     rating: 5,
     quote:
-      "La planificación digital me dio muchísima confianza. Se nota que trabajan con tecnología, pero sin perder el trato de siempre.",
+      "La planificación digital me dio mucha confianza. Se nota que trabajan con tecnología, pero sin perder el trato cercano.",
+    source: "Google Maps",
+    publishedAt: "Hace 2 meses",
   },
   {
-    name: "Sofía G.",
+    name: "Sofía García",
     treatment: "Estética dental",
     rating: 5,
     quote:
-      "La clínica transmite calma y nivel. El diseño, el equipo y la atención están a otro nivel.",
+      "La clínica transmite calma y nivel. El equipo y la atención están muy por encima de lo habitual.",
+    source: "Google Maps",
+    publishedAt: "Hace 4 meses",
   },
   {
-    name: "Javier L.",
+    name: "Javier López",
     treatment: "Urgencia dental",
     rating: 5,
     quote:
       "Me atendieron rápido por un dolor fuerte y me resolvieron la urgencia el mismo día. Profesionalidad total.",
+    source: "Google Maps",
+    publishedAt: "Hace 5 meses",
   },
 ];
 
@@ -708,12 +881,12 @@ export const blogPosts: BlogPost[] = [
       "Las encías no sangran porque sí. Detectarlo a tiempo cambia el pronóstico por completo.",
     category: "Prevención",
     cover:
-      "https://images.unsplash.com/photo-1516549655669-df4a2b8315db?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=80",
     readTime: "4 min",
     content: [
       "La periodontitis puede avanzar sin grandes molestias hasta que aparece movilidad, retracción o pérdida de soporte. Por eso la prevención importa tanto.",
       "Una higiene correcta en casa, revisiones periódicas y mantenimientos adaptados a tu riesgo son la mejor inversión para conservar dientes y encías.",
-      "Si notás sangrado al cepillarte, mal aliento persistente o inflamación, toca revisar. Esperar solo empeora el escenario.",
+      "Si notas sangrado al cepillarte, mal aliento persistente o inflamación, toca revisar. Esperar solo empeora el escenario.",
     ],
   },
 ];
@@ -734,10 +907,147 @@ export const globalFaqs: GlobalFaq[] = [
     answer:
       "Sí. Somos una clínica pensada para adultos, familias y seguimiento a largo plazo.",
   },
+      {
+        question: "¿Puedo pedir cita por WhatsApp?",
+        answer:
+          "Claro. Tienes acceso directo desde la web para resolver dudas o solicitar una primera visita.",
+      },
+];
+
+function increasePrice(price: number | string | null) {
+  if (price === null) return null;
+  if (typeof price === "number") return Math.round(price * 1.1);
+  if (typeof price === "string") {
+    return price.replace(/\d+/g, (match) => String(Math.round(Number(match) * 1.1)));
+  }
+  return price;
+}
+
+export const pricingGroups: PricingGroup[] = [
   {
-    question: "¿Puedo pedir cita por WhatsApp?",
-    answer:
-      "Claro. Tenés acceso directo desde la web para resolver dudas o solicitar una primera visita.",
+    title: "Diagnóstico y periodoncia",
+    slug: "diagnostico-periodoncia",
+    items: [
+      { name: "Exploración + aletas de mordida", price: increasePrice(30) },
+      { name: "L.B", price: increasePrice(40) },
+      { name: "Estudio periodontal", price: increasePrice(80) },
+      { name: "R.A.R", price: increasePrice(85) },
+      { name: "R.A.R selectivo", price: increasePrice(180) },
+      { name: "Cirugía periodontal", price: increasePrice(275) },
+      { name: "Injerto periodontal", price: increasePrice(null) },
+      { name: "Regeneración con hueso y membrana", price: increasePrice(480) },
+    ],
+  },
+  {
+    title: "Odontología conservadora y endodoncia",
+    slug: "conservadora-endodoncia",
+    items: [
+      { name: "Obturaciones simples y compuestas", price: increasePrice(50) },
+      { name: "Con RPI", price: increasePrice(60) },
+      { name: "Dos obturaciones", price: increasePrice(90) },
+      { name: "Endodoncia uni-birradicular", price: increasePrice(150) },
+      { name: "Endodoncia multirradicular", price: increasePrice(180) },
+      { name: "Reconstrucción + post", price: increasePrice(70) },
+      { name: "Reendodoncia incisivos", price: increasePrice(150) },
+      { name: "Reendodoncia premolares", price: increasePrice(180) },
+      { name: "Reendodoncia molares", price: increasePrice(220) },
+    ],
+  },
+  {
+    title: "Cirugía oral e implantología",
+    slug: "cirugia-implantologia",
+    items: [
+      { name: "Extracción simple", price: increasePrice(50) },
+      { name: "Extracción + legrado", price: increasePrice(60) },
+      { name: "Extracción + osteotomía", price: increasePrice(90) },
+      { name: "Extracción quirúrgica", price: increasePrice(null) },
+      { name: "Cordal simple", price: increasePrice(90) },
+      { name: "Cordal semiincluido", price: increasePrice(180) },
+      { name: "Cordal incluido", price: increasePrice(250) },
+      { name: "Apicectomía", price: increasePrice(350) },
+      { name: "Quistectomía", price: increasePrice(350) },
+      { name: "Elevación seno indirecta", price: increasePrice(400) },
+      { name: "Elevación seno bilateral", price: increasePrice(1800) },
+      { name: "Elevación seno directa", price: increasePrice(4000) },
+      { name: "Injertos particulados", price: increasePrice("590 a 10000") },
+      { name: "Regeneraciones", price: increasePrice(null) },
+      { name: "Implante", price: increasePrice(540) },
+      { name: "Pilar intermedio", price: increasePrice(120) },
+      { name: "Corona sobre implante", price: increasePrice(540) },
+      { name: "Corona sobre implante (ceramo-metálica)", price: increasePrice(540) },
+      { name: "Suplemento por implante", price: increasePrice(250) },
+      { name: "Híbridas sobre implantes en resina", price: increasePrice(3200) },
+      { name: "Híbridas sobre implantes en porcelana", price: increasePrice(3800) },
+      { name: "Barra", price: increasePrice(1920) },
+    ],
+  },
+  {
+    title: "Prótesis y rehabilitación",
+    slug: "protesis-rehabilitacion",
+    items: [
+      { name: "Prótesis removible parciales hasta 5 piezas", price: increasePrice(420) },
+      { name: "Prótesis removible parciales más de 5 piezas", price: increasePrice(470) },
+      { name: "Prótesis removible completa superior/inferior", price: increasePrice(550) },
+      { name: "Rebase completa", price: increasePrice(180) },
+      { name: "Férula de descarga", price: increasePrice(260) },
+      { name: "Base", price: increasePrice(400) },
+      { name: "Esquelético", price: increasePrice(55) },
+      { name: "Provisionales", price: increasePrice(60) },
+      { name: "Funda metal-porcelana", price: increasePrice(260) },
+      { name: "Funda veneers", price: increasePrice(190) },
+      { name: "Corona de zirconio", price: increasePrice(400) },
+      { name: "Encerado", price: increasePrice(16) },
+      { name: "Pónticos", price: increasePrice(260) },
+      { name: "Sobredentaduras atache", price: increasePrice(260) },
+      { name: "Sobredentaduras cazoleta + teflones", price: increasePrice(220) },
+      { name: "Estructura metálica", price: increasePrice(290) },
+      { name: "Completa", price: increasePrice(790) },
+    ],
+  },
+  {
+    title: "Ortodoncia",
+    slug: "ortodoncia",
+    items: [
+      { name: "Ortodoncia convencional (Ceosa)", price: increasePrice(2500) },
+      { name: "Damon/Camaleón metálicos", price: increasePrice(2800) },
+      { name: "Damon/Camaleón estéticos", price: increasePrice(3200) },
+      { name: "Ortodoncia invisible", price: increasePrice("3800 a 4500") },
+      { name: "Retención fija sup/inf (nueva)", price: increasePrice(150) },
+      { name: "Retención removible sup/inf (nuevo)", price: increasePrice(200) },
+      { name: "Orthotropics sup e inf", price: increasePrice(1200) },
+      { name: "Orthotropics sup + máscara", price: increasePrice(1200) },
+      { name: "Orthotropics una arcada", price: increasePrice(900) },
+      { name: "Myobrace", price: increasePrice(950) },
+      { name: "Pistas de composite en anteriores", price: increasePrice(300) },
+      { name: "Pistas de composite en posteriores", price: increasePrice(null) },
+      { name: "Lip-Bumper", price: increasePrice(null) },
+    ],
+  },
+  {
+    title: "Odontopediatría",
+    slug: "odontopediatria",
+    items: [
+      { name: "Obturación odontopediatría", price: increasePrice(50) },
+      { name: "Pulpotomía", price: increasePrice(50) },
+      { name: "Pulpectomía", price: increasePrice(null) },
+      { name: "Extracción diente de leche", price: increasePrice(20) },
+      { name: "Extracción diente definitivo", price: increasePrice(40) },
+      { name: "Corona odontopediatría", price: increasePrice(95) },
+      { name: "Mantenedores de espacio", price: increasePrice(150) },
+    ],
+  },
+  {
+    title: "Estética dental",
+    slug: "estetica-dental",
+    items: [
+      { name: "Blanqueamiento en clínica", price: increasePrice(300) },
+      { name: "Blanqueamiento domiciliario jeringa", price: increasePrice(35) },
+      { name: "Blanqueamiento domiciliario férula", price: increasePrice(60) },
+      { name: "Carillas de porcelana", price: increasePrice(400) },
+      { name: "Carillas de composite", price: increasePrice(250) },
+      { name: "Carillas de porcelana estética", price: increasePrice(400) },
+      { name: "Carillas de composite estética", price: increasePrice(250) },
+    ],
   },
 ];
 

@@ -1,14 +1,18 @@
 import Link from "next/link";
+import { clinic } from "@/data/site";
+import { phoneHref } from "@/lib/utils";
 
 export function Footer() {
   return (
     <footer style={{ width: "100%", paddingTop: "5rem", paddingBottom: "2.5rem", background: "#f8fafc" }}>
       <div className="container footer-grid" style={{ paddingInline: "2rem", gridTemplateColumns: "repeat(4, minmax(0,1fr))" }}>
         <div style={{ display: "grid", gap: "1rem" }}>
-          <div style={{ fontSize: "1.125rem", fontWeight: 900, color: "#1b4477", letterSpacing: "-.03em", fontFamily: "var(--font-headline)" }}>Clinical Atelier</div>
+          <div style={{ fontSize: "1.125rem", fontWeight: 900, color: "#1b4477", letterSpacing: "-.03em", fontFamily: "var(--font-headline)" }}>Clínica Dental Lorenzo González</div>
           <p style={{ color: "#64748b", fontSize: ".875rem", lineHeight: 1.8 }}>
-            Redefiniendo la excelencia dental con precisión clínica, diseño editorial y atención humana de alto nivel.
+            Odontología de precisión con un enfoque humano, elegante y centrado en la salud a largo plazo.
           </p>
+          <a href={phoneHref(clinic.phone)} style={{ color: "#1b4477", fontWeight: 800, fontSize: ".9rem" }}>{clinic.phoneDisplay}</a>
+          <a href={clinic.mapsUrl} target="_blank" rel="noreferrer" style={{ color: "#64748b", fontSize: ".875rem", lineHeight: 1.7 }}>{clinic.address}</a>
         </div>
         <div>
           <h4 style={{ fontFamily: "var(--font-headline)", color: "var(--brand)", fontWeight: 700, marginBottom: "1.5rem", fontSize: ".875rem", textTransform: "uppercase", letterSpacing: ".14em" }}>Práctica</h4>
@@ -16,7 +20,8 @@ export function Footer() {
             <li><Link href="/tratamientos" style={{ color: "#64748b", fontSize: ".875rem" }}>Tratamientos</Link></li>
             <li><Link href="/antes-y-despues" style={{ color: "#64748b", fontSize: ".875rem" }}>Resultados</Link></li>
             <li><Link href="/sobre-nosotros" style={{ color: "#64748b", fontSize: ".875rem" }}>Filosofía</Link></li>
-            <li><Link href="/contacto" style={{ color: "#64748b", fontSize: ".875rem" }}>Concierge</Link></li>
+            <li><Link href="/contacto" style={{ color: "#64748b", fontSize: ".875rem" }}>Contacto</Link></li>
+            <li><Link href="/precios" style={{ color: "#64748b", fontSize: ".875rem" }}>Precios</Link></li>
           </ul>
         </div>
         <div>
@@ -37,7 +42,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container" style={{ marginTop: "5rem", paddingTop: "2rem", borderTop: "1px solid rgba(195,198,214,.35)", paddingInline: "2rem", textAlign: "center", color: "#94a3b8", fontSize: ".875rem" }}>
-        © 2026 Clinical Atelier. Precision in Dentistry.
+        © 2026 Clínica Dental Lorenzo González. Precisión clínica y atención humana.
       </div>
     </footer>
   );
