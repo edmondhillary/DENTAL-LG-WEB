@@ -1,63 +1,43 @@
 import Link from "next/link";
-import { Mail, MapPin, MessageCircleMore, Phone } from "lucide-react";
-import { clinic, navigation } from "@/data/site";
-import { phoneHref } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="container">
-        <div className="footer-shell">
-          <div className="container section" style={{ display: "grid", gap: "2rem" }}>
-            <div className="footer-grid">
-              <div style={{ display: "grid", gap: "1rem" }}>
-                <span className="eyebrow" style={{ width: "fit-content", color: "white", background: "rgba(255,255,255,.1)" }}>
-                  Clínica dental privada
-                </span>
-                <h3 className="footer-title">{clinic.name}</h3>
-                <p className="footer-copy">
-                  Clínica dental en Valencia con una visión serena, tecnológica y profundamente humana. Tratamientos bien explicados, ejecutados con precisión y pensados para durar.
-                </p>
-                <a href={clinic.whatsappHref} target="_blank" rel="noreferrer" className="footer-link">
-                  <MessageCircleMore size={18} /> WhatsApp directo para primeras consultas
-                </a>
-              </div>
-
-              <div style={{ display: "grid", gap: "0.95rem" }}>
-                <strong>Explorar</strong>
-                <div className="footer-links">
-                  {navigation.map((item) => (
-                    <Link key={item.href} href={item.href} className="footer-link">
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ display: "grid", gap: "0.95rem" }}>
-                <strong>Contacto</strong>
-                <div className="footer-contact">
-                  <a href={phoneHref(clinic.phone)} className="footer-contact-item">
-                    <Phone size={18} /> {clinic.phoneDisplay}
-                  </a>
-                  <a href={`mailto:${clinic.email}`} className="footer-contact-item">
-                    <Mail size={18} /> {clinic.email}
-                  </a>
-                  <span className="footer-contact-item" style={{ alignItems: "start" }}>
-                    <MapPin size={18} style={{ marginTop: 4 }} /> {clinic.address}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="divider" style={{ background: "rgba(255,255,255,.12)" }} />
-
-            <div className="footer-bottom">
-              <span>© 2026 {clinic.name}. Todos los derechos reservados.</span>
-              <span className="footer-meta">Experiencia, precisión y atención humana desde hace más de 37 años.</span>
-            </div>
+    <footer style={{ width: "100%", paddingTop: "5rem", paddingBottom: "2.5rem", background: "#f8fafc" }}>
+      <div className="container footer-grid" style={{ paddingInline: "2rem", gridTemplateColumns: "repeat(4, minmax(0,1fr))" }}>
+        <div style={{ display: "grid", gap: "1rem" }}>
+          <div style={{ fontSize: "1.125rem", fontWeight: 900, color: "#1b4477", letterSpacing: "-.03em", fontFamily: "var(--font-headline)" }}>Clinical Atelier</div>
+          <p style={{ color: "#64748b", fontSize: ".875rem", lineHeight: 1.8 }}>
+            Redefiniendo la excelencia dental con precisión clínica, diseño editorial y atención humana de alto nivel.
+          </p>
+        </div>
+        <div>
+          <h4 style={{ fontFamily: "var(--font-headline)", color: "var(--brand)", fontWeight: 700, marginBottom: "1.5rem", fontSize: ".875rem", textTransform: "uppercase", letterSpacing: ".14em" }}>Práctica</h4>
+          <ul style={{ display: "grid", gap: "1rem", listStyle: "none" }}>
+            <li><Link href="/tratamientos" style={{ color: "#64748b", fontSize: ".875rem" }}>Tratamientos</Link></li>
+            <li><Link href="/antes-y-despues" style={{ color: "#64748b", fontSize: ".875rem" }}>Resultados</Link></li>
+            <li><Link href="/sobre-nosotros" style={{ color: "#64748b", fontSize: ".875rem" }}>Filosofía</Link></li>
+            <li><Link href="/contacto" style={{ color: "#64748b", fontSize: ".875rem" }}>Concierge</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style={{ fontFamily: "var(--font-headline)", color: "var(--brand)", fontWeight: 700, marginBottom: "1.5rem", fontSize: ".875rem", textTransform: "uppercase", letterSpacing: ".14em" }}>Soporte</h4>
+          <ul style={{ display: "grid", gap: "1rem", listStyle: "none" }}>
+            <li><Link href="/faq" style={{ color: "#64748b", fontSize: ".875rem" }}>Preguntas frecuentes</Link></li>
+            <li><span style={{ color: "#64748b", fontSize: ".875rem" }}>Privacidad</span></li>
+            <li><span style={{ color: "#64748b", fontSize: ".875rem" }}>Accesibilidad</span></li>
+            <li><span style={{ color: "#64748b", fontSize: ".875rem" }}>Derechos del paciente</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style={{ fontFamily: "var(--font-headline)", color: "var(--brand)", fontWeight: 700, marginBottom: "1.5rem", fontSize: ".875rem", textTransform: "uppercase", letterSpacing: ".14em" }}>Newsletter</h4>
+          <div style={{ display: "flex", gap: ".5rem" }}>
+            <input type="email" placeholder="Email" style={{ flex: 1, background: "white", border: "1px solid rgba(195,198,214,.35)", borderRadius: 12, padding: ".8rem 1rem", fontSize: ".875rem" }} />
+            <button className="btn" style={{ minHeight: 44, paddingInline: "1rem", border: 0, cursor: "pointer" }}>→</button>
           </div>
         </div>
+      </div>
+      <div className="container" style={{ marginTop: "5rem", paddingTop: "2rem", borderTop: "1px solid rgba(195,198,214,.35)", paddingInline: "2rem", textAlign: "center", color: "#94a3b8", fontSize: ".875rem" }}>
+        © 2026 Clinical Atelier. Precision in Dentistry.
       </div>
     </footer>
   );

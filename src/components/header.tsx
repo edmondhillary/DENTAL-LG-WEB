@@ -1,12 +1,18 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, Menu, MessageCircleMore, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { clinic, navigation } from "@/data/site";
-import { phoneHref } from "@/lib/utils";
+import { clinic } from "@/data/site";
+
+const navItems = [
+  { label: "Tratamientos", href: "/tratamientos" },
+  { label: "Resultados", href: "/antes-y-despues" },
+  { label: "Filosofía", href: "/sobre-nosotros" },
+  { label: "Atención", href: "/faq" },
+  { label: "Concierge", href: "/contacto" },
+];
 
 export function Header() {
   const pathname = usePathname();
@@ -14,7 +20,6 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-
     return () => {
       document.body.style.overflow = "";
     };
@@ -22,113 +27,90 @@ export function Header() {
 
   return (
     <>
-      <header className="site-header">
-        <div className="container header-shell">
-          <div className="header-brand-wrap">
-            <Link href="/" className="brand-lockup">
-              <span className="brand-mark">LG</span>
-              <span>
-                <strong>{clinic.name}</strong>
-                <small>Odontología contemporánea con alma clínica</small>
-              </span>
-            </Link>
-          </div>
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 60,
+          width: "100%",
+          background: "rgba(255,255,255,.7)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 20px 50px rgba(25,28,30,0.06)",
+        }}
+      >
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 2rem", gap: "1.25rem" }}>
+          <Link href="/" style={{ fontFamily: "var(--font-headline)", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--brand)" }}>
+            {clinic.name}
+          </Link>
 
-          <nav className="desktop-nav">
-            <div className="desktop-links">
-              {navigation.map((item) => {
-                const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+          <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+            {navItems.map((item) => {
+              const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
-                return (
-                  <Link key={item.href} href={item.href} className={active ? "desktop-link active" : "desktop-link"}>
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-
-            <div className="header-actions">
-              <a href={clinic.whatsappHref} target="_blank" rel="noreferrer" className="header-mini-action">
-                <MessageCircleMore size={16} /> WhatsApp
-              </a>
-              <a className="btn" href={phoneHref(clinic.phone)}>
-                <Phone size={18} /> Llamar ahora
-              </a>
-            </div>
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  style={{
+                    fontFamily: "var(--font-headline)",
+                    fontSize: ".875rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "-.01em",
+                    color: active ? "var(--brand)" : "#64748b",
+                    borderBottom: active ? "2px solid var(--brand)" : "2px solid transparent",
+                    paddingBottom: ".25rem",
+                  }}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          <button
-            type="button"
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => setOpen((prev) => !prev)}
-            className="mobile-trigger"
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+            <Link className="btn desktop-cta" href="/contacto" style={{ minHeight: 48, paddingInline: "2rem", fontFamily: "var(--font-body)", fontSize: ".875rem" }}>
+              Reservar cita
+            </Link>
+            <button
+              aria-label={open ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => setOpen((prev) => !prev)}
+              className="mobile-trigger"
+              style={{ display: "none", width: 44, height: 44, borderRadius: 999, border: 0, background: "transparent", color: "var(--brand)" }}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </header>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            className="mobile-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="mobile-drawer"
-              initial={{ opacity: 0, y: -24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.26, ease: "easeOut" }}
-            >
-              <div className="mobile-drawer-top">
-                <div className="brand-lockup">
-                  <span className="brand-mark">LG</span>
-                  <span>
-                    <strong>{clinic.name}</strong>
-                    <small>Valencia</small>
-                  </span>
-                </div>
-                <button type="button" aria-label="Cerrar menú" onClick={() => setOpen(false)} className="mobile-close">
-                  <X size={18} />
-                </button>
-              </div>
-
-              <div className="mobile-nav-links">
-                {navigation.map((item, index) => {
-                  const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
-
-                  return (
-                    <motion.div
-                      key={item.href}
-                      initial={{ opacity: 0, x: -16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -12 }}
-                      transition={{ delay: 0.04 * index }}
-                    >
-                      <Link href={item.href} onClick={() => setOpen(false)} className={active ? "mobile-nav-link active" : "mobile-nav-link"}>
-                        <span>{item.label}</span>
-                        <ChevronRight size={18} />
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              <div className="mobile-drawer-footer">
-                <a className="btn" href={phoneHref(clinic.phone)}>
-                  <Phone size={18} /> Reservar llamada
-                </a>
-                <a className="btn-secondary" href={clinic.whatsappHref} target="_blank" rel="noreferrer">
-                  <MessageCircleMore size={18} /> Escribir por WhatsApp
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {open ? (
+        <div className="mobile-overlay" style={{ position: "fixed", inset: 0, zIndex: 70, background: "rgba(247,249,251,.96)", padding: "5rem 1.5rem 1.5rem" }}>
+          <div style={{ display: "grid", gap: "1rem" }}>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  padding: "1rem 0",
+                  borderBottom: "1px solid rgba(195,198,214,.35)",
+                  fontFamily: "var(--font-headline)",
+                  fontSize: "1.1rem",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  color: pathname.startsWith(item.href) ? "var(--brand)" : "var(--foreground)",
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link className="btn" href="/contacto" onClick={() => setOpen(false)} style={{ marginTop: "1rem" }}>
+              Reservar cita
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

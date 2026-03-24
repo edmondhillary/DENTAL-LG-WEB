@@ -1,12 +1,8 @@
 import {
   BeforeAfterPreview,
-  BlogPreview,
-  ContactSection,
-  FaqPreview,
   FinalCta,
   HeroSection,
   HighlightsSection,
-  LocationPreview,
   TeamPreview,
   TestimonialsPreview,
   TreatmentsPreview,
@@ -23,10 +19,6 @@ export default function HomePage() {
       <TestimonialsPreview />
       <BeforeAfterPreview />
       <TeamPreview />
-      <BlogPreview />
-      <FaqPreview />
-      <LocationPreview />
-      <ContactSection />
       <FinalCta />
     </>
   );

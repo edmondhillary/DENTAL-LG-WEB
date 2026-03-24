@@ -1,77 +1,189 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { AnimateIn } from "@/components/animate-in";
-import { FinalCta } from "@/components/site-sections";
+import Link from "next/link";
 import { imageUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros",
-  description:
-    "Conocé la historia de la Clínica Dental Lorenzo González, su enfoque humano y su apuesta por la odontología avanzada en Valencia.",
+  description: "Conocé la filosofía, la historia y las instalaciones de la Clínica Dental Lorenzo González.",
 };
 
 export default function AboutPage() {
+  const directives = [
+    {
+      icon: "favorite",
+      title: "Atención centrada en la persona",
+      copy: "Escuchamos antes de actuar. Cada plan nace de tus necesidades, tu comodidad y tus objetivos a largo plazo.",
+      bg: "#cde5ff",
+      color: "#001d32",
+    },
+    {
+      icon: "biotech",
+      title: "Precisión clínica",
+      copy: "Trabajamos con diagnóstico de alta definición y protocolos minuciosos para reducir margen de error y elevar previsibilidad.",
+      bg: "#d5e3ff",
+      color: "#001b3c",
+    },
+    {
+      icon: "lightbulb",
+      title: "Innovación con criterio",
+      copy: "Adoptamos tecnología cuando mejora resultados, experiencia del paciente y conservación del tejido dental.",
+      bg: "#93f2f2",
+      color: "#002020",
+    },
+  ];
+
+  const spaces = [
+    {
+      title: "Suite de consulta",
+      image: "https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Área clínica",
+      image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Recepción atelier",
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      title: "Laboratorio digital",
+      image: "https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=900&q=80",
+    },
+  ];
+
   return (
     <>
-      <section className="section">
-        <div className="container editorial-grid">
-          <AnimateIn>
-            <div className="editorial-side editorial-stack">
-              <span className="eyebrow">Nuestra historia</span>
-              <h1 style={{ fontSize: "clamp(3.2rem, 6vw, 5.8rem)" }}>Una clínica con memoria, refinamiento y visión de futuro.</h1>
-              <p className="lead">
-                Llevamos más de 37 años acompañando a pacientes y familias en Valencia. La experiencia importa, pero solo tiene valor cuando se transforma en calma, criterio y actualización constante.
-              </p>
-              <div className="card card-elevated editorial-panel prose">
-                <p>
-                  Nuestra forma de trabajar combina la serenidad de una trayectoria clínica consolidada con la precisión de una odontología digital contemporánea.
-                </p>
-                <p>
-                  No creemos en el lujo vacío. Creemos en una experiencia cuidada, espacios luminosos, decisiones bien explicadas y tratamientos con sentido médico real.
-                </p>
-              </div>
+      <section style={{ position: "relative", padding: "6rem 2rem 8rem", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "7fr 5fr", gap: "3rem", alignItems: "center" }}>
+          <div>
+            <span style={{ display: "inline-block", padding: ".4rem 1rem", borderRadius: 999, background: "var(--tertiary-fixed)", color: "#002020", fontSize: ".75rem", fontWeight: 800, letterSpacing: ".16em", textTransform: "uppercase", marginBottom: "1.5rem" }}>Nuestro legado</span>
+            <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3.8rem, 7vw, 6.5rem)", lineHeight: 1.05, letterSpacing: "-0.05em", color: "var(--brand)", marginBottom: "2rem", fontWeight: 800 }}>
+              La intersección entre <br />
+              <span style={{ color: "var(--secondary)", fontStyle: "italic", fontWeight: 300 }}>precisión</span> y <span style={{ color: "var(--tertiary)" }}>artesanía</span>.
+            </h1>
+            <p style={{ fontSize: "1.25rem", color: "var(--muted)", maxWidth: 720, lineHeight: 1.8 }}>
+              En Clínica Dental Lorenzo González entendemos la odontología como una combinación de exactitud clínica, hospitalidad tranquila y sensibilidad estética.
+            </p>
+          </div>
+          <div style={{ position: "relative" }}>
+            <div style={{ aspectRatio: "4 / 5", borderRadius: "2rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)", transform: "rotate(2deg)" }}>
+              <Image src={imageUrl("https://images.unsplash.com/photo-1516549655669-df4a2b8315db?auto=format&fit=crop&w=1200&q=80")} alt="Clínica dental moderna" fill style={{ objectFit: "cover" }} />
             </div>
-          </AnimateIn>
-          <AnimateIn delay={0.08} className="editorial-main">
-            <div className="card media-card">
-              <div style={{ position: "relative", minHeight: 620 }}>
-                <Image
-                  src={imageUrl("https://images.unsplash.com/photo-1581594693700-43af9c7f5e9c?auto=format&fit=crop&w=1400&q=80")}
-                  alt="Instalaciones modernas y luminosas de clínica dental"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-            </div>
-          </AnimateIn>
+            <div style={{ position: "absolute", left: "-2rem", bottom: "-2rem", width: 192, height: 192, borderRadius: 999, background: "rgba(54,91,145,.16)", filter: "blur(36px)" }} />
+          </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container grid-3">
-          {[
-            {
-              title: "Misión",
-              text: "Ofrecer odontología excelente, comprensible y humana, con planes sobrios, realistas y centrados en el bienestar a largo plazo.",
-            },
-            {
-              title: "Valores",
-              text: "Honestidad clínica, atención cercana, actualización constante y un estándar alto en cada pequeño detalle de la experiencia.",
-            },
-            {
-              title: "Instalaciones",
-              text: "Espacios serenos, tecnología diagnóstica actual y un entorno pensado para transmitir seguridad desde el primer minuto.",
-            },
-          ].map((item) => (
-            <article key={item.title} className="card editorial-panel" style={{ display: "grid", gap: "1rem" }}>
-              <h2 style={{ fontSize: "2rem" }}>{item.title}</h2>
-              <p style={{ color: "var(--muted)", lineHeight: 1.85 }}>{item.text}</p>
-            </article>
-          ))}
+      <section style={{ padding: "6rem 0", background: "var(--surface-low)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "5rem", alignItems: "center" }}>
+          <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", height: 600, borderRadius: "1rem", overflow: "hidden", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
+              <Image src={imageUrl("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80")} alt="Dentista revisando escaneo" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div style={{ position: "absolute", top: 48, right: -48, background: "rgba(255,255,255,.7)", backdropFilter: "blur(20px)", padding: "2rem", borderRadius: "1rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)", maxWidth: 280 }}>
+              <h4 style={{ fontFamily: "var(--font-headline)", fontWeight: 800, color: "var(--brand)", marginBottom: ".5rem" }}>Más de 37 años</h4>
+              <p style={{ fontSize: ".9rem", color: "var(--muted)", lineHeight: 1.7 }}>Una trayectoria construida sobre calma, precisión y relaciones a largo plazo con pacientes y familias.</p>
+            </div>
+          </div>
+          <div>
+            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem, 4vw, 4rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "2rem" }}>Una visión contemporánea del cuidado oral</h2>
+            <div style={{ display: "grid", gap: "1.5rem", fontSize: "1.1rem", color: "var(--muted)", lineHeight: 1.9 }}>
+              <p>La clínica nace de una convicción simple: una atención excelente no puede sentirse impersonal. Por eso combinamos método clínico, escucha real y una experiencia visualmente serena.</p>
+              <p>No trabajamos desde el ruido ni desde la venta agresiva. Diseñamos recorridos de tratamiento claros, técnicamente sólidos y pensados para durar muchos años.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <FinalCta />
+      <section style={{ padding: "8rem 2rem" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "5rem" }}>
+            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>Nuestros pilares</h2>
+            <p style={{ color: "var(--muted)", maxWidth: 760, margin: "0 auto", lineHeight: 1.8 }}>Tres principios que atraviesan la experiencia completa: desde el diagnóstico hasta el resultado final.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "2rem" }}>
+            {directives.map((item) => (
+              <article key={item.title} style={{ background: "var(--surface-lowest)", padding: "2.5rem", borderRadius: "2rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
+                <div style={{ width: 64, height: 64, borderRadius: 20, background: item.bg, color: item.color, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "2rem" }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 32 }}>{item.icon}</span>
+                </div>
+                <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.7rem", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>{item.title}</h3>
+                <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "6rem 0", background: "var(--brand)", color: "white", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: "4fr 8fr", gap: "4rem", alignItems: "center" }}>
+          <div>
+            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, marginBottom: "1.5rem" }}>Diseñada para restaurar</h2>
+            <p style={{ color: "#bcd4ff", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "2rem" }}>Nuestros espacios buscan bajar la tensión, mejorar la concentración clínica y hacer que la consulta se sienta mucho más humana.</p>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {[
+                "Consultas con privacidad acústica",
+                "Filtración médica del aire",
+                "Sillones ergonómicos de confort alto",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "center", gap: ".75rem", fontSize: ".85rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".14em" }}>
+                  <span className="material-symbols-outlined" style={{ color: "#6cbdfe" }}>check_circle</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "1rem" }}>
+            {spaces.map((item, index) => (
+              <div key={item.title} style={{ position: "relative", height: 256, borderRadius: "1rem", overflow: "hidden", marginTop: index % 2 ? "2rem" : 0 }}>
+                <Image src={imageUrl(item.image)} alt={item.title} fill style={{ objectFit: "cover" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "8rem 2rem", textAlign: "center" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "3rem" }}>El equipo detrás de la precisión</h2>
+          <div style={{ position: "relative", maxWidth: 960, margin: "0 auto", borderRadius: "3rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)" }}>
+            <div style={{ position: "relative", height: 500 }}>
+              <Image src={imageUrl("https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=1400&q=80")} alt="Equipo clínico" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent, rgba(27,68,119,.85))", display: "flex", flexDirection: "column", justifyContent: "end", alignItems: "start", padding: "3rem", textAlign: "left" }}>
+              <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "2rem", fontWeight: 800, color: "white", marginBottom: ".5rem" }}>Un equipo coordinado, preciso y cercano</h3>
+              <p style={{ color: "#bcd4ff", maxWidth: 680, lineHeight: 1.8 }}>Especialistas con experiencia real en rehabilitación, estética, prevención y planificación digital.</p>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: "2rem", marginTop: "4rem" }}>
+            {[
+              ["25+", "Especialistas"],
+              ["12k", "Sonrisas tratadas"],
+              ["15", "Reconocimientos"],
+              ["0.1%", "Incidencia crítica"],
+            ].map(([value, label]) => (
+              <div key={label}>
+                <p style={{ fontFamily: "var(--font-headline)", fontSize: "2.75rem", fontWeight: 900, color: "var(--secondary)" }}>{value}</p>
+                <p style={{ marginTop: ".5rem", fontSize: ".8rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".18em", color: "var(--outline)" }}>{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "8rem 2rem", background: "var(--surface-high)", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 56, color: "var(--brand-container)", fontVariationSettings: '"FILL" 1', marginBottom: "1.5rem" }}>spa</span>
+          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,4.5rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1.5rem" }}>Viví una odontología reimaginada.</h2>
+          <p style={{ color: "var(--muted)", fontSize: "1.2rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>Tu recorrido hacia una mejor salud oral empieza con una conversación tranquila, informada y a la altura de tus expectativas.</p>
+          <div className="btn-row" style={{ justifyContent: "center" }}>
+            <Link href="/contacto" className="btn" style={{ minHeight: 56, paddingInline: "2rem", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".85rem" }}>Solicitar consulta</Link>
+            <Link href="/tratamientos" className="btn-secondary" style={{ minHeight: 56, paddingInline: "2rem", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".85rem" }}>Ver tratamientos</Link>
+          </div>
+        </div>
+        <div style={{ position: "absolute", top: -96, right: -96, width: 384, height: 384, border: "40px solid rgba(255,255,255,.4)", borderRadius: 999 }} />
+      </section>
     </>
   );
 }

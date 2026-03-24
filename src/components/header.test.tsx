@@ -24,7 +24,7 @@ describe("Header", () => {
     render(<Header />);
 
     expect(screen.getByText(/Clínica Dental Lorenzo González/i)).toBeInTheDocument();
-    expect(screen.getByText(/Llamar ahora/i)).toBeInTheDocument();
+    expect(screen.getByText(/Reservar cita/i)).toBeInTheDocument();
   });
 
   it("opens mobile drawer when trigger is clicked", () => {
@@ -32,6 +32,6 @@ describe("Header", () => {
 
     fireEvent.click(screen.getByLabelText(/Abrir menú/i));
 
-    expect(screen.getByText(/Reservar llamada/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Reservar cita/i).length).toBeGreaterThan(0);
   });
 });

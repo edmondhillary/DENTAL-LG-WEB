@@ -295,7 +295,7 @@ export const treatments: Treatment[] = [
         title: "Corrección de bordes y color",
         description: "Mejora estética manteniendo expresividad facial.",
         image:
-          "https://images.unsplash.com/photo-1629909615957-be4fdf1f929e?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",
       },
     ],
   },

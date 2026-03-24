@@ -1,26 +1,21 @@
 import type { Metadata } from "next";
 import { ContactSection, LocationPreview } from "@/components/site-sections";
-import { clinic } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Contacto y cita dental",
-  description: "Pedí cita en la Clínica Dental Lorenzo González por formulario, teléfono o WhatsApp.",
+  title: "Contacto y booking",
+  description: "Página de contacto y reserva alineada al lenguaje de concierge premium.",
 };
 
 export default function ContactPage() {
   return (
     <>
-      <section className="section">
-        <div className="container section-split">
-          <div className="section-heading" style={{ marginBottom: 0 }}>
-            <span className="eyebrow">Reservá tu cita</span>
-            <h1 style={{ fontSize: "clamp(3.2rem, 6vw, 5.8rem)" }}>Contacto directo, elegante y sin fricción.</h1>
-            <p>Completá el formulario, llamanos al {clinic.phoneDisplay} o escribinos por WhatsApp. Si es una urgencia, indicánoslo en el mensaje.</p>
-          </div>
-          <div className="card dark-panel editorial-panel" style={{ alignSelf: "center" }}>
-            <p style={{ lineHeight: 1.85 }}>La página de contacto también tiene que respirar confianza clínica: claridad, calma y una vía rápida para resolver dudas reales.</p>
-          </div>
-        </div>
+      <section style={{ maxWidth: 1280, margin: "0 auto", padding: "5rem 2rem 4rem" }}>
+        <header style={{ maxWidth: 760 }}>
+          <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(4rem,7vw,6.4rem)", fontWeight: 800, color: "var(--brand)", letterSpacing: "-0.05em", marginBottom: "1.5rem" }}>
+            Empezá tu recorrido hacia la <span style={{ color: "var(--secondary)" }}>precisión.</span>
+          </h1>
+          <p style={{ color: "var(--muted)", fontSize: "1.2rem", lineHeight: 1.8 }}>Viví una experiencia dental coordinada desde el primer contacto, con orientación humana y una logística de atención cuidada al detalle.</p>
+        </header>
       </section>
       <ContactSection />
       <LocationPreview />
