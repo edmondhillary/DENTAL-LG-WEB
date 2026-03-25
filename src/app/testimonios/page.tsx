@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteIcon } from "@/components/site-icon";
-import { testimonials } from "@/data/site";
+import { clinic, testimonials } from "@/data/site";
 import { imageUrl, stars } from "@/lib/utils";
+import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Testimonios",
   description: "Historias de pacientes y reseñas con una presentación editorial premium.",
 };
+
+const avatarPalette = ["#d5e3ff", "#cde5ff", "#93f2f2", "#365b91"];
 
 export default function TestimonialsPage() {
   const featured = testimonials.slice(0, 2);
@@ -15,61 +19,90 @@ export default function TestimonialsPage() {
 
   return (
     <>
-      <section style={{ padding: "6rem 2rem 4rem", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "4rem", alignItems: "center" }}>
+      <section className={styles.hero}>
+        <div className={styles.heroGrid}>
           <div>
-            <span style={{ display: "inline-block", padding: ".45rem 1rem", borderRadius: 999, background: "var(--tertiary-fixed)", color: "#002020", fontSize: ".75rem", fontWeight: 800, letterSpacing: ".18em", textTransform: "uppercase", marginBottom: "1.5rem" }}>Voces de pacientes</span>
-            <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3.8rem,7vw,6.4rem)", fontWeight: 800, color: "var(--foreground)", lineHeight: 1.05, letterSpacing: "-0.05em", marginBottom: "1.5rem" }}>
+            <span className={styles.eyebrow}>Voces de pacientes</span>
+            <h1 className={styles.title}>
               El arte de sonreír con <span style={{ color: "var(--brand)" }}>confianza.</span>
             </h1>
-            <p style={{ color: "var(--muted)", fontSize: "1.15rem", lineHeight: 1.8, maxWidth: 560, marginBottom: "2rem" }}>
+            <p className={styles.heroCopy}>
               Historias reales de pacientes que eligieron precisión, estética y una experiencia clínica muy por encima de lo convencional.
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <div style={{ display: "flex", marginLeft: 8 }}>
+            <div className={styles.heroProof}>
+              <div className={styles.proofAvatars}>
                 {[0, 1, 2].map((index) => (
-                  <div key={index} style={{ width: 48, height: 48, borderRadius: 999, overflow: "hidden", border: "2px solid white", marginLeft: index ? -12 : 0, position: "relative" }}>
-                    <Image src={imageUrl(["https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=300&q=80", "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=300&q=80", "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=300&q=80"][index])} alt="Paciente" fill style={{ objectFit: "cover" }} />
+                  <div key={index} className={styles.proofAvatar}>
+                    <Image
+                      src={imageUrl([
+                        "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=300&q=80",
+                        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=300&q=80",
+                        "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=300&q=80",
+                      ][index])}
+                      alt="Paciente"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
                   </div>
                 ))}
               </div>
-              <div style={{ fontSize: ".95rem", fontWeight: 700 }}><span style={{ color: "var(--brand)", fontWeight: 800 }}>500+</span> reseñas verificadas</div>
+              <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={styles.proofLink}>
+                <span className={styles.googleBadge} aria-hidden="true">
+                  <span className={styles.googleGlyph}>G</span>
+                </span>
+                <span><strong style={{ color: "var(--brand)" }}>28</strong> Google reviews</span>
+              </a>
             </div>
           </div>
-          <div style={{ position: "relative" }}>
-            <div style={{ position: "relative", aspectRatio: "4 / 5", borderRadius: "1rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)" }}>
+
+          <div className={styles.heroMediaWrap}>
+            <div className={styles.heroMedia}>
               <Image src={imageUrl("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80")} alt="Paciente feliz" fill style={{ objectFit: "cover" }} />
             </div>
-            <div style={{ position: "absolute", left: -24, bottom: -24, background: "rgba(255,255,255,.7)", backdropFilter: "blur(20px)", padding: "1.5rem", borderRadius: "1rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)", maxWidth: 220 }}>
-                <SiteIcon name="verified" size={30} style={{ color: "var(--brand)", display: "block", marginBottom: ".5rem" }} />
-              <p style={{ fontWeight: 800, color: "var(--foreground)", lineHeight: 1.4 }}>98% de satisfacción declarada</p>
+            <div className={styles.heroBadgeCard}>
+              <SiteIcon name="verified" size={30} className={styles.heroBadgeIcon} />
+              <p className={styles.heroBadgeText}>98% de satisfacción declarada</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section style={{ padding: "6rem 0", background: "var(--surface-low)" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ marginBottom: "4rem" }}>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.5rem", fontWeight: 800, color: "var(--foreground)", marginBottom: ".5rem" }}>Historias destacadas</h2>
-            <p style={{ color: "var(--muted)" }}>Casos más desarrollados de transformación y experiencia clínica.</p>
+      <section className={styles.featuredWrap}>
+        <div className={styles.featuredSection}>
+          <div className={styles.sectionIntro}>
+            <h2 className={styles.sectionTitle}>Historias destacadas</h2>
+            <p className={styles.sectionCopy}>Casos más desarrollados de transformación y experiencia clínica.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "3rem" }}>
+
+          <div className={styles.featuredGrid}>
             {featured.map((item, index) => (
-              <article key={item.name} style={{ display: "flex", gap: "2rem", background: "white", padding: "2rem", borderRadius: "1rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
-                <div style={{ width: 180, aspectRatio: "1 / 1", borderRadius: ".75rem", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                  <Image src={imageUrl(index === 0 ? "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80" : "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80")} alt={item.name} fill style={{ objectFit: "cover" }} />
+              <article key={item.name} className={styles.featuredCard}>
+                <div className={styles.featuredAvatar}>
+                  <Image
+                    src={imageUrl(index === 0 ? "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80" : "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80")}
+                    alt={item.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <div style={{ display: "flex", gap: ".15rem", color: "var(--secondary)", marginBottom: "1rem" }}>
+                <div className={styles.featuredContent}>
+                  <div className={styles.stars}>
                     {stars(item.rating).map((star) => (
                       <SiteIcon key={star} name="star" size={14} fill="currentColor" />
                     ))}
                   </div>
-                  <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.5rem", fontWeight: 800, marginBottom: "1rem" }}>&ldquo;{item.quote}&rdquo;</h3>
-                  <p style={{ fontWeight: 800, fontSize: ".9rem" }}>{item.name}</p>
-                  <p style={{ color: "var(--outline)", fontSize: ".75rem", marginTop: ".25rem" }}>{item.source} · {item.publishedAt}</p>
-                  <p style={{ color: "var(--outline)", fontSize: ".75rem", textTransform: "uppercase", letterSpacing: ".16em", marginTop: ".35rem" }}>{item.treatment}</p>
+                  <h3 className={styles.featuredQuote}>&ldquo;{item.quote}&rdquo;</h3>
+                  <p className={styles.reviewName}>{item.name}</p>
+                  <div className={styles.reviewMeta}>
+                    <p className={styles.reviewInfo}>{item.source} · {item.publishedAt}</p>
+                    <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={styles.googleLink}>
+                      <span className={styles.googleBadge} aria-hidden="true">
+                        <span className={styles.googleGlyph}>G</span>
+                      </span>
+                      <span>Google Reviews</span>
+                    </a>
+                  </div>
+                  <p className={styles.reviewTreatment}>{item.treatment}</p>
                 </div>
               </article>
             ))}
@@ -77,31 +110,41 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <section style={{ padding: "6rem 2rem", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2.4rem", fontWeight: 800, color: "var(--foreground)" }}>Experiencias recientes</h2>
-          <div style={{ width: 48, height: 4, borderRadius: 999, background: "var(--brand)", margin: "1rem auto 0" }} />
+      <section className={styles.recentSection}>
+        <div className={styles.recentIntro}>
+          <h2 className={styles.sectionTitle}>Experiencias recientes</h2>
+          <div className={styles.recentDivider} />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "2rem" }}>
+
+        <div className={styles.recentGrid}>
           {recent.map((item, index) => (
-            <article key={item.name} style={{ background: "white", padding: "2rem", borderRadius: "1rem", boxShadow: "0 4px 20px rgba(0,0,0,.02)", border: "1px solid rgba(195,198,214,.15)" }}>
-              <div style={{ display: "flex", gap: ".15rem", color: "var(--secondary)", marginBottom: "1.25rem" }}>
+            <article key={item.name} className={styles.recentCard}>
+              <div className={styles.stars}>
                 {stars(item.rating).map((star) => (
                   <SiteIcon key={star} name="star" size={12} fill="currentColor" />
                 ))}
               </div>
-              <p style={{ color: "var(--muted)", fontStyle: "italic", lineHeight: 1.8, marginBottom: "2rem" }}>&ldquo;{item.quote}&rdquo;</p>
-              <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 999, background: ["#d5e3ff", "#cde5ff", "#93f2f2", "#365b91"][index % 4], color: index % 4 === 3 ? "white" : "var(--brand)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: ".75rem" }}>
+              <p className={styles.recentQuote}>&ldquo;{item.quote}&rdquo;</p>
+              <div className={styles.reviewAuthor}>
+                <div
+                  className={styles.reviewInitials}
+                  style={{ background: avatarPalette[index % avatarPalette.length], color: index % avatarPalette.length === 3 ? "white" : "var(--brand)" }}
+                >
                   {item.name
                     .split(" ")
                     .map((part) => part[0])
                     .join("")
                     .slice(0, 2)}
                 </div>
-                <div>
-                  <p style={{ fontWeight: 800, fontSize: ".9rem" }}>{item.name}</p>
-                  <p style={{ color: "var(--outline)", fontSize: ".75rem" }}>{item.source} · {item.publishedAt}</p>
+                <div className={styles.reviewMeta}>
+                  <p className={styles.reviewName}>{item.name}</p>
+                  <p className={styles.reviewInfo}>{item.source} · {item.publishedAt}</p>
+                  <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={styles.googleLink}>
+                    <span className={styles.googleBadge} aria-hidden="true">
+                      <span className={styles.googleGlyph}>G</span>
+                    </span>
+                    <span>Google Reviews</span>
+                  </a>
                 </div>
               </div>
             </article>
@@ -109,23 +152,23 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <section style={{ padding: "6rem 2rem 8rem", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ position: "relative", background: "var(--brand)", borderRadius: "2rem", overflow: "hidden", padding: "4rem 2rem", textAlign: "center" }}>
-          <div style={{ position: "absolute", inset: 0, opacity: 0.1 }}>
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaShell}>
+          <div className={styles.ctaBg}>
             <Image src={imageUrl("https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1400&q=80")} alt="Textura clínica" fill style={{ objectFit: "cover" }} />
           </div>
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.8rem,5vw,4.2rem)", fontWeight: 800, color: "white", marginBottom: "1rem" }}>Vive la diferencia del Atelier.</h2>
-            <p style={{ color: "#bcd4ff", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: 760, margin: "0 auto 2rem" }}>Tu experiencia también puede ayudar a otros pacientes a tomar una decisión con más claridad y confianza.</p>
-            <div className="btn-row" style={{ justifyContent: "center" }}>
-              <button className="btn-secondary" style={{ background: "white", color: "var(--brand)", minHeight: 56, paddingInline: "2rem", fontWeight: 800 }}>
+          <div className={styles.ctaContent}>
+            <h2 className={styles.ctaTitle}>Vive la diferencia de nuestra clínica.</h2>
+            <p className={styles.ctaCopy}>Tu experiencia también puede ayudar a otros pacientes a tomar una decisión con más claridad y confianza.</p>
+            <div className={styles.ctaActions}>
+              <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={`btn-secondary ${styles.ctaPrimary}`}>
                 <SiteIcon name="grade" size={18} />
                 Dejar reseña en Google
-              </button>
-              <button className="btn-secondary" style={{ background: "rgba(54,91,145,.45)", color: "white", borderColor: "rgba(255,255,255,.25)", minHeight: 56, paddingInline: "2rem", fontWeight: 800 }}>
+              </a>
+              <Link href="/contacto" className={`btn-secondary ${styles.ctaSecondary}`}>
                 <SiteIcon name="reviews" size={18} />
-                Dejar reseña en otra plataforma
-              </button>
+                Reservar consulta
+              </Link>
             </div>
           </div>
         </div>

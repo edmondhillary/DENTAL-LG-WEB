@@ -1,0 +1,263 @@
+@use "../../../styles/abstracts/mixins" as *;
+
+.page,
+.heroInner,
+.section,
+.cta {
+  width: min(100% - (2 * var(--container-padding)), var(--container-wide));
+  margin-inline: auto;
+}
+
+.hero {
+  position: relative;
+  min-height: 42rem;
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(247,249,251,.96), rgba(247,249,251,.76), rgba(247,249,251,.18));
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  background: var(--tertiary-fixed);
+  color: #002020;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+  max-width: 10ch;
+}
+
+.copy,
+.paragraph,
+.meta,
+.galleryCopy,
+.ctaCopy,
+.infoText {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.copy {
+  max-width: 42rem;
+  font-size: 1.15rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.grid,
+.galleryGrid,
+.infoGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@include up(lg) {
+  .grid {
+    grid-template-columns: minmax(0, 7fr) minmax(18rem, 5fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.card,
+.metricCard,
+.infoCard {
+  background: white;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(195,198,214,.18);
+  box-shadow: 0 20px 50px rgba(25,28,30,.05);
+}
+
+.card {
+  padding: 2rem;
+}
+
+.heading {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  font-family: var(--font-headline), serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: .85rem;
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1rem;
+}
+
+.metricCard {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.metricValue {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--brand);
+}
+
+.metricLabel {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--muted);
+}
+
+.imageCompare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@include up(md) {
+  .imageCompare {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+.imageCard {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1rem;
+  overflow: clip;
+}
+
+.imageBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  color: var(--brand);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.galleryGrid {
+  grid-template-columns: 1fr;
+}
+
+@include up(md) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+.galleryItem {
+  display: grid;
+  gap: .75rem;
+}
+
+.galleryImage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  overflow: clip;
+}
+
+.infoGrid {
+  grid-template-columns: 1fr;
+}
+
+@include up(md) {
+  .infoGrid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+.infoCard {
+  padding: 1.5rem;
+}
+
+.cta {
+  padding: 0 0 7rem;
+}
+
+.ctaShell {
+  background: var(--brand);
+  border-radius: 2rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+@include up(md) {
+  .ctaShell {
+    padding: 4rem 2rem;
+  }
+}
+
+.ctaTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.ctaCopy {
+  color: #d5e3ff;
+  max-width: 44rem;
+  margin: 0 auto 2rem;
+}
+
+.ctaActions {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@include up(md) {
+  .ctaActions {
+    grid-template-columns: repeat(2, max-content);
+  }
+}

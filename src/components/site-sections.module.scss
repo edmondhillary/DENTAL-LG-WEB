@@ -238,6 +238,28 @@
   display: none;
 }
 
+.heroMobileMedia {
+  display: grid;
+  gap: 1rem;
+}
+
+.heroMobileFrame {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  border-radius: 1.5rem;
+  overflow: clip;
+  box-shadow: var(--shadow-medium);
+}
+
+.heroMobileTrust {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  max-width: 22rem;
+}
+
 .heroMedia {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -268,6 +290,10 @@
 
   .heroMediaWrap {
     display: block;
+  }
+
+  .heroMobileMedia {
+    display: none;
   }
 
   .heroMedia {
@@ -311,13 +337,55 @@
   font-weight: 500;
 }
 
-.heroReviewMeta {
+.heroReviewFooter,
+.testimonialFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
   margin-top: 1rem;
+}
+
+.heroReviewMeta {
   font-size: 0.75rem;
   font-weight: 800;
   color: var(--outline);
   text-transform: uppercase;
   letter-spacing: 0.18em;
+}
+
+.googleReviewLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+.googleBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 0 0 1px rgba(195, 198, 214, 0.18);
+}
+
+.googleBlue {
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(90deg, #4285f4 0 30%, #ea4335 30% 55%, #fbbc05 55% 78%, #34a853 78% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .heroBackdrop {
@@ -798,7 +866,17 @@
   pointer-events: auto;
 }
 
-.contactPanel { border-radius: 1rem; }
+.contactPanel {
+  border-radius: 1rem;
+  background: var(--surface-lowest);
+  color: var(--foreground);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(195,198,214,.18);
+}
+
+.contactPanelContent {
+  padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+}
 .contactPill { background: rgba(147,242,242,.35); color: #002020; margin-bottom: 1.5rem; }
 
 .contactAside { gap: 2rem; }
@@ -824,10 +902,17 @@
 
 .contactBoxHeader { margin-bottom: 1.5rem; }
 .contactBoxTitle { font-size: 1.25rem; }
+.contactTitle {
+  color: var(--brand);
+  margin-bottom: 2rem;
+}
 .contactAddress { font-size: 1.05rem; line-height: 1.8; opacity: .86; color: inherit; max-width: 30ch; }
 .contactMeta { gap: 1rem; }
 .contactLink { font-weight: 700; }
 .contactSchedule { font-size: .95rem; }
+.contactLocationIcon {
+  color: var(--tertiary-fixed);
+}
 
 .contactUrgency {
   background: var(--tertiary-fixed);
@@ -838,6 +923,9 @@
 .urgencyTitle { font-size: 1.1rem; text-transform: uppercase; letter-spacing: -.01em; }
 .urgencyCopy { font-size: .95rem; line-height: 1.8; margin-bottom: 1rem; opacity: .9; max-width: 42ch; }
 .urgencyLink { display: inline-flex; align-items: center; font-weight: 800; color: var(--tertiary); border-bottom: 1px solid rgba(0,76,76,.2); padding-bottom: .2rem; }
+.urgencyIcon {
+  color: var(--tertiary);
+}
 
 .finalCtaShell {
   background: var(--brand);

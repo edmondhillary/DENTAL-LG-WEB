@@ -13,6 +13,8 @@ export const clinic = {
   name: "Clínica Dental Lorenzo González",
   phone: "963608833",
   phoneDisplay: "963 608 833",
+  googleReviewsUrl:
+    "https://www.google.com/maps/place/Cl%C3%ADnica+Dental+Dr+Lorenzo+Gonz%C3%A1lez+Cueva/@39.4661665,-0.3538256,17z/data=!4m8!3m7!1s0xd604894a7ff10cd:0x33e53c0b5b26ac7a!8m2!3d39.4661665!4d-0.3512453!9m1!1b1!16s%2Fg%2F1z44crcmp!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D",
   whatsappHref: "https://wa.me/34963608833?text=Hola%2C%20quiero%20pedir%20una%20cita%20en%20la%20Cl%C3%ADnica%20Dental%20Lorenzo%20Gonz%C3%A1lez.",
   formspreeEndpoint: "https://formspree.io/f/xbdzvzrv",
   email: "citas@clinicadentallorenzogonzalez.es",
@@ -779,58 +781,58 @@ export const team: TeamMember[] = [
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Ana Martínez",
+    name: "Enrique Crespo",
     treatment: "Implantes dentales",
     rating: 5,
     quote:
-      "Buscaba una clínica seria en Valencia y la encontré. Me explicaron todo con calma y el resultado ha sido impecable.",
+      "Solo tengo buenas palabras para esta clínica dental. Desde el primer momento te tratan genial y te ayudan en lo que sea.",
     source: "Google Maps",
-    publishedAt: "Hace 3 semanas",
+    publishedAt: "Hace 3 meses",
   },
   {
-    name: "Carlos y Laura Ruiz",
-    treatment: "Odontopediatría",
+    name: "Carmen Solana",
+    treatment: "Atención general",
     rating: 5,
     quote:
-      "Llevamos a nuestros hijos desde hace años. El trato es cercano, profesional y muy humano. Se nota la experiencia del equipo.",
+      "Un encanto todo el equipo, destacaría la profesionalidad y la cercanía, siempre pensando en el bienestar del paciente.",
     source: "Google Maps",
-    publishedAt: "Hace 1 mes",
+    publishedAt: "Hace un mes",
   },
   {
-    name: "María Romero",
-    treatment: "Carillas dentales",
+    name: "Ignacio Miñana Roser",
+    treatment: "Ortodoncia y encías",
     rating: 5,
     quote:
-      "Quería algo bonito pero natural. El cambio ha quedado elegante, sin exageraciones. Volvería a elegirlos sin dudar.",
+      "Gran atención, ha resuelto mis problemas de alineación dental y el dolor de encías.",
     source: "Google Maps",
     publishedAt: "Hace 2 meses",
   },
   {
-    name: "Vicente Pérez",
+    name: "Emma Calatayud Aristoy",
     treatment: "Ortodoncia",
     rating: 5,
     quote:
-      "La planificación digital me dio mucha confianza. Se nota que trabajan con tecnología, pero sin perder el trato cercano.",
+      "Trato súper profesional y cercano. Estoy más que satisfecha con los resultados de mi ortodoncia dirigida por la Dra. Cristina González.",
     source: "Google Maps",
-    publishedAt: "Hace 2 meses",
+    publishedAt: "Hace 2 años",
   },
   {
-    name: "Sofía García",
-    treatment: "Estética dental",
+    name: "Laura Ruiz",
+    treatment: "Atención general",
     rating: 5,
     quote:
-      "La clínica transmite calma y nivel. El equipo y la atención están muy por encima de lo habitual.",
+      "En esta clínica el trato es excepcional. Son muy buenos profesionales, amables y honestos.",
     source: "Google Maps",
-    publishedAt: "Hace 4 meses",
+    publishedAt: "Hace 9 años",
   },
   {
-    name: "Javier López",
-    treatment: "Urgencia dental",
+    name: "Víctor Millán Navarro",
+    treatment: "Atención general",
     rating: 5,
     quote:
-      "Me atendieron rápido por un dolor fuerte y me resolvieron la urgencia el mismo día. Profesionalidad total.",
+      "Desde pequeño tenía bastante miedo al dentista hasta que di con esta clínica, donde me atendieron de forma súper cercana.",
     source: "Google Maps",
-    publishedAt: "Hace 5 meses",
+    publishedAt: "Hace 2 años",
   },
 ];
 

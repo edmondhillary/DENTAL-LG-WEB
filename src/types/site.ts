@@ -54,6 +54,25 @@ export type BeforeAfterCase = {
   image: string;
 };
 
+export type CaseStudy = {
+  slug: string;
+  caseCode: string;
+  category: string;
+  treatment: string;
+  title: string;
+  summary: string;
+  problem: string;
+  arrivalState: string;
+  solution: string;
+  result: string;
+  duration: string;
+  precision: string;
+  heroImage: string;
+  beforeImage: string;
+  afterImage: string;
+  gallery: { image: string; alt: string }[];
+};
+
 export type GlobalFaq = {
   question: string;
   answer: string;

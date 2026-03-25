@@ -68,6 +68,8 @@ export function DoctorCard({ bio, image, name, role, specialty }: (typeof team)[
 }
 
 export function HeroSection() {
+  const featuredReview = testimonials.find((item) => item.name === "Enrique Crespo") ?? testimonials[0];
+
   return (
     <section className={styles.hero}>
       <div className={styles.containerWide}>
@@ -93,6 +95,28 @@ export function HeroSection() {
             <SiteIcon name="verified" size={18} style={{ color: "var(--brand)" }} />
             <span style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--brand)" }}>Primera visita gratuita (sin radiografía)</span>
           </div>
+          <div className={styles.heroMobileMedia}>
+            <div className={styles.heroMobileFrame}>
+              <Image src={imageUrl("https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=1400&q=80")} alt="Clínica dental premium" fill priority style={{ objectFit: "cover" }} />
+            </div>
+            <div className={styles.heroMobileTrust}>
+              <div className={styles.heroReviewStars}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <SiteIcon key={i} name="star" size={16} fill="currentColor" />
+                ))}
+              </div>
+              <p className={styles.heroReviewText}>&ldquo;{featuredReview.quote}&rdquo;</p>
+              <div className={styles.heroReviewFooter}>
+                <p className={styles.heroReviewMeta}>— {featuredReview.name}</p>
+                <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={styles.googleReviewLink}>
+                  <span className={styles.googleBadge} aria-hidden="true">
+                    <span className={styles.googleBlue}>G</span>
+                  </span>
+                  <span>Google Reviews</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
         <div className={styles.heroMediaWrap}>
           <div className={styles.heroMedia}>
@@ -104,10 +128,16 @@ export function HeroSection() {
                 <SiteIcon key={i} name="star" size={18} fill="currentColor" />
               ))}
             </div>
-            <p className={styles.heroReviewText}>
-              “La experiencia dental más sofisticada que hemos vivido. Precisión, calma y un resultado impecable.”
-            </p>
-            <p className={styles.heroReviewMeta}>— Paciente verificado</p>
+            <p className={styles.heroReviewText}>&ldquo;{featuredReview.quote}&rdquo;</p>
+            <div className={styles.heroReviewFooter}>
+              <p className={styles.heroReviewMeta}>— {featuredReview.name}</p>
+              <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={styles.googleReviewLink}>
+                <span className={styles.googleBadge} aria-hidden="true">
+                  <span className={styles.googleBlue}>G</span>
+                </span>
+                <span>Google Reviews</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -120,7 +150,7 @@ export function HeroSection() {
 export function HighlightsSection() {
   const stats = [
     { value: "37+", label: "Años de experiencia" },
-    { value: "10k+", label: "Sonrisas tratadas" },
+    { value: "35K+", label: "Pacientes tratados" },
     { value: "3D", label: "Diagnóstico digital" },
     { value: "Zero", label: "Protocolo de dolor" },
   ];
@@ -198,7 +228,7 @@ export function WhyChooseUsSection() {
           </div>
         </div>
         <div>
-          <h2 className={styles.sectionTitleLg} style={{ marginBottom: "3rem" }}>Más que odontología. Un atelier clínico.</h2>
+          <h2 className={styles.sectionTitleLg} style={{ marginBottom: "3rem" }}>Más que odontología. Un espacio clínico de referencia.</h2>
           <div className={styles.featureList}>
             {features.map(([icon, title, copy]) => (
               <div key={title} className={styles.featureItem}>
@@ -239,7 +269,15 @@ export function TestimonialsPreview({ limit = 2 }: { limit?: number }) {
                 </div>
                 <h3 className={styles.testimonialQuote}>&ldquo;{item.quote}&rdquo;</h3>
                 <p className={styles.testimonialName}>{item.name}</p>
-                <p className={styles.testimonialMeta}>{item.treatment}</p>
+                <div className={styles.testimonialFooter}>
+                  <p className={styles.testimonialMeta}>{item.treatment}</p>
+                  <a href={clinic.googleReviewsUrl} target="_blank" rel="noreferrer" className={styles.googleReviewLink}>
+                    <span className={styles.googleBadge} aria-hidden="true">
+                      <span className={styles.googleBlue}>G</span>
+                    </span>
+                    <span>Google Reviews</span>
+                  </a>
+                </div>
               </div>
             </article>
           ))}
@@ -316,7 +354,7 @@ export function BlogPreview() {
       <div className="container" style={{ width: "min(1280px, calc(100% - 4rem))" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "4rem" }}>
           <span style={{ color: "var(--secondary)", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".18em", fontSize: ".7rem" }}>Análisis e innovación</span>
-          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,5rem)", fontWeight: 800, color: "var(--brand)" }}>La Revista del Atelier</h2>
+          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3rem,5vw,5rem)", fontWeight: 800, color: "var(--brand)" }}>La Revista de la Clínica</h2>
           <p style={{ color: "var(--muted)", fontSize: "1.25rem", lineHeight: 1.8, maxWidth: 760 }}>Una exploración editorial de odontología moderna, precisión estética y tecnología clínica aplicada.</p>
         </div>
         <article style={{ background: "var(--surface-lowest)", borderRadius: "1rem", overflow: "hidden", marginBottom: "4rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
@@ -397,19 +435,21 @@ export function ContactSection() {
   return (
     <section className={styles.contactSection}>
       <div className={styles.contactGrid}>
-        <div className={`${styles.contactPanel} ${styles.contactBox}`} style={{ background: "var(--surface-lowest)", color: "var(--foreground)", minHeight: "auto" }}>
-          <h2 className={styles.contactTitle} style={{ color: "var(--brand)", marginBottom: "2rem" }}>Solicita una consulta</h2>
+        <div className={styles.contactPanel}>
+          <div className={styles.contactPanelContent}>
+          <h2 className={styles.contactTitle}>Solicita una consulta</h2>
           <div className={styles.contactPill}>
             <SiteIcon name="verified" size={16} /> Primera visita gratuita (sin radiografía)
           </div>
           <ContactForm />
+          </div>
         </div>
         <div className={styles.contactAside}>
           <div className={styles.contactBox}>
             <div>
               <div className={styles.contactBoxHeader}>
-                <SiteIcon name="location_on" size={20} style={{ color: "var(--tertiary-fixed)" }} />
-                <h3 className={styles.contactBoxTitle}>El Atelier clínico</h3>
+                <SiteIcon name="location_on" size={20} className={styles.contactLocationIcon} />
+                <h3 className={styles.contactBoxTitle}>La clínica</h3>
               </div>
               <a href={clinic.mapsUrl} target="_blank" rel="noreferrer" className={styles.contactAddress}>{clinic.address}</a>
             </div>
@@ -424,7 +464,7 @@ export function ContactSection() {
           </div>
           <div className={styles.contactUrgency}>
             <div className={styles.urgencyHeader}>
-                <SiteIcon name="medical_services" size={20} style={{ color: "var(--tertiary)" }} />
+                <SiteIcon name="medical_services" size={20} className={styles.urgencyIcon} />
               <h3 className={styles.urgencyTitle}>Urgencias fuera de horario</h3>
             </div>
             <p className={styles.urgencyCopy}>Los pacientes en seguimiento pueden usar el canal prioritario de WhatsApp para una primera orientación urgente.</p>

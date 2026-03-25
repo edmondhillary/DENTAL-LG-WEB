@@ -25,6 +25,13 @@
   cursor: pointer;
 }
 
+@media (max-width: 640px) {
+  .trigger {
+    padding: 1rem 1rem;
+    align-items: flex-start;
+  }
+}
+
 .icon {
   flex-shrink: 0;
   transition: transform 180ms ease;
@@ -39,4 +46,10 @@
   color: var(--muted);
   line-height: 1.8;
   max-width: 65ch;
+}
+
+@media (max-width: 640px) {
+  .answer {
+    padding: 0 1rem 1rem;
+  }
 }

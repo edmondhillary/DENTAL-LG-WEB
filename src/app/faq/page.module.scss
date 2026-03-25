@@ -13,6 +13,14 @@
   margin-inline: auto;
 }
 
+@include down(md) {
+  .heroInner,
+  .content,
+  .ctaSection {
+    width: min(100%, calc(100% - 2rem));
+  }
+}
+
 .heroInner {
   position: relative;
   z-index: 1;
@@ -99,6 +107,13 @@
   padding: 4rem 0 8rem;
 }
 
+@include down(md) {
+  .content {
+    gap: 2rem;
+    padding: 3rem 0 6rem;
+  }
+}
+
 @include up(lg) {
   .content {
     grid-template-columns: minmax(15rem, 25%) minmax(0, 1fr);
@@ -111,6 +126,17 @@
 }
 
 .asideInner {
+  display: grid;
+  gap: .75rem;
+}
+
+@include down(md) {
+  .asideInner {
+    gap: 1rem;
+  }
+}
+
+.categoryScroll {
   display: grid;
   gap: .75rem;
 }
@@ -137,9 +163,42 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 1.5rem;
+  padding: .9rem 1.1rem;
   border-radius: 1rem;
   color: var(--muted);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  width: auto;
+  min-width: max-content;
+  cursor: pointer;
+}
+
+.categoryLabel {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@include down(lg) {
+  .categoryScroll {
+    display: flex;
+    gap: .75rem;
+    overflow-x: auto;
+    padding: 0 .125rem .5rem;
+    scrollbar-width: none;
+  }
+
+  .categoryScroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categoryLink {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(195,198,214,.18);
+    box-shadow: 0 8px 24px rgba(25,28,30,.04);
+  }
 }
 
 .categoryLinkActive {
@@ -152,6 +211,36 @@
   gap: 5rem;
 }
 
+@include down(md) {
+  .sections {
+    gap: 3.5rem;
+  }
+}
+
+.sectionIntroCard {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(195,198,214,.18);
+  border-radius: 1.25rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@include down(md) {
+  .sectionIntroCard {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.sectionIntroCopy {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.faqSpacing {
+  margin-top: 1rem;
+}
+
 .sectionHeader {
   display: flex;
   align-items: baseline;
@@ -160,6 +249,13 @@
   border-bottom: 1px solid rgba(195,198,214,.2);
   padding-bottom: 1.5rem;
   flex-wrap: wrap;
+}
+
+@include down(md) {
+  .sectionHeader {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
 }
 
 .sectionTitle {
@@ -177,6 +273,12 @@
 .featureGrid {
   display: grid;
   gap: 1.5rem;
+}
+
+@include down(md) {
+  .featureGrid {
+    gap: 1rem;
+  }
 }
 
 @include up(md) {
@@ -227,6 +329,7 @@
   min-height: 3rem;
   padding-inline: 1.25rem;
   font-weight: 800;
+  width: fit-content;
 }
 
 .card {
@@ -235,6 +338,13 @@
   border-radius: 1.75rem;
   border: 1px solid rgba(195,198,214,.15);
   box-shadow: 0 4px 20px rgba(0,0,0,.02);
+}
+
+@include down(md) {
+  .card {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+  }
 }
 
 .cardTitle {
@@ -265,6 +375,12 @@
 
 .ctaSection {
   padding-bottom: 8rem;
+}
+
+@include down(md) {
+  .ctaSection {
+    padding-bottom: 5rem;
+  }
 }
 
 .ctaShell {
@@ -320,6 +436,41 @@
   min-height: 3.5rem;
   padding-inline: 2rem;
   font-weight: 800;
+}
+
+@include down(md) {
+  .ctaAction,
+  .featureHeroButton {
+    width: auto;
+    justify-self: start;
+  }
+}
+
+.noResultsCard {
+  background: white;
+  border: 1px solid rgba(195,198,214,.18);
+  box-shadow: var(--shadow-soft);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.noResultsTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.noResultsCopy {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 44ch;
+}
+
+.noResultsAction {
+  width: fit-content;
 }
 
 .ctaOrbRight {

@@ -130,7 +130,7 @@ export default async function TreatmentDetailPage({ params }: Props) {
       <section className={styles.simpleSection}>
         <div className={styles.simpleSection} style={{ padding: 0, background: "transparent" }}>
           <div className={styles.simpleIntro}>
-            <h2 className={styles.simpleTitle}>¿Es el tratamiento adecuado para vos?</h2>
+          <h2 className={styles.simpleTitle}>¿Es el tratamiento adecuado para ti?</h2>
             <p className={styles.sectionLead}>
               Priorizamos el éxito a largo plazo. Un buen candidato reúne condiciones biológicas, funcionales y de mantenimiento concretas.
             </p>
@@ -151,7 +151,7 @@ export default async function TreatmentDetailPage({ params }: Props) {
         <div className={styles.processSection} style={{ padding: 0, background: "transparent" }}>
           <div className={styles.processHeader}>
             <div style={{ maxWidth: 640 }}>
-              <h2 className={styles.processTitle}>El recorrido atelier</h2>
+              <h2 className={styles.processTitle}>El recorrido clínico</h2>
               <p className={styles.sectionLead}>Una secuencia pensada con criterio: desde el estudio inicial hasta el control de la fase final.</p>
             </div>
             <div className={styles.processMeta}>Protocolo clínico</div>

@@ -7,7 +7,7 @@ import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros",
-  description: "Conocé la filosofía, la historia y las instalaciones de la Clínica Dental Lorenzo González.",
+  description: "Conoce la filosofía, la historia y las instalaciones de la Clínica Dental Lorenzo González.",
 };
 
 export default function AboutPage() {
@@ -45,7 +45,7 @@ export default function AboutPage() {
       image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80",
     },
     {
-      title: "Recepción atelier",
+      title: "Recepción clínica",
       image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80",
     },
     {
@@ -98,76 +98,76 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section style={{ padding: "8rem 2rem" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>Nuestros pilares</h2>
-            <p style={{ color: "var(--muted)", maxWidth: 760, margin: "0 auto", lineHeight: 1.8 }}>Tres principios que atraviesan la experiencia completa: desde el diagnóstico hasta el resultado final.</p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "2rem" }}>
-            {directives.map((item) => (
-              <article key={item.title} style={{ background: "var(--surface-lowest)", padding: "2.5rem", borderRadius: "2rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
-                <div style={{ width: 64, height: 64, borderRadius: 20, background: item.bg, color: item.color, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "2rem" }}>
-                  <SiteIcon name={item.icon} size={32} />
-                </div>
-                <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.7rem", fontWeight: 800, color: "var(--brand)", marginBottom: "1rem" }}>{item.title}</h3>
-                <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>{item.copy}</p>
-              </article>
-            ))}
-          </div>
+      <section className={styles.pillarsSection}>
+        <div className={styles.sectionIntro}>
+          <h2 className={styles.sectionTitle}>Nuestros pilares</h2>
+          <p className={styles.sectionCopy}>Tres principios que atraviesan la experiencia completa: desde el diagnóstico hasta el resultado final.</p>
+        </div>
+        <div className={styles.pillarsGrid}>
+          {directives.map((item) => (
+            <article key={item.title} className={styles.pillarCard}>
+              <div className={styles.pillarIcon} style={{ background: item.bg, color: item.color }}>
+                <SiteIcon name={item.icon} size={32} />
+              </div>
+              <h3 className={styles.pillarTitle}>{item.title}</h3>
+              <p className={styles.pillarCopy}>{item.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section style={{ padding: "6rem 0", background: "var(--brand)", color: "white", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: "4fr 8fr", gap: "4rem", alignItems: "center" }}>
-          <div>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, marginBottom: "1.5rem" }}>Diseñada para restaurar</h2>
-            <p style={{ color: "#bcd4ff", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "2rem" }}>Nuestros espacios buscan bajar la tensión, mejorar la concentración clínica y hacer que la consulta se sienta mucho más humana.</p>
-            <div style={{ display: "grid", gap: "1rem" }}>
-              {[
-                "Consultas con privacidad acústica",
-                "Filtración médica del aire",
-                "Sillones ergonómicos de confort alto",
-              ].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: ".75rem", fontSize: ".85rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".14em" }}>
-                  <SiteIcon name="check_circle" size={20} style={{ color: "#6cbdfe" }} />
-                  <span>{item}</span>
+      <section className={styles.spacesWrap}>
+        <div className={styles.spacesSection}>
+          <div className={styles.spacesGrid}>
+            <div className={styles.spacesContent}>
+              <h2 className={styles.spacesTitle}>Diseñada para restaurar</h2>
+              <p className={styles.spacesCopy}>Nuestros espacios buscan bajar la tensión, mejorar la concentración clínica y hacer que la consulta se sienta mucho más humana.</p>
+              <div className={styles.spacesList}>
+                {[
+                  "Consultas con privacidad acústica",
+                  "Filtración médica del aire",
+                  "Sillones ergonómicos de confort alto",
+                ].map((item) => (
+                  <div key={item} className={styles.spacesListItem}>
+                    <SiteIcon name="check_circle" size={20} style={{ color: "#6cbdfe" }} />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.spacesGallery}>
+              {spaces.map((item, index) => (
+                <div key={item.title} className={`${styles.spaceCard} ${index % 2 ? styles.spaceCardOffset : ""}`}>
+                  <Image src={imageUrl(item.image)} alt={item.title} fill style={{ objectFit: "cover" }} />
                 </div>
               ))}
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "1rem" }}>
-            {spaces.map((item, index) => (
-              <div key={item.title} style={{ position: "relative", height: 256, borderRadius: "1rem", overflow: "hidden", marginTop: index % 2 ? "2rem" : 0 }}>
-                <Image src={imageUrl(item.image)} alt={item.title} fill style={{ objectFit: "cover" }} />
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      <section style={{ padding: "8rem 2rem", textAlign: "center" }}>
+      <section className={styles.teamSection}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem,4vw,4rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "3rem" }}>El equipo detrás de la precisión</h2>
-          <div style={{ position: "relative", maxWidth: 960, margin: "0 auto", borderRadius: "3rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)" }}>
-            <div style={{ position: "relative", height: 500 }}>
+          <h2 className={styles.sectionTitle} style={{ marginBottom: "3rem" }}>El equipo detrás de la precisión</h2>
+          <div className={styles.teamHero}>
+            <div className={styles.teamHeroImage}>
               <Image src={imageUrl("https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=1400&q=80")} alt="Equipo clínico" fill style={{ objectFit: "cover" }} />
             </div>
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent, rgba(27,68,119,.85))", display: "flex", flexDirection: "column", justifyContent: "end", alignItems: "start", padding: "3rem", textAlign: "left" }}>
-              <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "2rem", fontWeight: 800, color: "white", marginBottom: ".5rem" }}>Un equipo coordinado, preciso y cercano</h3>
-              <p style={{ color: "#bcd4ff", maxWidth: 680, lineHeight: 1.8 }}>Especialistas con experiencia real en rehabilitación, estética, prevención y planificación digital.</p>
+            <div className={styles.teamOverlay}>
+              <h3 className={styles.teamOverlayTitle}>Un equipo coordinado, preciso y cercano</h3>
+              <p className={styles.teamOverlayCopy}>Especialistas con experiencia real en rehabilitación, estética, prevención y planificación digital.</p>
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: "2rem", marginTop: "4rem" }}>
+          <div className={styles.statsGrid}>
             {[
-              ["25+", "Especialistas"],
-              ["12k", "Sonrisas tratadas"],
+              ["10+", "Especialistas"],
+              ["35K", "Pacientes tratados"],
               ["15", "Reconocimientos"],
-              ["0.1%", "Incidencia crítica"],
+              ["37+", "Años de experiencia"],
             ].map(([value, label]) => (
-              <div key={label}>
-                <p style={{ fontFamily: "var(--font-headline)", fontSize: "2.75rem", fontWeight: 900, color: "var(--secondary)" }}>{value}</p>
-                <p style={{ marginTop: ".5rem", fontSize: ".8rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".18em", color: "var(--outline)" }}>{label}</p>
+              <div key={label} className={styles.statItem}>
+                <p className={styles.statValue}>{value}</p>
+                <p className={styles.statLabel}>{label}</p>
               </div>
             ))}
           </div>

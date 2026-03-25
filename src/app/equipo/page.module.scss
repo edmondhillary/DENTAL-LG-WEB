@@ -1,0 +1,442 @@
+@use "../../styles/abstracts/mixins" as *;
+
+.hero,
+.section,
+.ctaSection {
+  width: min(100% - (2 * var(--container-padding)), var(--container-wide));
+  margin-inline: auto;
+}
+
+.heroWrap {
+  position: relative;
+  min-height: 44rem;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+  background: var(--surface-low);
+  margin-bottom: 4rem;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.82), transparent 60%);
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  width: min(100% - (2 * var(--container-padding)), var(--container-wide));
+}
+
+.heroContent {
+  max-width: 45rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  background: var(--tertiary-fixed);
+  color: #002020;
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle,
+.sectionTitle,
+.ctaTitle,
+.cardName,
+.featureTitle,
+.valueTitle,
+.teamBadgeTitle {
+  font-family: var(--font-headline), serif;
+  font-weight: 800;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 7vw, 6.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--brand);
+  margin-bottom: 1.5rem;
+}
+
+.heroCopy,
+.featureCopy,
+.cardCopy,
+.valueCopy,
+.quote,
+.ctaCopy {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.heroCopy {
+  font-size: 1.2rem;
+  max-width: 38.75rem;
+}
+
+.section {
+  padding: 0 0 6rem;
+}
+
+.featureGrid,
+.teamGrid,
+.valueGrid,
+.featuresList {
+  display: grid;
+}
+
+.featureGrid,
+.valueGrid {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@include up(lg) {
+  .featureGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4rem;
+  }
+
+  .valueGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5rem;
+  }
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  color: var(--brand);
+  margin-bottom: 1.5rem;
+}
+
+.featuresList {
+  gap: 2rem;
+}
+
+.featureItem {
+  display: flex;
+  gap: 1rem;
+}
+
+.featureIconWrap {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featureTitle {
+  font-size: 1.2rem;
+  color: var(--brand);
+  margin-bottom: .35rem;
+}
+
+.featureImage {
+  position: relative;
+  height: clamp(18rem, 50vw, 26.25rem);
+  border-radius: 1rem;
+  overflow: clip;
+  box-shadow: 0 24px 80px rgba(25,28,30,.12);
+}
+
+.sectionIntro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionLead {
+  color: var(--muted);
+}
+
+.teamGrid {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@include up(md) {
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include up(xl) {
+  .teamGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+.teamCard {
+  background: white;
+  border-radius: 1rem;
+  overflow: clip;
+  box-shadow: 0 20px 50px rgba(25,28,30,.06);
+}
+
+.teamImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.teamImageBadge {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.teamBadgeLabel {
+  font-size: .65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--brand);
+}
+
+.teamBadgeIcon,
+.cardRoleIcon,
+.profileIcon {
+  color: var(--brand);
+}
+
+.teamCardContent {
+  padding: 2rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cardName {
+  font-size: 1.6rem;
+  color: var(--brand);
+}
+
+.cardRole {
+  color: var(--secondary);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.cardCopy {
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileIconWrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(195,198,214,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileLabel {
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--outline);
+}
+
+.valueMediaWrap {
+  position: relative;
+}
+
+.valueMedia {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 1.5rem;
+  overflow: clip;
+  box-shadow: 0 24px 80px rgba(25,28,30,.12);
+}
+
+.valueGlow {
+  display: none;
+}
+
+@include up(lg) {
+  .valueGlow {
+    display: block;
+    position: absolute;
+    bottom: -2.5rem;
+    right: -2.5rem;
+    width: 16rem;
+    height: 16rem;
+    background: rgba(213,227,255,.35);
+    border-radius: 1.5rem;
+    z-index: -1;
+  }
+}
+
+.teamBadgeCard {
+  position: static;
+  margin-top: 1rem;
+  background: var(--tertiary-fixed);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 20px 50px rgba(25,28,30,.06);
+}
+
+@include up(lg) {
+  .teamBadgeCard {
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    margin-top: 0;
+  }
+}
+
+.teamBadgeTitle {
+  color: #002020;
+}
+
+.teamBadgeCopy {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(0,32,32,.7);
+}
+
+.valueTitle {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  color: var(--brand);
+  margin-bottom: 1.5rem;
+}
+
+.valueCopy {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.quoteCard {
+  background: var(--surface-low);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(195,198,214,.2);
+  margin-bottom: 1.5rem;
+}
+
+.quote {
+  font-style: italic;
+  margin-bottom: .75rem;
+}
+
+.quoteMeta {
+  color: var(--brand);
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.valueLink {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ctaSection {
+  padding: 0 0 6rem;
+}
+
+.ctaShell {
+  padding: 6rem 2rem;
+  background: var(--brand);
+  border-radius: 2rem;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: clip;
+}
+
+.ctaContent {
+  max-width: 51.25rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaIcon {
+  color: #bcd4ff;
+  margin-bottom: 1rem;
+}
+
+.ctaTitle {
+  font-size: clamp(3rem, 5vw, 4.6rem);
+  margin-bottom: 1rem;
+}
+
+.ctaCopy {
+  color: #d5e3ff;
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.ctaActions {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@include up(md) {
+  .ctaActions {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  min-height: 3.5rem;
+  padding-inline: 2rem;
+  font-weight: 800;
+}
+
+.ctaPrimary {
+  background: white;
+  color: var(--brand);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: white;
+  border-color: rgba(255,255,255,.25);
+}

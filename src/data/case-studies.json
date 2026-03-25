@@ -1,0 +1,126 @@
+[
+  {
+    "slug": "recuperacion-incisivo-superior",
+    "caseCode": "0912",
+    "category": "Implantes",
+    "treatment": "Implantes dentales",
+    "title": "Recuperación de incisivo superior",
+    "summary": "Reposición unitaria con planificación 3D para recuperar soporte, función y un perfil gingival armónico.",
+    "problem": "La paciente acudió con la ausencia de un incisivo superior y una demanda estética alta, preocupada por la integración visual en sonrisa y fonación.",
+    "arrivalState": "Llegó con pérdida de pieza, inestabilidad del provisional y miedo a que el resultado final se viera artificial o desalineado.",
+    "solution": "Se realizó estudio clínico y radiográfico, planificación digital del implante y posterior rehabilitación con corona cerámica individual ajustada al tejido blando.",
+    "result": "Se consiguió una restauración estable, natural y funcional, con mejor soporte labial y una transición visual más limpia en la sonrisa.",
+    "duration": "4 meses",
+    "precision": "Sub-micrónica",
+    "heroImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    "beforeImage": "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=80",
+    "afterImage": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+    "gallery": [
+      {
+        "image": "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Valoración inicial del caso de implante dental"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Resultado final del caso de implante dental"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Control clínico y ajuste protésico del implante"
+      }
+    ]
+  },
+  {
+    "slug": "rediseno-con-carillas-ceramicas",
+    "caseCode": "0913",
+    "category": "Carillas",
+    "treatment": "Carillas de porcelana",
+    "title": "Rediseño con carillas cerámicas",
+    "summary": "Corrección de forma, longitud y textura superficial con un enfoque conservador y acabado natural.",
+    "problem": "La paciente buscaba armonizar el frente estético porque percibía desgaste desigual, pequeños espacios y falta de luminosidad.",
+    "arrivalState": "Llegó con una sonrisa cansada visualmente, bordes irregulares y dudas sobre si era posible mejorar sin perder naturalidad.",
+    "solution": "Se planificó un mock-up previo, ajuste mínimo de superficies y colocación de carillas cerámicas para equilibrar proporciones y brillo.",
+    "result": "La sonrisa ganó continuidad, equilibrio y una lectura más luminosa sin caer en un efecto rígido ni artificial.",
+    "duration": "6 semanas",
+    "precision": "Diseño guiado",
+    "heroImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    "beforeImage": "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=1200&q=80",
+    "afterImage": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=80",
+    "gallery": [
+      {
+        "image": "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Situación inicial para carillas cerámicas"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Resultado final de carillas cerámicas"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Detalle de sonrisa tras rediseño con carillas"
+      }
+    ]
+  },
+  {
+    "slug": "alineacion-progresiva-de-arcada-superior",
+    "caseCode": "0744",
+    "category": "Ortodoncia",
+    "treatment": "Ortodoncia",
+    "title": "Alineación progresiva de arcada superior",
+    "summary": "Corrección ortodóntica orientada a ordenar la mordida anterior y mejorar lectura estética de la sonrisa.",
+    "problem": "El paciente presentaba desalineación visible en la arcada superior y una mordida anterior poco estable, con impacto estético y funcional.",
+    "arrivalState": "Llegó con apiñamiento, trayectoria irregular de incisivos y preocupación por la visibilidad del tratamiento durante el proceso.",
+    "solution": "Se diseñó una secuencia ortodóntica progresiva con planificación digital y controles periódicos para corregir posiciones sin perder naturalidad facial.",
+    "result": "La arcada ganó orden, la sonrisa quedó más armónica y el cierre anterior mejoró tanto en estabilidad como en lectura visual.",
+    "duration": "10 meses",
+    "precision": "Seguimiento digital",
+    "heroImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    "beforeImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    "afterImage": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80",
+    "gallery": [
+      {
+        "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Estado inicial del caso de ortodoncia"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Resultado final del caso de ortodoncia"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Control clínico del tratamiento de ortodoncia"
+      }
+    ]
+  },
+  {
+    "slug": "aclarado-premium-controlado",
+    "caseCode": "1031",
+    "category": "Estética",
+    "treatment": "Blanqueamiento dental",
+    "title": "Claridad iluminada",
+    "summary": "Aclaramiento clínico controlado para ganar luminosidad de forma homogénea y con vigilancia de sensibilidad.",
+    "problem": "La paciente quería mejorar tono y brillo sin caer en un blanco opaco ni en un tratamiento agresivo para el esmalte.",
+    "arrivalState": "Llegó con tinciones acumuladas y una percepción de sonrisa apagada, pero con preocupación por sensibilidad posterior.",
+    "solution": "Se aplicó un protocolo de aclaramiento en clínica con control del punto de partida, protección de tejidos y pautas posteriores individualizadas.",
+    "result": "La sonrisa ganó claridad y homogeneidad manteniendo una lectura natural y una experiencia más controlada durante el proceso.",
+    "duration": "1 a 2 sesiones",
+    "precision": "+8 tonos orientativos",
+    "heroImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    "beforeImage": "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=1200&q=80",
+    "afterImage": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=80",
+    "gallery": [
+      {
+        "image": "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Situación inicial del caso de blanqueamiento"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Resultado final del caso de blanqueamiento"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Detalle de sonrisa tras blanqueamiento"
+      }
+    ]
+  }
+]

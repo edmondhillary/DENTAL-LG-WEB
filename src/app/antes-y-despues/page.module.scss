@@ -1,0 +1,380 @@
+@use "../../styles/abstracts/mixins" as *;
+
+.casesSection {
+  padding: 5rem var(--container-padding) 8rem;
+}
+
+.filterSection {
+  position: sticky;
+  top: 5.5rem;
+  z-index: 40;
+  background: rgba(247, 249, 251, 0.86);
+  backdrop-filter: blur(12px);
+  padding: 1rem 0;
+  border-block: 1px solid rgba(195, 198, 214, 0.2);
+}
+
+.filterInner {
+  width: min(100% - (2 * var(--container-padding)), var(--container-wide));
+  margin-inline: auto;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.filterLabel {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filterScroll {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  min-width: 0;
+  width: 100%;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filterScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filterButton {
+  flex: 0 0 auto;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--surface-highest);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: max-content;
+  cursor: pointer;
+}
+
+.filterButtonActive {
+  background: var(--brand);
+  color: white;
+}
+
+.casesInner {
+  width: min(100%, var(--container-wide));
+  margin-inline: auto;
+  display: grid;
+  gap: 6rem;
+}
+
+.caseRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@include up(lg) {
+  .caseRowDefault {
+    grid-template-columns: minmax(0, 8fr) minmax(18rem, 4fr);
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .caseRowFeature {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+.beforeAfterMedia {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 24px 80px rgba(25, 28, 30, 0.12);
+}
+
+.mediaCard {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: clip;
+  border-radius: 0.75rem;
+}
+
+.mediaLabel {
+  position: absolute;
+  top: 1rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.mediaLabelBefore {
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mediaLabelAfter {
+  right: 1rem;
+  background: rgba(27, 68, 119, 0.85);
+}
+
+.caseInfo {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.caseMeta {
+  color: var(--secondary);
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.75rem;
+}
+
+.caseTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  max-width: 14ch;
+}
+
+.caseCopy {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 42ch;
+}
+
+.metrics {
+  background: rgba(147, 242, 242, 0.28);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.metricRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.metricLabel {
+  color: #004f4f;
+}
+
+.detailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.featureInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.featureStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  padding: 1rem;
+  background: var(--surface-low);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--brand);
+}
+
+.statLabel {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.featureMedia {
+  position: relative;
+  min-height: 22rem;
+  border-radius: 2rem;
+  overflow: clip;
+}
+
+@include up(lg) {
+  .featureMedia {
+    min-height: 27.5rem;
+  }
+}
+
+.featureOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(27, 68, 119, 0.7), rgba(27, 68, 119, 0.18) 46%, transparent 78%);
+}
+
+.featureInner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+@include up(md) {
+  .featureInner {
+    padding: 2rem;
+  }
+}
+
+@include up(lg) {
+  .featureInner {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 20rem);
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem;
+  }
+}
+
+.featureText {
+  color: white;
+  min-width: 0;
+}
+
+.featureBadge {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.06;
+  max-width: 10ch;
+}
+
+.featureCopy {
+  color: #d5e3ff;
+  line-height: 1.8;
+  max-width: 38ch;
+}
+
+.featureCardWrap {
+  display: flex;
+  justify-content: center;
+}
+
+@include down(lg) {
+  .featureCardWrap {
+    justify-content: stretch;
+  }
+}
+
+.featureCard {
+  width: min(100%, 20rem);
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+@include up(md) {
+  .featureCard {
+    padding: 2rem;
+  }
+}
+
+.featureCircle {
+  width: min(9rem, 52vw);
+  height: min(9rem, 52vw);
+  border-radius: 999px;
+  border: 8px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+@include up(md) {
+  .featureCircle {
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.featureCircleValue {
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 900;
+}
+
+.featureCardTitle {
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureCardCopy {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}

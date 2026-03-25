@@ -9,7 +9,7 @@ import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Tratamientos dentales",
-  description: "Explorá los tratamientos de la clínica con una estructura fiel al lenguaje visual premium de Clinical Atelier.",
+  description: "Explora los tratamientos de la clínica con una estructura visual clara, elegante y responsive.",
 };
 
 export default function TreatmentsPage() {
@@ -100,7 +100,7 @@ export default function TreatmentsPage() {
         <div className={styles.sectionBlock}>
           <div className={styles.sectionHeader}>
             <div>
-              <h2 className={styles.sectionTitle}>Atelier estético</h2>
+              <h2 className={styles.sectionTitle}>Estética dental</h2>
               <p className={styles.sectionCopy} style={{ marginTop: ".35rem" }}>La armonía visual y el diseño de sonrisa.</p>
             </div>
             <div className={styles.sectionMeta}>Categoría 01</div>
@@ -196,7 +196,7 @@ export default function TreatmentsPage() {
           <div className={`pattern-dots ${styles.pattern}`} style={{ opacity: 0.1 }} />
           <div className={styles.ctaGrid}>
             <div className={styles.ctaContent}>
-              <h2 className={styles.ctaTitle}>Tu recorrido personalizado empieza acá.</h2>
+              <h2 className={styles.ctaTitle}>Tu recorrido personalizado empieza aquí.</h2>
               <p className={styles.ctaCopy}>Reserva una sesión diagnóstica completa. Estudiaremos tu caso con imagen avanzada para construir un mapa claro de tratamiento.</p>
               <div className={styles.ctaActions}>
                 <Link href="/contacto" className={`btn ${styles.ctaAction}`}>Solicitar consulta</Link>
