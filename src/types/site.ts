@@ -69,3 +69,21 @@ export type PricingGroup = {
   slug: string;
   items: PricingItem[];
 };
+
+export type CatalogTreatment = {
+  slug: string;
+  name: string;
+  category: string;
+  groupSlug: string;
+  groupTitle: string;
+  price: number | string | null;
+  shortDescription: string;
+  heroImage: string;
+  heroAlt: string;
+};
+
+export type CatalogTreatmentGroup = {
+  title: string;
+  slug: string;
+  items: CatalogTreatment[];
+};

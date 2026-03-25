@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteIcon } from "@/components/site-icon";
 import { imageUrl } from "@/lib/utils";
+import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros",
@@ -55,41 +56,41 @@ export default function AboutPage() {
 
   return (
     <>
-      <section style={{ position: "relative", padding: "6rem 2rem 8rem", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "7fr 5fr", gap: "3rem", alignItems: "center" }}>
-          <div>
-            <span style={{ display: "inline-block", padding: ".4rem 1rem", borderRadius: 999, background: "var(--tertiary-fixed)", color: "#002020", fontSize: ".75rem", fontWeight: 800, letterSpacing: ".16em", textTransform: "uppercase", marginBottom: "1.5rem" }}>Nuestro legado</span>
-            <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(3.8rem, 7vw, 6.5rem)", lineHeight: 1.05, letterSpacing: "-0.05em", color: "var(--brand)", marginBottom: "2rem", fontWeight: 800 }}>
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <span className={styles.eyebrow}>Nuestro legado</span>
+            <h1 className={styles.title}>
               La intersección entre <br />
               <span style={{ color: "var(--secondary)", fontStyle: "italic", fontWeight: 300 }}>precisión</span> y <span style={{ color: "var(--tertiary)" }}>artesanía</span>.
             </h1>
-            <p style={{ fontSize: "1.25rem", color: "var(--muted)", maxWidth: 720, lineHeight: 1.8 }}>
+            <p className={styles.copy}>
               En Clínica Dental Lorenzo González entendemos la odontología como una combinación de exactitud clínica, hospitalidad tranquila y sensibilidad estética.
             </p>
           </div>
-          <div style={{ position: "relative" }}>
-            <div style={{ aspectRatio: "4 / 5", borderRadius: "2rem", overflow: "hidden", boxShadow: "0 24px 80px rgba(25,28,30,.12)", transform: "rotate(2deg)" }}>
+          <div className={styles.heroMediaWrap}>
+            <div className={styles.heroMedia}>
               <Image src={imageUrl("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80")} alt="Clínica dental moderna" fill style={{ objectFit: "cover" }} />
             </div>
-            <div style={{ position: "absolute", left: "-2rem", bottom: "-2rem", width: 192, height: 192, borderRadius: 999, background: "rgba(54,91,145,.16)", filter: "blur(36px)" }} />
+            <div className={styles.heroGlow} />
           </div>
         </div>
       </section>
 
-      <section style={{ padding: "6rem 0", background: "var(--surface-low)" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: "5rem", alignItems: "center" }}>
-          <div style={{ position: "relative" }}>
-            <div style={{ position: "relative", height: 600, borderRadius: "1rem", overflow: "hidden", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
+      <section className={styles.storySection}>
+        <div className={styles.storyInner}>
+          <div className={styles.storyMediaWrap}>
+            <div className={styles.storyMedia}>
               <Image src={imageUrl("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80")} alt="Dentista revisando escaneo" fill style={{ objectFit: "cover" }} />
             </div>
-            <div style={{ position: "absolute", top: 48, right: -48, background: "rgba(255,255,255,.7)", backdropFilter: "blur(20px)", padding: "2rem", borderRadius: "1rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)", maxWidth: 280 }}>
-              <h4 style={{ fontFamily: "var(--font-headline)", fontWeight: 800, color: "var(--brand)", marginBottom: ".5rem" }}>Más de 37 años</h4>
-              <p style={{ fontSize: ".9rem", color: "var(--muted)", lineHeight: 1.7 }}>Una trayectoria construida sobre calma, precisión y relaciones a largo plazo con pacientes y familias.</p>
+            <div className={styles.storyCard}>
+              <h4 className={styles.storyCardTitle}>Más de 37 años</h4>
+              <p className={styles.storyCardCopy}>Una trayectoria construida sobre calma, precisión y relaciones a largo plazo con pacientes y familias.</p>
             </div>
           </div>
-          <div>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.6rem, 4vw, 4rem)", fontWeight: 800, color: "var(--brand)", marginBottom: "2rem" }}>Una visión contemporánea del cuidado oral</h2>
-            <div style={{ display: "grid", gap: "1.5rem", fontSize: "1.1rem", color: "var(--muted)", lineHeight: 1.9 }}>
+          <div className={styles.storyContent}>
+            <h2 className={styles.storyTitle}>Una visión contemporánea del cuidado oral</h2>
+            <div className={styles.storyText}>
               <p>La clínica nace de una convicción simple: una atención excelente no puede sentirse impersonal. Por eso combinamos método clínico, escucha real y una experiencia visualmente serena.</p>
               <p>No trabajamos desde el ruido ni desde la venta agresiva. Diseñamos recorridos de tratamiento claros, técnicamente sólidos y pensados para durar muchos años.</p>
             </div>

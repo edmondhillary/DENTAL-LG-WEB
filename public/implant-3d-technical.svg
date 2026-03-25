@@ -1,0 +1,68 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="80" x2="1450" y2="1100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#D9E9FF"/>
+    </linearGradient>
+    <linearGradient id="implant" x1="735" y1="260" x2="900" y2="980" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3F7FB"/>
+      <stop offset="0.5" stop-color="#AEBECC"/>
+      <stop offset="1" stop-color="#7C8C99"/>
+    </linearGradient>
+    <linearGradient id="crown" x1="670" y1="150" x2="940" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DDE5EC"/>
+    </linearGradient>
+    <linearGradient id="gum" x1="340" y1="380" x2="1220" y2="880" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6C7CF"/>
+      <stop offset="1" stop-color="#DF98A5"/>
+    </linearGradient>
+    <linearGradient id="bone" x1="300" y1="650" x2="1290" y2="1090" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5E6D1"/>
+      <stop offset="1" stop-color="#E8D1AE"/>
+    </linearGradient>
+    <filter id="shadow" x="432" y="96" width="737" height="1019" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="24"/>
+      <feGaussianBlur stdDeviation="28"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.106 0 0 0 0 0.173 0 0 0 0 0.263 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" rx="64" fill="url(#bg)"/>
+
+  <circle cx="1240" cy="186" r="126" fill="#B8D5FF" fill-opacity="0.45"/>
+  <circle cx="1310" cy="920" r="172" fill="#9DEDED" fill-opacity="0.3"/>
+  <circle cx="278" cy="270" r="94" fill="#E4EEFA"/>
+
+  <path d="M300 700C300 601.68 379.68 522 478 522H1116C1214.32 522 1294 601.68 1294 700V733C1294 784.36 1272.12 833.31 1233.84 867.5L1118.63 970.39C1078.27 1006.46 1026.04 1026.4 972.01 1026.4H621.02C566.98 1026.4 514.76 1006.46 474.39 970.39L360.16 868.39C321.88 834.21 300 785.25 300 733.9V700Z" fill="url(#bone)"/>
+
+  <path d="M340 522C340 467.88 383.88 424 438 424H1154C1208.12 424 1252 467.88 1252 522V566C1252 613.33 1221.98 655.47 1177.35 670.95L1036.7 719.72C994.87 734.22 950.89 741.62 906.61 741.62H695.96C651.89 741.62 608.11 734.28 566.47 719.87L416.51 667.96C371.26 652.3 340 609.73 340 561.85V522Z" fill="url(#gum)"/>
+
+  <g filter="url(#shadow)">
+    <path d="M675 246C675 187.46 722.46 140 781 140H830C888.54 140 936 187.46 936 246V297C936 328.64 922.05 358.65 897.88 379.18L868 404.57V468H745V406.22L713.93 380.5C689.16 359.98 675 329.48 675 297.31V246Z" fill="url(#crown)"/>
+    <rect x="745" y="438" width="123" height="64" rx="24" fill="#F4F7FA"/>
+    <path d="M724 492H889V570C889 596.51 878.46 621.93 859.7 640.68L846.5 653.88V910C846.5 944.24 818.74 972 784.5 972C750.26 972 722.5 944.24 722.5 910V654.26L709.8 641.56C691.01 622.76 680.45 597.27 680.45 570.68V535.55C680.45 511.58 699.88 492.15 723.85 492.15H724Z" fill="url(#implant)"/>
+
+    <g stroke="#738391" stroke-width="12" stroke-linecap="round">
+      <path d="M713 555H855"/>
+      <path d="M702 610H866"/>
+      <path d="M697 665H871"/>
+      <path d="M694 720H874"/>
+      <path d="M699 775H869"/>
+      <path d="M708 830H860"/>
+      <path d="M720 885H848"/>
+    </g>
+
+    <ellipse cx="784.5" cy="978" rx="72" ry="30" fill="#6B7D8D" fill-opacity="0.18"/>
+  </g>
+
+  <path d="M1012 267L1096 311" stroke="#8BB8F2" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1063 209L1128 252" stroke="#9BE7E7" stroke-width="14" stroke-linecap="round"/>
+
+  <text x="142" y="146" fill="#1B4477" font-family="Arial, sans-serif" font-size="46" font-weight="700">Implante dental 3D</text>
+  <text x="142" y="200" fill="#64748B" font-family="Arial, sans-serif" font-size="28">Visual técnico para sección de restauración avanzada</text>
+</svg>

@@ -19,7 +19,7 @@ export default function HomePage() {
       <HeroSection />
       <HighlightsSection />
       <TreatmentsPreview />
-      <TreatmentSearch />
+      <TreatmentSearch defaultVisibleCount={4} />
       <WhyChooseUsSection />
       <BeforeAfterPreview />
       <TestimonialsPreview />

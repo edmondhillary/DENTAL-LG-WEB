@@ -1,10 +1,12 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { clinic } from "@/data/site";
+import styles from "./header.module.scss";
 
 const navItems = [
   { label: "Tratamientos", href: "/tratamientos" },
@@ -29,22 +31,14 @@ export function Header() {
   return (
     <>
       <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 60,
-          width: "100%",
-          background: "rgba(255,255,255,.7)",
-          backdropFilter: "blur(20px)",
-          boxShadow: "0 20px 50px rgba(25,28,30,0.06)",
-        }}
+        className={styles.header}
       >
-        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 2rem", gap: "1.25rem" }}>
-          <Link href="/" style={{ fontFamily: "var(--font-headline)", fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--brand)" }}>
+        <div className={clsx("container", styles.inner)}>
+          <Link href="/" className={styles.brand}>
             {clinic.name}
           </Link>
 
-          <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+          <nav className={styles.nav}>
             {navItems.map((item) => {
               const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
@@ -52,16 +46,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  style={{
-                    fontFamily: "var(--font-headline)",
-                    fontSize: ".875rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "-.01em",
-                    color: active ? "var(--brand)" : "#64748b",
-                    borderBottom: active ? "2px solid var(--brand)" : "2px solid transparent",
-                    paddingBottom: ".25rem",
-                  }}
+                  className={clsx(styles.navLink, active && styles.navLinkActive)}
                 >
                   {item.label}
                 </Link>
@@ -69,21 +54,20 @@ export function Header() {
             })}
           </nav>
 
-          <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
-            <a href={`tel:${clinic.phone}`} className="desktop-cta" style={{ fontSize: ".85rem", fontWeight: 800, color: "var(--brand)" }}>
+          <div className={styles.actions}>
+            <a href={`tel:${clinic.phone}`} className={clsx(styles.desktopMeta, styles.phone)}>
               {clinic.phoneDisplay}
             </a>
-            <span className="desktop-cta" style={{ fontSize: ".72rem", fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--secondary)" }}>
+            <span className={clsx(styles.desktopMeta, styles.eyebrow)}>
               Primera visita gratuita (sin radiografía)
             </span>
-            <Link className="btn desktop-cta" href="/contacto" style={{ minHeight: 48, paddingInline: "2rem", fontFamily: "var(--font-body)", fontSize: ".875rem" }}>
+            <Link className={clsx("btn", styles.desktopButton)} href="/contacto">
               Reservar cita
             </Link>
             <button
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               onClick={() => setOpen((prev) => !prev)}
-              className="mobile-trigger"
-              style={{ display: "none", width: 44, height: 44, borderRadius: 999, border: 0, background: "transparent", color: "var(--brand)" }}
+              className={styles.mobileTrigger}
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -92,30 +76,30 @@ export function Header() {
       </header>
 
       {open ? (
-        <div className="mobile-overlay" style={{ position: "fixed", inset: 0, zIndex: 70, background: "rgba(247,249,251,.96)", padding: "5rem 1.5rem 1.5rem" }}>
-          <div style={{ display: "grid", gap: "1rem" }}>
+        <div className={styles.overlay}>
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            onClick={() => setOpen(false)}
+            className={styles.overlayClose}
+          >
+            <X size={24} strokeWidth={3} />
+          </button>
+          <div className={styles.overlayInner}>
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                style={{
-                  padding: "1rem 0",
-                  borderBottom: "1px solid rgba(195,198,214,.35)",
-                  fontFamily: "var(--font-headline)",
-                  fontSize: "1.1rem",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  color: pathname.startsWith(item.href) ? "var(--brand)" : "var(--foreground)",
-                }}
+                className={clsx(styles.overlayLink, pathname.startsWith(item.href) && styles.overlayLinkActive)}
               >
                 {item.label}
               </Link>
             ))}
-            <Link className="btn" href="/contacto" onClick={() => setOpen(false)} style={{ marginTop: "1rem" }}>
+            <Link className={clsx("btn", styles.overlayPrimary)} href="/contacto" onClick={() => setOpen(false)}>
               Reservar cita
             </Link>
-            <Link className="btn-secondary" href="/precios" onClick={() => setOpen(false)}>
+            <Link className={clsx("btn-secondary", styles.overlaySecondary)} href="/precios" onClick={() => setOpen(false)}>
               Ver precios clínicos
             </Link>
           </div>

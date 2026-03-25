@@ -1,0 +1,339 @@
+@use "../../styles/abstracts/mixins" as *;
+
+.hero {
+  position: relative;
+  padding: 6rem var(--container-padding) 4rem;
+  overflow: clip;
+}
+
+.heroInner,
+.content,
+.ctaSection {
+  width: min(100%, var(--container-wide));
+  margin-inline: auto;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: var(--tertiary-fixed);
+  color: #002020;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2.8rem, 7vw, 6.4rem);
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  max-width: 15ch;
+  margin: 0 auto 2rem;
+}
+
+.searchWrap {
+  max-width: 47.5rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--outline);
+}
+
+.searchInput {
+  width: 100%;
+  background: white;
+  border: 0;
+  padding: 1.25rem 1.5rem 1.25rem 4rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  font-size: 1.05rem;
+}
+
+.orbTop,
+.orbLeft,
+.ctaOrbRight,
+.ctaOrbLeft {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.orbTop {
+  top: -6rem;
+  right: -6rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(27,68,119,.05);
+}
+
+.orbLeft {
+  top: 50%;
+  left: -6rem;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(0,99,152,.05);
+}
+
+.content {
+  display: grid;
+  gap: 3rem;
+  padding: 4rem 0 8rem;
+}
+
+@include up(lg) {
+  .content {
+    grid-template-columns: minmax(15rem, 25%) minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+.aside {
+  align-self: start;
+}
+
+.asideInner {
+  display: grid;
+  gap: .75rem;
+}
+
+@include up(lg) {
+  .asideInner {
+    position: sticky;
+    top: 8rem;
+  }
+}
+
+.asideTitle {
+  font-family: var(--font-headline), serif;
+  font-size: .75rem;
+  font-weight: 900;
+  color: var(--outline);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.categoryLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  color: var(--muted);
+}
+
+.categoryLinkActive {
+  background: var(--brand);
+  color: white;
+}
+
+.sections {
+  display: grid;
+  gap: 5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(195,198,214,.2);
+  padding-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.sectionMeta {
+  color: var(--outline);
+  font-size: .9rem;
+}
+
+.featureGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@include up(md) {
+  .featureGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+.featureHero {
+  background: linear-gradient(135deg, var(--brand), #003366);
+  border-radius: 1.75rem;
+  padding: 2rem;
+  color: white;
+  position: relative;
+  overflow: clip;
+}
+
+@include up(md) {
+  .featureHero {
+    grid-column: 1 / -1;
+    padding: 2.5rem;
+  }
+}
+
+.featureHeroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 42.5rem;
+}
+
+.featureHeroTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.featureHeroCopy {
+  color: #d5e3ff;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 56ch;
+}
+
+.featureHeroButton {
+  background: white;
+  color: var(--brand);
+  min-height: 3rem;
+  padding-inline: 1.25rem;
+  font-weight: 800;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.75rem;
+  border: 1px solid rgba(195,198,214,.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,.02);
+}
+
+.cardTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: .75rem;
+}
+
+.cardCopy {
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  max-width: 34ch;
+}
+
+.cardLink {
+  color: var(--secondary);
+  font-weight: 800;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.ctaSection {
+  padding-bottom: 8rem;
+}
+
+.ctaShell {
+  background: var(--surface-low);
+  border-radius: 2rem;
+  padding: 3rem 1.25rem;
+  text-align: center;
+  position: relative;
+  overflow: clip;
+}
+
+@include up(md) {
+  .ctaShell {
+    border-radius: 3rem;
+    padding: 4rem 2rem;
+  }
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: 1rem;
+}
+
+.ctaCopy {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 47.5rem;
+  margin: 0 auto 2rem;
+}
+
+.ctaActions {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@include up(md) {
+  .ctaActions {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
+.ctaAction {
+  min-height: 3.5rem;
+  padding-inline: 2rem;
+  font-weight: 800;
+}
+
+.ctaOrbRight {
+  bottom: -5rem;
+  right: -5rem;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(0,99,152,.1);
+}
+
+.ctaOrbLeft {
+  top: -5rem;
+  left: -5rem;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(0,76,76,.1);
+}

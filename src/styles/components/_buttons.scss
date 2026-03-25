@@ -1,0 +1,29 @@
+.btn,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+  padding-inline: 1.5rem;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.btn:hover,
+.btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.btn {
+  background: var(--brand);
+  color: white;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--brand);
+  border: 1px solid rgba(27, 68, 119, 0.18);
+}

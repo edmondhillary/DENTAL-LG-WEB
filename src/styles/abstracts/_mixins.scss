@@ -1,0 +1,35 @@
+@use "./functions" as fn;
+
+@mixin up($breakpoint) {
+  @media (min-width: fn.bp($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin down($breakpoint) {
+  @media (max-width: calc(#{fn.bp($breakpoint)} - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin between($from, $to) {
+  @media (min-width: fn.bp($from)) and (max-width: calc(#{fn.bp($to)} - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin container($max) {
+  width: min(100% - (2 * var(--container-padding)), #{$max});
+  margin-inline: auto;
+}
+
+@mixin surface-card {
+  background: var(--surface-lowest);
+  border: 1px solid rgba(195, 198, 214, 0.18);
+  box-shadow: 0 20px 50px rgba(25, 28, 30, 0.06);
+  border-radius: var(--radius-xl);
+}
+
+@mixin text-measure($measure: 65ch) {
+  max-width: $measure;
+}

@@ -1,0 +1,98 @@
+@use "../styles/abstracts/mixins" as *;
+
+.footer {
+  width: 100%;
+  padding-top: clamp(3rem, 2rem + 4vw, 5rem);
+  padding-bottom: 2.5rem;
+  background: #f8fafc;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+
+  @include up(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include up(xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.intro,
+.navList {
+  display: grid;
+  gap: 1rem;
+}
+
+.brand {
+  font-size: 1.125rem;
+  font-weight: 900;
+  color: #1b4477;
+  letter-spacing: -0.03em;
+  font-family: var(--font-headline), serif;
+}
+
+.copy,
+.link {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.phone {
+  color: #1b4477;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.heading {
+  font-family: var(--font-headline), serif;
+  color: var(--brand);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.newsletter {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.newsletterRow {
+  display: grid;
+  gap: 0.75rem;
+
+  @include up(sm) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.input {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  border: 1px solid rgba(195, 198, 214, 0.35);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.875rem;
+}
+
+.submit {
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.bottom {
+  margin-top: clamp(2rem, 1rem + 4vw, 5rem);
+  padding-top: 2rem;
+  border-top: 1px solid rgba(195, 198, 214, 0.35);
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}

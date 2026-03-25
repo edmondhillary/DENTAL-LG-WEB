@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactSection, LocationPreview } from "@/components/site-sections";
+import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Contacto y reserva",
@@ -9,12 +10,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section style={{ maxWidth: 1280, margin: "0 auto", padding: "5rem 2rem 4rem" }}>
-        <header style={{ maxWidth: 760 }}>
-          <h1 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(4rem,7vw,6.4rem)", fontWeight: 800, color: "var(--brand)", letterSpacing: "-0.05em", marginBottom: "1.5rem" }}>
+      <section className={styles.page}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>
             Empieza tu recorrido hacia la <span style={{ color: "var(--secondary)" }}>precisión.</span>
           </h1>
-          <p style={{ color: "var(--muted)", fontSize: "1.2rem", lineHeight: 1.8 }}>Vive una experiencia dental coordinada desde el primer contacto, con orientación humana y una logística de atención cuidada al detalle.</p>
+          <p className={styles.copy}>Vive una experiencia dental coordinada desde el primer contacto, con orientación humana y una logística de atención cuidada al detalle.</p>
         </header>
       </section>
       <ContactSection />

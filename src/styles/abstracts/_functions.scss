@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "./breakpoints" as *;
+
+@function bp($key) {
+  @return map.get($breakpoints, $key);
+}
+
+@function fluid($min, $max, $min-viewport: 20rem, $max-viewport: 90rem) {
+  $slope: ($max - $min) / ($max-viewport - $min-viewport);
+  $intercept: $min - ($slope * $min-viewport);
+
+  @return clamp(#{$min}, #{$intercept} + #{$slope * 100vw}, #{$max});
+}

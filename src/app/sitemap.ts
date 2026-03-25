@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { blogPosts, treatments } from "@/data/site";
+import { blogPosts } from "@/data/site";
+import { treatmentCatalog } from "@/data/treatment-catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://clinicadentallorenzogonzalez.es";
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/sobre-nosotros",
     "/tratamientos",
+    "/precios",
     "/equipo",
     "/testimonios",
     "/antes-y-despues",
@@ -19,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  const treatmentRoutes = treatments.map((treatment) => ({
+  const treatmentRoutes = treatmentCatalog.map((treatment) => ({
     url: `${baseUrl}/tratamientos/${treatment.slug}`,
     lastModified: new Date(),
   }));

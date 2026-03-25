@@ -1,0 +1,485 @@
+@use "../../styles/abstracts/mixins" as *;
+
+.page {
+  position: relative;
+}
+
+.pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero,
+.searchWrap,
+.sections,
+.cta {
+  width: min(100% - (2 * var(--container-padding)), var(--container-wide));
+  margin-inline: auto;
+}
+
+.hero {
+  position: relative;
+  padding: 6rem 0 5rem;
+}
+
+.heroGrid,
+.heroContent,
+.cardsGrid,
+.restorativeGrid,
+.foundationGrid,
+.ctaGrid {
+  display: grid;
+}
+
+.heroGrid {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@include up(lg) {
+  .heroGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 4rem;
+  }
+}
+
+.heroContent {
+  gap: 2rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  background: var(--tertiary-fixed);
+  color: #002020;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.heroTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(3rem, 7vw, 6.4rem);
+  color: var(--brand);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+
+.heroCopy {
+  color: var(--muted);
+  font-size: 1.15rem;
+  max-width: 35rem;
+  line-height: 1.8;
+}
+
+.heroMediaWrap {
+  position: relative;
+}
+
+.heroMedia {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1rem;
+  overflow: clip;
+  box-shadow: var(--shadow-medium);
+}
+
+.heroNote {
+  position: static;
+  margin-top: 1rem;
+  background: rgba(255,255,255,.8);
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  max-width: 17.5rem;
+}
+
+@include up(lg) {
+  .heroNote {
+    position: absolute;
+    left: -2rem;
+    bottom: -2rem;
+    margin-top: 0;
+    padding: 2rem;
+  }
+}
+
+.heroNoteTitle {
+  font-family: var(--font-headline), serif;
+  font-weight: 800;
+  color: var(--brand);
+  font-size: 1.2rem;
+}
+
+.heroNoteCopy {
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.8;
+  margin-top: .5rem;
+}
+
+.searchWrap {
+  margin-bottom: 0;
+}
+
+.sections {
+  padding: 6rem 0;
+  display: grid;
+  gap: 6rem;
+}
+
+.sectionBlock {
+  display: grid;
+  gap: 3rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  border-bottom: 1px solid rgba(195,198,214,.3);
+  padding-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.sectionCopy,
+.cardCopy,
+.foundationCopy,
+.restorativeCopy,
+.ctaCopy {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.sectionMeta {
+  color: var(--secondary);
+  font-size: .8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+}
+
+.cardsGrid,
+.foundationGrid {
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@include up(md) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .foundationGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@include up(xl) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 2rem;
+  }
+
+  .foundationGrid {
+    grid-template-columns: repeat(4, minmax(0,1fr));
+  }
+}
+
+.card {
+  background: var(--surface-lowest);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.cardMedia {
+  aspect-ratio: 1 / 1;
+  border-radius: .75rem;
+  overflow: clip;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.cardTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: .75rem;
+}
+
+.cardCopy {
+  font-size: .9rem;
+  margin-bottom: 1.5rem;
+  max-width: 34ch;
+}
+
+.inlineLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--secondary);
+  font-size: .8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+
+.inlineLinkIcon {
+  margin-left: .5rem;
+}
+
+.restorativeGrid {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@include up(lg) {
+  .restorativeGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 3rem;
+  }
+}
+
+.featureCard {
+  position: relative;
+  min-height: 30rem;
+  border-radius: 1.5rem;
+  overflow: clip;
+}
+
+.featureOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(27,68,119,.92));
+}
+
+.featureContent {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 2rem;
+  color: white;
+}
+
+@include up(md) {
+  .featureContent {
+    padding: 2.5rem;
+  }
+}
+
+.featureTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: .75rem;
+}
+
+.featureCopy {
+  color: #d5e3ff;
+  line-height: 1.8;
+  max-width: 24rem;
+  margin-bottom: 1.25rem;
+}
+
+.featureAction {
+  background: white;
+  color: var(--brand);
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+  font-size: .85rem;
+  font-weight: 800;
+}
+
+.restorativeList {
+  display: grid;
+  gap: 2rem;
+}
+
+.restorativeItem {
+  display: flex;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: var(--surface-low);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(195,198,214,.2);
+}
+
+.restorativeIcon {
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+.restorativeTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: .5rem;
+}
+
+.restorativeCopy {
+  font-size: .92rem;
+  margin-bottom: 1rem;
+  max-width: 38ch;
+}
+
+.restorativeTag {
+  color: var(--brand);
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.foundationCard {
+  background: white;
+  color: var(--foreground);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 15rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.02);
+  border: 1px solid rgba(195,198,214,.2);
+}
+
+.foundationHighlight {
+  background: var(--brand);
+  color: white;
+  border: 0;
+  box-shadow: none;
+}
+
+@include up(xl) {
+  .foundationHighlight {
+    grid-column: span 2;
+  }
+}
+
+.foundationTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.foundationIcon {
+  color: var(--secondary);
+}
+
+.foundationHighlight .foundationIcon {
+  color: #d5e3ff;
+}
+
+.foundationFlag {
+  color: #d5e3ff;
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.foundationTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: .75rem;
+  margin-top: 1rem;
+}
+
+.foundationHighlight .foundationTitle {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+}
+
+.foundationCopy {
+  font-size: .88rem;
+}
+
+.foundationHighlight .foundationCopy {
+  color: #d5e3ff;
+}
+
+.cta {
+  padding: 6rem 0 8rem;
+}
+
+.ctaShell {
+  background: var(--surface-low);
+  border-radius: 2rem;
+  overflow: clip;
+  position: relative;
+}
+
+.ctaGrid {
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+@include up(lg) {
+  .ctaGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+.ctaContent {
+  padding: 2rem 1.5rem;
+  display: grid;
+  gap: 2rem;
+}
+
+@include up(lg) {
+  .ctaContent {
+    padding: 4rem;
+  }
+}
+
+.ctaTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.ctaCopy {
+  max-width: 32.5rem;
+}
+
+.ctaActions {
+  display: grid;
+  gap: 1rem;
+}
+
+@include up(md) {
+  .ctaActions {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
+.ctaAction {
+  min-height: 3.5rem;
+  padding-inline: 2rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .8rem;
+}
+
+.ctaMedia {
+  position: relative;
+  min-height: 20rem;
+}

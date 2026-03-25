@@ -1,0 +1,26 @@
+.page {
+  width: min(100% - (2 * var(--container-padding)), var(--container-wide));
+  margin-inline: auto;
+  padding: 5rem 0 4rem;
+}
+
+.header {
+  max-width: 47.5rem;
+}
+
+.title {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2.8rem, 7vw, 6.4rem);
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: -0.05em;
+  margin-bottom: 1.5rem;
+  line-height: 1.05;
+}
+
+.copy {
+  color: var(--muted);
+  font-size: clamp(1rem, 0.95rem + 0.8vw, 1.2rem);
+  line-height: 1.8;
+  max-width: 62ch;
+}

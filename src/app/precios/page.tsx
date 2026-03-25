@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pricingGroups } from "@/data/site";
+import { getTreatmentHrefByPricingItem } from "@/data/treatment-catalog";
 import { formatStartingPrice } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -25,12 +26,33 @@ export default function PricingPage() {
               <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "2rem", fontWeight: 800, color: "var(--brand)" }}>{group.title}</h2>
             </div>
             <div style={{ display: "grid" }}>
-              {group.items.map((item, index) => (
-                <div key={item.name} style={{ display: "grid", gridTemplateColumns: "1.6fr .6fr", gap: "1rem", padding: "1rem 2rem", borderTop: index ? "1px solid rgba(195,198,214,.15)" : 0, alignItems: "center" }}>
-                  <span style={{ color: "var(--foreground)", fontWeight: 600 }}>{item.name}</span>
-                  <span style={{ color: "var(--brand)", fontWeight: 800, textAlign: "right" }}>{formatStartingPrice(item.price)}</span>
-                </div>
-              ))}
+              {group.items.map((item, index) => {
+                const href = getTreatmentHrefByPricingItem(group.slug, item.name);
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={href}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1.6fr .6fr",
+                      gap: "1rem",
+                      padding: "1rem 2rem",
+                      borderTop: index ? "1px solid rgba(195,198,214,.15)" : 0,
+                      alignItems: "center",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span style={{ display: "grid", gap: ".35rem" }}>
+                      <span style={{ color: "var(--foreground)", fontWeight: 700 }}>{item.name}</span>
+                      <span style={{ color: "var(--secondary)", fontWeight: 800, fontSize: ".78rem", letterSpacing: ".12em", textTransform: "uppercase" }}>
+                        Ver detalle clínico →
+                      </span>
+                    </span>
+                    <span style={{ color: "var(--brand)", fontWeight: 800, textAlign: "right" }}>{formatStartingPrice(item.price)}</span>
+                  </Link>
+                );
+              })}
             </div>
           </section>
         ))}

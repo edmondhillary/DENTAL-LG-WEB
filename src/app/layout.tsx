@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import "./globals.scss";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { WhatsAppFloat } from "@/components/whatsapp-float";

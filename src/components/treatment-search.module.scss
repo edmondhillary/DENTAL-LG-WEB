@@ -1,0 +1,264 @@
+@use "../styles/abstracts/mixins" as *;
+
+.section {
+  padding: 0 var(--container-padding) clamp(3rem, 2rem + 4vw, 6rem);
+}
+
+.shell {
+  position: relative;
+  border-radius: 2rem;
+  overflow: clip;
+  background: linear-gradient(135deg, rgba(213, 227, 255, 0.7), rgba(147, 242, 242, 0.42), rgba(255, 255, 255, 0.92));
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+  box-shadow: var(--shadow-soft);
+}
+
+@include down(sm) {
+  .shell {
+    border-radius: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+.orb {
+  position: absolute;
+  top: -5rem;
+  right: -5rem;
+  width: 13.75rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: rgba(27, 68, 119, 0.12);
+  filter: blur(35px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.titleWrap {
+  max-width: 52rem;
+}
+
+.description {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 58ch;
+}
+
+.eyebrow {
+  color: var(--secondary);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(2rem, 1.6rem + 2vw, 3.6rem);
+  font-weight: 800;
+  color: var(--brand);
+  margin-top: 0.75rem;
+  max-width: 18ch;
+}
+
+@include down(sm) {
+  .title {
+    max-width: 12ch;
+  }
+}
+
+.controls {
+  display: grid;
+  gap: 1rem;
+}
+
+@include up(lg) {
+  .controls {
+    grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+  }
+}
+
+@include between(md, lg) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.searchLabel {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1.125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--outline);
+}
+
+.input,
+.select {
+  width: 100%;
+  min-height: 3.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(25, 28, 30, 0.04);
+}
+
+@include down(sm) {
+  .input,
+  .select {
+    min-height: 3.35rem;
+    font-size: 0.95rem;
+  }
+}
+
+.input {
+  padding: 0 1.25rem 0 3rem;
+}
+
+.select {
+  padding: 0 1.25rem;
+}
+
+.chips {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@include up(lg) {
+  .chips {
+    display: flex;
+  }
+}
+
+@include down(sm) {
+  .chips {
+    gap: 0.5rem;
+  }
+}
+
+.chip {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@include down(sm) {
+  .chip {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+  }
+}
+
+.chipActive {
+  background: var(--brand);
+  color: white;
+}
+
+@include up(lg) {
+  .select {
+    display: none;
+  }
+}
+
+.results {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
+}
+
+@include up(xl) {
+  .results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  border-radius: 1.25rem;
+  padding: clamp(1rem, 0.8rem + 0.6vw, 1.25rem);
+  box-shadow: 0 10px 30px rgba(25, 28, 30, 0.04);
+  display: grid;
+  gap: 0.6rem;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.category {
+  color: var(--secondary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.arrow {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+  font-weight: 800;
+  color: var(--brand);
+  max-width: 22ch;
+}
+
+.cardCopy {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 44ch;
+}
+
+.emptyState {
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(195, 198, 214, 0.18);
+}
+
+.emptyTitle {
+  font-family: var(--font-headline), serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: 0.5rem;
+}
+
+.emptyCopy {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 46ch;
+}
+
+@include down(sm) {
+  .card {
+    padding: 1rem;
+  }
+
+  .cardTitle,
+  .cardCopy {
+    max-width: none;
+  }
+}

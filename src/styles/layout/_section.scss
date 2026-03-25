@@ -1,0 +1,14 @@
+.section {
+  padding-block: clamp(3rem, 2rem + 4vw, 7rem);
+}
+
+.section--compact {
+  padding-block: clamp(2rem, 1.5rem + 2vw, 4rem);
+}
+
+.surface-card {
+  background: var(--surface-lowest);
+  border: 1px solid rgba(195, 198, 214, 0.18);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-xl);
+}

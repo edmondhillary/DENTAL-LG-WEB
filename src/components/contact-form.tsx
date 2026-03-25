@@ -2,6 +2,7 @@
 
 import { Send } from "lucide-react";
 import { clinic } from "@/data/site";
+import styles from "./contact-form.module.scss";
 
 export function ContactForm() {
   return (
@@ -40,11 +41,11 @@ export function ContactForm() {
         />
       </label>
 
-      <button className="btn" type="submit" style={{ border: 0, cursor: "pointer" }}>
+      <button className={`btn ${styles.submit}`} type="submit">
         <Send size={18} /> Enviar solicitud
       </button>
 
-      <p style={{ color: "var(--muted)", lineHeight: 1.8, fontSize: ".95rem" }}>
+      <p className={styles.disclaimer}>
         Al enviar, tus datos se remiten de forma segura a través de Formspree para que el equipo de la clínica pueda responderte.
       </p>
     </form>

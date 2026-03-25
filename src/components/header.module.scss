@@ -1,0 +1,183 @@
+@use "../styles/abstracts/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(25, 28, 30, 0.06);
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: 1rem;
+}
+
+@include up(lg) {
+  .inner {
+    display: grid;
+    grid-template-columns: minmax(15rem, 22rem) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.brand {
+  font-family: var(--font-headline), serif;
+  font-size: clamp(1.1rem, 0.95rem + 0.8vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--brand);
+  max-width: min(22ch, 100%);
+  flex-shrink: 0;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: clamp(0.75rem, 1vw, 1.35rem);
+  min-width: 0;
+  justify-content: center;
+
+  @include up(lg) {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-family: var(--font-headline), serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #64748b;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.25rem;
+  white-space: nowrap;
+}
+
+.navLinkActive {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  min-width: max-content;
+  flex-shrink: 0;
+}
+
+.desktopMeta {
+  display: none;
+
+  @include up(xxl) {
+    display: inline-flex;
+  }
+}
+
+.phone {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.desktopButton {
+  display: none;
+
+  @include up(lg) {
+    display: inline-flex;
+    min-height: 3rem;
+    padding-inline: 1.5rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  @include up(xxl) {
+    padding-inline: 2rem;
+  }
+}
+
+.mobileTrigger {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  cursor: pointer;
+
+  @include up(lg) {
+    display: none;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(247, 249, 251, 0.96);
+  padding: 5rem 1.5rem 1.5rem;
+}
+
+.overlayClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(27, 68, 119, 0.1);
+  color: var(--brand);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+.overlayInner {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.overlayLink {
+  padding-block: 1rem;
+  border-bottom: 1px solid rgba(195, 198, 214, 0.35);
+  font-family: var(--font-headline), serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.overlayLinkActive {
+  color: var(--brand);
+}
+
+.overlayPrimary,
+.overlaySecondary {
+  width: 100%;
+  justify-content: center;
+}

@@ -1,52 +1,97 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { treatments } from "@/data/site";
+import { useEffect, useMemo, useState } from "react";
 import { SiteIcon } from "@/components/site-icon";
+import { treatmentCatalog, type TreatmentCatalogEntry } from "@/data/treatment-catalog";
+import styles from "./treatment-search.module.scss";
 
-export function TreatmentSearch() {
+type TreatmentSearchProps = {
+  items?: TreatmentCatalogEntry[];
+  defaultVisibleCount?: number;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+};
+
+export function TreatmentSearch({
+  items = treatmentCatalog,
+  defaultVisibleCount = 4,
+  eyebrow = "Buscador de tratamientos",
+  title = "Encuentra el tratamiento adecuado en segundos.",
+  description = "Explora los tratamientos disponibles y entra directamente en la página del servicio que mejor encaje con tu caso.",
+}: TreatmentSearchProps) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Todos");
+  const [desktopVisibleCount, setDesktopVisibleCount] = useState(defaultVisibleCount);
 
-  const categories = useMemo(() => ["Todos", ...Array.from(new Set(treatments.map((t) => t.category)))], []);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    const syncVisibleCount = (matches: boolean) => {
+      setDesktopVisibleCount(matches ? 6 : defaultVisibleCount);
+    };
+
+    syncVisibleCount(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      syncVisibleCount(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, [defaultVisibleCount]);
+
+  const categories = useMemo(() => ["Todos", ...Array.from(new Set(items.map((t) => t.category)))], [items]);
 
   const filtered = useMemo(() => {
-    return treatments.filter((treatment) => {
+    return items.filter((treatment) => {
       const matchCategory = category === "Todos" || treatment.category === category;
       const needle = query.toLowerCase().trim();
-      const matchQuery =
-        !needle ||
-        treatment.name.toLowerCase().includes(needle) ||
-        treatment.shortDescription.toLowerCase().includes(needle) ||
-        treatment.category.toLowerCase().includes(needle);
+      const haystack = [
+        treatment.name,
+        treatment.shortDescription,
+        treatment.description,
+        treatment.category,
+        ...(treatment.searchTerms ?? []),
+      ]
+        .join(" ")
+        .toLowerCase();
 
-      return matchCategory && matchQuery;
+      return matchCategory && (!needle || haystack.includes(needle));
     });
-  }, [category, query]);
+  }, [category, items, query]);
+
+  const hasActiveSearch = query.trim().length > 0 || category !== "Todos";
+  const visibleTreatments = hasActiveSearch ? filtered : filtered.slice(0, desktopVisibleCount);
 
   return (
-    <section style={{ padding: "0 2rem 6rem", maxWidth: 1280, margin: "0 auto" }}>
-      <div style={{ position: "relative", borderRadius: "2rem", overflow: "hidden", background: "linear-gradient(135deg, rgba(213,227,255,.7), rgba(147,242,242,.42), rgba(255,255,255,.92))", padding: "2rem", boxShadow: "0 20px 50px rgba(25,28,30,.06)" }}>
-        <div style={{ position: "absolute", top: -80, right: -80, width: 220, height: 220, borderRadius: 999, background: "rgba(27,68,119,.12)", filter: "blur(35px)" }} />
-        <div style={{ position: "relative", zIndex: 1, display: "grid", gap: "1.5rem" }}>
-          <div>
-            <span style={{ color: "var(--secondary)", fontWeight: 800, fontSize: ".75rem", letterSpacing: ".18em", textTransform: "uppercase" }}>Buscador de tratamientos</span>
-            <h2 style={{ fontFamily: "var(--font-headline)", fontSize: "clamp(2.3rem,4vw,3.6rem)", fontWeight: 800, color: "var(--brand)", marginTop: ".75rem" }}>Encuentra el tratamiento adecuado en segundos.</h2>
+    <section className={styles.section}>
+      <div className={clsx("container--wide", styles.shell)}>
+        <div className={styles.orb} />
+        <div className={styles.content}>
+          <div className={styles.titleWrap}>
+            <span className={styles.eyebrow}>{eyebrow}</span>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.description}>{description}</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "1rem" }}>
-            <label style={{ position: "relative" }}>
-              <SiteIcon name="search" size={18} style={{ position: "absolute", left: 18, top: "50%", transform: "translateY(-50%)", color: "var(--outline)" }} />
+          <div className={styles.controls}>
+            <label className={styles.searchLabel}>
+              <SiteIcon name="search" size={18} className={styles.searchIcon} />
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Buscar implantes, endodoncia, limpieza dental..."
-                style={{ width: "100%", minHeight: 60, border: 0, borderRadius: 999, background: "rgba(255,255,255,.92)", padding: "0 1.25rem 0 3rem", boxShadow: "0 10px 30px rgba(25,28,30,.04)" }}
+                placeholder="Buscar implantes, endodoncia, coronas, pulpotomía..."
+                className={styles.input}
               />
             </label>
 
-            <select value={category} onChange={(event) => setCategory(event.target.value)} style={{ minHeight: 60, border: 0, borderRadius: 999, background: "rgba(255,255,255,.92)", padding: "0 1.25rem", boxShadow: "0 10px 30px rgba(25,28,30,.04)" }}>
+            <select value={category} onChange={(event) => setCategory(event.target.value)} className={styles.select}>
               {categories.map((item) => (
                 <option key={item} value={item}>
                   {item}
@@ -55,38 +100,37 @@ export function TreatmentSearch() {
             </select>
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: ".75rem" }}>
+          <div className={styles.chips}>
             {categories.slice(0, 6).map((item) => (
               <button
                 key={item}
                 type="button"
                 onClick={() => setCategory(item)}
-                style={{
-                  border: 0,
-                  borderRadius: 999,
-                  padding: ".65rem 1rem",
-                  background: category === item ? "var(--brand)" : "rgba(255,255,255,.7)",
-                  color: category === item ? "white" : "var(--muted)",
-                  fontWeight: 700,
-                  cursor: "pointer",
-                }}
+                className={clsx(styles.chip, category === item && styles.chipActive)}
               >
                 {item}
               </button>
             ))}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "1rem" }}>
-            {filtered.slice(0, 6).map((treatment) => (
-              <Link key={treatment.slug} href={`/tratamientos/${treatment.slug}`} style={{ background: "rgba(255,255,255,.78)", backdropFilter: "blur(16px)", borderRadius: "1.25rem", padding: "1.25rem", boxShadow: "0 10px 30px rgba(25,28,30,.04)", display: "grid", gap: ".6rem" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", gap: ".75rem", alignItems: "start" }}>
-                  <span style={{ color: "var(--secondary)", fontSize: ".7rem", fontWeight: 800, letterSpacing: ".16em", textTransform: "uppercase" }}>{treatment.category}</span>
-                  <SiteIcon name="arrow_forward" size={16} style={{ color: "var(--brand)" }} />
+          <div className={styles.results}>
+            {visibleTreatments.map((treatment) => (
+              <Link key={treatment.slug} href={`/tratamientos/${treatment.slug}`} className={styles.card}>
+                <div className={styles.cardTop}>
+                  <span className={styles.category}>{treatment.category}</span>
+                  <SiteIcon name="arrow_forward" size={16} className={styles.arrow} />
                 </div>
-                <h3 style={{ fontFamily: "var(--font-headline)", fontSize: "1.25rem", fontWeight: 800, color: "var(--brand)" }}>{treatment.name}</h3>
-                <p style={{ color: "var(--muted)", fontSize: ".9rem", lineHeight: 1.7 }}>{treatment.shortDescription}</p>
+                <h3 className={styles.cardTitle}>{treatment.name}</h3>
+                <p className={styles.cardCopy}>{treatment.shortDescription}</p>
               </Link>
             ))}
+
+            {visibleTreatments.length === 0 ? (
+              <div className={styles.emptyState}>
+                <h3 className={styles.emptyTitle}>No encontramos un tratamiento con esa búsqueda.</h3>
+                <p className={styles.emptyCopy}>Probá con otra palabra clave o cambiá la categoría para ver más opciones.</p>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

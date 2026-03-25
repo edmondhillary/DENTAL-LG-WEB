@@ -1,0 +1,42 @@
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.item {
+  background: var(--surface-lowest);
+  border: 1px solid rgba(195, 198, 214, 0.18);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-xl);
+  overflow: clip;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+.answer {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 65ch;
+}
