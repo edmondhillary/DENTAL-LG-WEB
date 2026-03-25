@@ -153,7 +153,7 @@ export function FaqClientPage() {
             <div className={styles.categoryScroll}>
               {categories.map(({ icon, label, id }) => {
                 const active = currentCategory?.id === id;
-                const hiddenBySearch = normalizedQuery && !visibleCategoryIds.has(id);
+                const hiddenBySearch = !!normalizedQuery && !visibleCategoryIds.has(id);
 
                 return (
                   <button
